@@ -8,6 +8,7 @@ require 'psych'
 
 module PryTheme
 
+  ROOT_PATH = File.expand_path("../../", __FILE__)
   THEME_DIR = File.join(ENV["XDG_CONFIG_HOME"], "pry-theme")
 
   Setter = proc do |theme_name|
