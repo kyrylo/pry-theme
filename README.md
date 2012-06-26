@@ -19,7 +19,7 @@ Installation
 All you need is to install the gem. The `pry-theme` plugin will be detected and
 used automatically.
 
-    gem install pry-theme
+    gem install pry-theme --pre
 
 Synopsis
 --------
