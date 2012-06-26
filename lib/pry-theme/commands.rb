@@ -10,7 +10,7 @@ module PryTheme
 
       def process
         unless args.empty?
-          PryTheme::Setter.call(args[0])
+          PryTheme.set_theme(args[0].strip) and output.puts "Using #{args[0]} theme"
         end
       end
     end

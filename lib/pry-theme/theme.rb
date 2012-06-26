@@ -9,7 +9,7 @@ module PryTheme
       if File.exists?(theme_file)
         theme = Psych.load_file(theme_file)
       else
-        raise NoThemeError, "#{theme_filename}.prytheme doesn't exist! Nothing's changed."
+        raise NoThemeError, "#{theme_filename}.prytheme doesn't exist"
       end
 
       meta = theme["meta"]

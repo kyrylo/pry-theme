@@ -27,8 +27,10 @@ module PryTheme
   # Pry themes' directory.
   THEME_DIR = File.join(CONFIG_DIR, "pry-theme")
 
-  Setter = proc do |theme_name|
-    ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(PryTheme.convert(theme_name))
+  def self.set_theme(theme_name)
+    if theme = PryTheme.convert(theme_name)
+      ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(theme)
+    end
   end
 
   def self.convert(theme_name)
@@ -36,7 +38,7 @@ module PryTheme
       theme = Theme.new(theme_name)
     rescue NoThemeError => no_theme_error
       warn no_theme_error
-      return {}
+      return
     end
 
     palette = Palette.new(theme.color_depth)

@@ -13,7 +13,7 @@ module PryTheme
       end
 
       theme_name = Pry.config.theme || "pry-classic"
-      PryTheme::Setter.call(theme_name)
+      PryTheme.set_theme(theme_name)
     end
 
   end
