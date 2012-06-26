@@ -32,7 +32,13 @@ module PryTheme
   end
 
   def self.convert(theme_name)
-    theme   = Theme.new(theme_name)
+    begin
+      theme = Theme.new(theme_name)
+    rescue NoThemeError => no_theme_error
+      warn no_theme_error
+      return {}
+    end
+
     palette = Palette.new(theme.color_depth)
     scheme  = {}
 

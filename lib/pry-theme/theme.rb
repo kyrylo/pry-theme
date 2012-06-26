@@ -4,7 +4,14 @@ module PryTheme
     attr_reader :scheme, :author, :description, :color_depth, :version, :name
 
     def initialize(theme_filename)
-      theme = Psych.load_file(File.join(THEME_DIR, "#{theme_filename}.prytheme"))
+      theme_file = File.join(THEME_DIR, "#{theme_filename}.prytheme")
+
+      if File.exists?(theme_file)
+        theme = Psych.load_file(theme_file)
+      else
+        raise NoThemeError, "#{theme_filename}.prytheme doesn't exist! Nothing's changed."
+      end
+
       meta = theme["meta"]
 
       @name        = meta["theme-name"]
@@ -24,4 +31,6 @@ module PryTheme
     end
 
   end
+
+  class NoThemeError < StandardError; end
 end
