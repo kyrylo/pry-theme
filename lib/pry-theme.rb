@@ -14,7 +14,18 @@ module PryTheme
   # The root path for PryTheme examples.
   EXAMPLES_ROOT = File.join(ROOT, "..", "examples")
 
-  THEME_DIR = File.join(ENV["XDG_CONFIG_HOME"], "pry-theme")
+  # The root path for the directory with configuration files for OS you're using.
+  CONFIG_DIR = case RbConfig::CONFIG["host_os"]
+               when /darwin/
+                 File.join(ENV["HOME"], "Library", "Application Support")
+               when /linux/
+                 ENV["XDG_CONFIG_HOME"]
+               when /mingw|mswin/
+                 ENV["APPDATA"]
+               end
+
+  # Pry themes' directory.
+  THEME_DIR = File.join(CONFIG_DIR, "pry-theme")
 
   Setter = proc do |theme_name|
     ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(PryTheme.convert(theme_name))
