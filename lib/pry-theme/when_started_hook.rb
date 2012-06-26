@@ -8,7 +8,7 @@ module PryTheme
 
       (Dir.entries(EXAMPLES_ROOT) - %w{ . .. }).each do |f|
         unless File.exists?(File.join(THEME_DIR, f))
-          FileUtils.cp(File.join("examples", f), THEME_DIR)
+          FileUtils.cp(File.join(EXAMPLES_ROOT, f), THEME_DIR)
         end
       end
 
