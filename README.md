@@ -2,11 +2,6 @@
 
 * [https://github.com/kyrylo/pry-theme/][pt]
 
-Warning
-=======
-
-The project is in its infancy, so do expect bugs.
-
 Description
 -----------
 
@@ -24,16 +19,18 @@ used automatically.
 Synopsis
 --------
 
-### Configuration file
+### Theme files
 
-Pry Theme ships only with two themes: `pry-classic` and `pry-modern`. In order
-to set up the desired theme, add the following line to your `.pryrc`:
+Theme file is a valid YAML file, which has `.prytheme` extension (for example,
+`beautiful.prytheme`). Pry Theme ships only with two themes: `pry-classic` and
+`pry-modern`. In order to set up the desired theme, add the following line into
+your `.pryrc`:
 
     Pry.config.theme = "theme-name"
 
 The default theme is `pry-classic` (basically, you won't notice it, because
-it copies the default outlook of Pry, withouth the plugin). Let's change it to
-something more neoteric:
+it copies the default outlook of Pry, just as you didn't install anything).
+Let's change it to something more neoteric:
 
     Pry.config.theme = "pry-modern"
 
@@ -41,14 +38,13 @@ That's all! Launch your Pry and you will see the changes.
 
 ### CLI
 
-Pry Theme has a command-line interface via Pry. Currently, it can't do much. The
-only thing you can do is to switch themes on the fly. Start Pry and type the
-following:
+Pry Theme has a command-line interface available via Pry. Just launch Pry and
+start working with it. For example, you can _temporary_ change themes on the
+fly:
 
-    % pry --simple-prompt
-    >> pry-theme pry-classic
+    [1] pry(main)> pry-theme pry-classic
 
-We just temporary changed our current theme to `pry-classic`.
+This will switch your current theme to `pry-classic`.
 
 ### Creating themes
 
@@ -56,14 +52,42 @@ It's not easy now, so let's just skip this paragraph :P
 
 ### Adding new themes
 
-Theme files should have `.prytheme` extension. All theme files should be in
-`$XDG_CONFIG_HOME/pry-theme` directory. Don't forget to change your `.pryrc`!
+Theme files must have `.prytheme` extension.
+
+* On GNU/Linux
+
+    Put your theme file in `$XDG_CONFIG_HOME/pry-theme` directory. 
+
+* On Mac OS
+
+    Put your theme file in `$HOME/Library/Application Support/pry-theme` directory. 
+
+And don't forget to adjust your `.pryrc`!
 
 Limitations
 -----------
 
-* GNU/Linux (in future will support other popular platforms);
+Basically, it will run on any terminal that is capable of displaying 256 colors,
+but with a couple of admonishments.
+
+### OS support
+
+* GNU/Linux;
+* Mac OS (I hope so, leastwise);
+
+I don't plan to support Windows, because I can't even find a sane terminal for
+it. Sorry, Windows guys. If want me to change my mind, you have to file an
+issue.
+
+### Ruby versions
+
 * CRuby 1.9.3 (in future will support other implementations).
+
+Under the hood
+--------------
+
+Basically, Pry Theme is nothing but a CodeRay color scheme with a human-readable
+syntax.
 
 License
 -------
