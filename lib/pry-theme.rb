@@ -112,7 +112,8 @@ module PryTheme
                    Formatting::BACKGROUNDS[m[:bg]]
                  end
 
-    [palette.notation[0..-2], color_fg, formatting, color_bg].flatten.compact.join(";")
+    notation = palette.notation ? palette.notation[0..-2] : ""
+    [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
   end
 
 end
