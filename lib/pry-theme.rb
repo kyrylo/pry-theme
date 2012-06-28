@@ -4,7 +4,7 @@ require 'pry-theme/palette'
 require 'pry-theme/theme'
 require 'pry-theme/when_started_hook'
 require 'pry'
-require 'psych'
+require 'yaml'
 
 module PryTheme
 
@@ -67,7 +67,7 @@ module PryTheme
 
                       # Matches "yellow".
                       (
-                        (?<fg>
+                        (
                           \w+(0[1-9])?
                         )
                         \s?
@@ -76,7 +76,7 @@ module PryTheme
                       # Matches "yellow (bu)" or "(bu)".
                       (
                         \(
-                          (?<attrs>
+                          (
                             d?b?u?i? # Order matters.
                           )
                         \)
@@ -87,7 +87,7 @@ module PryTheme
                       (
                         \s?
                         on\s
-                        (?<bg>
+                        (
                           [a-z]+(0[1-9])?
                         )
                       )?
@@ -96,20 +96,20 @@ module PryTheme
                     /x
     m = color.match(color_pattern)
 
-    color_fg   = if m[:fg]
+    color_fg   = if $2
                    palette.colors.find do |color|
-                     color.human == m[:fg].to_sym
+                     color.human == $2.to_sym
                    end.term
                  end
 
-    formatting = if m[:attrs]
-                   formatting = m[:attrs].each_char.map do |ch|
+    formatting = if $5
+                   formatting = $5.each_char.map do |ch|
                      Formatting::ATTRIBUTES[ch]
                    end
                  end
 
-    color_bg   = if m[:bg]
-                   Formatting::BACKGROUNDS[m[:bg]]
+    color_bg   = if $7
+                   Formatting::BACKGROUNDS[$7]
                  end
 
     notation = palette.notation ? palette.notation[0..-2] : ""

@@ -4,7 +4,7 @@ module PryTheme
   class WhenStartedHook
 
     def call(target, options, _pry_)
-      Dir.mkdir(THEME_DIR) unless Dir.exists?(THEME_DIR)
+      Dir.mkdir(THEME_DIR) unless File.exists?(THEME_DIR)
 
       (Dir.entries(EXAMPLES_ROOT) - %w{ . .. }).each do |f|
         unless File.exists?(File.join(THEME_DIR, f))

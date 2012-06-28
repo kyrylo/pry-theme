@@ -7,7 +7,7 @@ module PryTheme
       theme_file = File.join(THEME_DIR, "#{theme_filename}.prytheme")
 
       if File.exists?(theme_file)
-        theme = Psych.load_file(theme_file)
+        theme = YAML.load_file(theme_file)
       else
         raise NoThemeError, "#{theme_filename}.prytheme doesn't exist"
       end
