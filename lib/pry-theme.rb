@@ -112,9 +112,7 @@ module PryTheme
                    Formatting::BACKGROUNDS[m[:bg]]
                  end
 
-    notation = "38;5" if palette.color_depth == 256
-
-    [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
+    [palette.notation, color_fg, formatting, color_bg].flatten.compact.join(";")
   end
 
 end

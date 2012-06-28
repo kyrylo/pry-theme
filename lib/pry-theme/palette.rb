@@ -21,7 +21,11 @@ module PryTheme
   end
 
   # Creates a new color.
-  Color = Struct.new(:term, :human)
+  Color = Struct.new(:term, :human) do
+    def to_term(notation)
+      "\e[#{ notation }#{ term };7m#{ term }\e[0m:\e[#{ notation }#{ term }m#{ human }\e[0m"
+    end
+  end
 
   # Color palettes aka set of colors. Use 8 colors for limited terminals (like
   # `linux` or other pithecanthropic crap. Real men's choice is 256 colors).
@@ -33,13 +37,29 @@ module PryTheme
     # @return [Integer] The number representing max number of colors in theme.
     attr_reader :color_depth
 
+    # @return [String] The notation to be used in conversions to terminal.
+    attr_reader :notation
+
     # @param [Integer] colors The number of colors to be used in the palette.
     def initialize(colors=8)
-      palette = send("init_#{colors}_colors")
+      @color_depth = colors.to_i
+      @notation = "38;5;" if color_depth == 256
+
+      init_palette = "init_#{@color_depth}_colors"
+
+      if self.class.private_method_defined?(init_palette)
+        palette = send(init_palette)
+      else
+        raise NoPaletteError, "There is no palette with #{colors} colors (try 8 or 256)"
+      end
+
       @colors = palette[:term].zip(palette[:human]).map do |color|
         Color.new(*color)
       end
-      @color_depth = colors
+    end
+
+    def to_s
+      @colors.map { |c| c.to_term(@notation) }
     end
 
     private
@@ -59,4 +79,7 @@ module PryTheme
     end
 
   end
+
+  class NoPaletteError < StandardError; end
+  class NoColorError < StandardError; end
 end
