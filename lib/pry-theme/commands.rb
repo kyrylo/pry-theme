@@ -9,7 +9,7 @@ module PryTheme
         Change your theme on the fly.
         e.g.: pry-theme pry-modern
         e.g.: pry-theme pry-classic
-        e.g.: pry-theme --all-colors
+        e.g.: pry-theme --all-colors 8
       BANNER
 
       def options(opt)
