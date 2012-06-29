@@ -1,6 +1,22 @@
 Pry Theme changelog
 ===================
 
+### v0.0.5.pre (June 29, 2012)
+
+* Added Ruby 1.8.7, JRuby and Ruby Enterprise Edition support.
+* Fixed 8-color themes bug. We could not even use them in the previous version;
+* Added `--test` command, which allows to "test" your theme visually.
+* Added uninstaller, which basically just asks a user if he or she wants to
+  remove a directory with Pry themes (personally, I hate when software leave
+  their crap).
+* Slightly improved `help` of `pry-theme` command
+* Made theme attributes optional. Now, if you are not sure about some parameter
+  in a Pry Theme, you can leave it empty.
+
+Last but not least:
+
+  * Check out new Wiki! (https://github.com/kyrylo/pry-theme/wiki)
+
 ### v0.0.4.pre (June 28, 2012)
 
 * Added `--all-colors` and `--color` options for `pry-theme` command;
