@@ -1,5 +1,3 @@
-require 'stringio'
-
 module PryTheme
   Commands = Pry::CommandSet.new do
 
