@@ -81,7 +81,11 @@ issue.
 
 ### Ruby versions
 
-* CRuby 1.9.3 (in future will support other implementations).
+* MRI 1.9.3
+* MRI 1.9.2
+* MRI 1.8.7
+* REE 1.8.7-2012.02
+* JRuby 1.6.7
 
 Under the hood
 --------------
