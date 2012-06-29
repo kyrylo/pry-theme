@@ -126,6 +126,11 @@ module PryTheme
                  end
 
       [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
+    else
+      # In cases when a user decided not to provide an argument value in theme,
+      # use default color. Not handling this situation results in CodeRay's
+      # error ("can't convert nil into String" stuff).
+      "38;0;0"
     end
   end
 
