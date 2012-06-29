@@ -7,36 +7,31 @@ meta:
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
-  binary          : magenta (b)
-  char:
-    self          : cyan
-    delimiter     : blue (b)
-  class           : fuchsia (b)
-  class_variable  : robin_egg_blue04
-  comment         : cerulean_grey01
-  constant        : klein_blue (bu)
-  doctype         : black (b)
-  error           : cerulean_grey02
-  float           : dark_pink01 (b)
-  global_variable : gold
-  hex             : cyan (b)
-  integer         : robin_egg_blue01 (b)
-  keyword         : chestnut01 (b)
-  method          : grass01 (b)
+  class               : fuchsia (b)
+  class_variable      : robin_egg_blue04
+  comment             : cerulean_grey01
+  constant            : klein_blue (bu)
+  error               : cerulean_grey02
+  float               : dark_pink01 (b)
+  global_variable     : gold
+  instance_variable   : (d)
+  integer             : robin_egg_blue01 (b)
+  keyword             : chestnut01 (b)
+  method              : grass01 (b)
   predefined_constant : cyan (b)
-  regexp:
-    self          : tangerine
-    content       : violaceous03
-    delimiter     : tangerine (db)
-    modifier      : dark_pink01 (b)
-    function      : (db)
-  shell:
-    self          : on green
-    content       : grass01
-    delimiter     : white
-  string:
-    self          : malachite01
-    modifier      : malachite01 (b)
-    escape        : cyan (b)
-    delimiter     : malachite01 (b)
-  symbol          : malachite02 (b)
+  regexp              :
+  self                : tangerine
+  content             : violaceous03
+  delimiter           : tangerine (db)
+  modifier            : dark_pink01 (b)
+  function            : (db)
+  shell               :
+  self                : on green
+  content             : grass01
+  delimiter           : white
+  string              :
+  self                : malachite01
+  modifier            : malachite01 (b)
+  escape              : cyan (b)
+  delimiter           : malachite01 (b)
+  symbol              : malachite02 (b)
