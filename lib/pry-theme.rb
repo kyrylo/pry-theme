@@ -116,7 +116,15 @@ module PryTheme
                      Formatting::BACKGROUNDS[$7]
                    end
 
-      notation = palette.notation ? palette.notation[0..-2] : ""
+      # Uh oh :(
+      notation = if !color_fg
+                   "38;0;"
+                 elsif palette.notation
+                   palette.notation[0..-2]
+                 else
+                   ""
+                 end
+
       [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
     end
   end
