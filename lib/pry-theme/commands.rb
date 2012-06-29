@@ -86,8 +86,10 @@ module PryTheme
         this_is_integer = 10_000
 
         "this_is_string"
-        'this is another string'
 
+        TRUE or FALSE or ARGV # <-- Predefined constants
+
+        @this_is_instance_variable
         @@this_is_class_variable
 
         `echo 'Hello, hi, from "system" call!'`
@@ -96,9 +98,6 @@ module PryTheme
 
         /[0-9]{1,3}this is regexp\\w+/xi
         $1 or $2 or $3333
-
-        nil
-        self
       end
 
     end
