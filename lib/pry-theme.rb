@@ -3,6 +3,8 @@ require 'pry-theme/commands'
 require 'pry-theme/palette'
 require 'pry-theme/theme'
 require 'pry-theme/when_started_hook'
+require 'pry-theme/uninstaller'
+
 require 'pry'
 require 'yaml'
 
@@ -114,6 +116,12 @@ module PryTheme
 
     notation = palette.notation ? palette.notation[0..-2] : ""
     [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
+  end
+
+  def self.install_gem_hooks
+    Gem.post_uninstall do |u|
+      Uninstaller.run(u)
+    end
   end
 
 end
