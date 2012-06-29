@@ -1,6 +1,7 @@
 ![Pry Theme][logo]
 
-* [https://github.com/kyrylo/pry-theme/][pt]
+* Repository: [https://github.com/kyrylo/pry-theme/][pt]
+* Wiki: [https://github.com/kyrylo/pry-theme/wiki][wiki]
 
 Description
 -----------
@@ -46,13 +47,16 @@ fly:
 
 This will switch your current theme to `pry-classic`.
 
+You can find [more information about CLI in Pry Theme Wiki][cli].
+
 ### Creating themes
 
-It's not easy now, so let's just skip this paragraph :P
+Creating new themes isn't hard. [Check out Pry Theme Wiki article on that][new_theme].
 
 ### Adding new themes
 
-Theme files must have `.prytheme` extension.
+Theme files must have `.prytheme` extension. Check out [Pry Theme Collection][ptc],
+if you want to find some themes other than default ones.
 
 * On GNU/Linux
 
@@ -68,16 +72,16 @@ Limitations
 -----------
 
 Basically, it will run on any terminal that is capable of displaying 256 colors,
-but with a couple of admonishments.
+but with a couple of admonishments. They are listed below.
 
 ### OS support
 
 * GNU/Linux;
 * Mac OS (I hope so, leastwise);
 
-I don't plan to support Windows, because I can't even find a sane terminal for
-it. Sorry, Windows guys. If want me to change my mind, you have to file an
-issue.
+I hope it runs on Windows too, but I couldn't find any sane terminal, that
+would support 256 colors. Sorry, Windows guys. Please, file an issue, if you
+noticed bugs or something.
 
 ### Ruby versions
 
@@ -101,3 +105,7 @@ The project uses Zlib License. See LICENSE file for more information.
 [pt]: https://github.com/kyrylo/pry-theme/ "Home page"
 [logo]: http://img-fotki.yandex.ru/get/5107/98991937.a/0_7c6c8_871a1842_orig "Pry Theme"
 [pry]: https://github.com/pry/pry/ "Pry's home page"
+[new_theme]: https://github.com/kyrylo/pry-theme/wiki/Creating-a-New-Theme
+[cli]: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
+[wiki]: https://github.com/kyrylo/pry-theme/wiki
+[ptc]: https://github.com/kyrylo/pry-theme-collection
