@@ -96,26 +96,29 @@ module PryTheme
 
                       \z
                     /x
-    m = color.match(color_pattern)
 
-    color_fg   = if $2
-                   palette.colors.find do |color|
-                     color.human == $2.to_sym
-                   end.term
-                 end
+    if color
+      m = color.match(color_pattern)
 
-    formatting = if $5
-                   formatting = $5.each_char.map do |ch|
-                     Formatting::ATTRIBUTES[ch]
+      color_fg   = if $2
+                     palette.colors.find do |color|
+                       color.human == $2.to_sym
+                     end.term
                    end
-                 end
 
-    color_bg   = if $7
-                   Formatting::BACKGROUNDS[$7]
-                 end
+      formatting = if $5
+                     formatting = $5.each_char.map do |ch|
+                       Formatting::ATTRIBUTES[ch]
+                     end
+                   end
 
-    notation = palette.notation ? palette.notation[0..-2] : ""
-    [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
+      color_bg   = if $7
+                     Formatting::BACKGROUNDS[$7]
+                   end
+
+      notation = palette.notation ? palette.notation[0..-2] : ""
+      [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
+    end
   end
 
   def self.install_gem_hooks
