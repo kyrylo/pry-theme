@@ -4,12 +4,25 @@ module PryTheme
     create_command "pry-theme", "Manage your Pry themes." do
 
       banner <<-BANNER
-        Usage: pry-theme [OPTIONS]
+        Usage: pry-theme [OPTIONS] [--help]
 
         Change your theme on the fly.
-        e.g.: pry-theme pry-modern
-        e.g.: pry-theme pry-classic
-        e.g.: pry-theme --all-colors 8
+
+          pry-theme pry-modern
+
+        Display 8-color palette.
+
+          pry-theme --all-colors 8
+
+        Display Pry Theme code for terminal color 34.
+
+          pry-theme -c 34
+
+        Test your current color theme.
+
+          pry-theme -t
+
+        Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
       BANNER
 
       def options(opt)
