@@ -59,36 +59,36 @@ module PryTheme
       end
 
       def test_theme
-        example = <<-TEST
-# Time for testing your colors!
-module PryTheme
-  module JustTesting
+        example = <<-"TEST".gsub(/^\s{10}/, '')
+          # Time for testing your colors!
+          module PryTheme
+            module JustTesting
 
-    THIS_IS_CONSTANT = :this_is_symbol
+              THIS_IS_CONSTANT = :this_is_symbol
 
-    class ThisIsClass
+              class ThisIsClass
 
-      def this_is_method
-        this_is_float   = 10_000.00
-        this_is_integer = 10_000
+                def this_is_method
+                  this_is_float   = 10_000.00
+                  this_is_integer = 10_000
 
-        "this_is_string"
-        'this is another string'
+                  "this_is_string"
+                  'this is another string'
 
-        @this_is_instance_variable
-        @@this_is_class_variable
+                  @this_is_instance_variable
+                  @@this_is_class_variable
 
-        /[0-9]{1,3}this is regexp\w+/xi
-        $1 or $2 or $3333
+                  /[0-9]{1,3}this is regexp\w+/xi
+                  $1 or $2 or $3333
 
-        nil
-        self
-      end
+                  nil
+                  self
+                end
 
-    end
-  end
-end
-# Testing complete.
+              end
+            end
+          end
+          # Testing complete.
         TEST
 
         output.puts colorize_code(example)
