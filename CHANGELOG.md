@@ -1,6 +1,10 @@
 Pry Theme changelog
 ===================
 
+### v0.0.7 (June 30, 2012)
+
+* **HOTFIX**: v0.0.6 is broken (because of my inattentiveness).
+
 ### v0.0.6 (June 30, 2012)
 
 * Fixed bug when a `prytheme` attribute has no color value, but with attributes
