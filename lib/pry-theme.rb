@@ -101,14 +101,14 @@ module PryTheme
       m = color.match(color_pattern)
 
       color_fg   = if $2
-                     palette.colors.find do |color|
+                     c = palette.colors.find do |color|
                        color.human == $2.to_sym
                      end
 
                      if c
                        c.term
                      else
-                       raise NoColorError unless c
+                       raise NoColorError
                      end
                    end
 
