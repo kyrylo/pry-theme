@@ -1,6 +1,14 @@
 Pry Theme changelog
 ===================
 
+### v0.0.6 (June 30, 2012)
+
+* Fixed bug when a `prytheme` attribute has no color value, but with attributes
+  (for example, `symbol : (b)`);
+* Fixed bug when a `prytheme` has no color value at all (for example,
+  `symbol : `);
+* Add basic checking for a valid color in `prytheme`.
+
 ### v0.0.5 (June 29, 2012)
 
 * No pre!
