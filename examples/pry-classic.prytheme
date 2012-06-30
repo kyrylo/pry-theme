@@ -19,19 +19,19 @@ theme:
   keyword             : red (b)
   method              : blue (b)
   predefined_constant : cyan (b)
-  regexp              :
-  self                : red
-  content             : red
-  delimiter           : red (db)
-  modifier            : magenta (b)
-  function            : (db)
-  shell               :
-  self                : on green
-  content             : (db)
-  delimiter           : white
-  string              :
-  self                : green
-  modifier            : green (b)
-  escape              : cyan (b)
-  delimiter           : green (b)
+  regexp:
+    self              : red
+    content           : red
+    delimiter         : red (db)
+    modifier          : magenta (b)
+    function          : (db)
+  shell:
+    self              : on green
+    content           : (db)
+    delimiter         : white
+  string:
+    self              : green
+    modifier          : green (b)
+    escape            : cyan (b)
+    delimite          : green (b)
   symbol              : green (b)
