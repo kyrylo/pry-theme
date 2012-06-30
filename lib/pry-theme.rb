@@ -103,7 +103,13 @@ module PryTheme
       color_fg   = if $2
                      palette.colors.find do |color|
                        color.human == $2.to_sym
-                     end.term
+                     end
+
+                     if c
+                       c.term
+                     else
+                       raise NoColorError unless c
+                     end
                    end
 
       formatting = if $5
@@ -132,6 +138,8 @@ module PryTheme
       # error ("can't convert nil into String" stuff).
       "38;0;0"
     end
+  rescue NoColorError => e
+    Pry.output.puts "#{e}: wrong color value: `#{$2}`. Typo?"
   end
 
   def self.install_gem_hooks
