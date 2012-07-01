@@ -18,10 +18,11 @@ module PryTheme
 
   # The root path for the directory with configuration files for OS you're using.
   CONFIG_DIR = case RbConfig::CONFIG["host_os"]
-               when /darwin|linux/
-                 File.join(ENV["HOME"], ".pry")
                when /mingw|mswin/
                  File.join(ENV["APPDATA"], "pry-theme")
+               else
+                 # /darwin|linux/ and friends.
+                 File.join(ENV["HOME"], ".pry")
                end
 
   # Pry themes' directory.
