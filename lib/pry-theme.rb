@@ -123,11 +123,11 @@ module PryTheme
 
       # Uh oh :(
       notation = if !color_fg
-                   "38;0;"
+                   "38;0"
                  elsif palette.notation
                    palette.notation[0..-2]
                  else
-                   ""
+                   nil
                  end
 
       [notation, color_fg, formatting, color_bg].flatten.compact.join(";")
