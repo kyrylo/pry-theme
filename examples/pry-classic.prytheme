@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : pry-classic
-  version     : 1
+  version     : 2
   color-depth : 8
   description : Based on Kornelius Kalnbach's default CodeRay's color theme.
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
@@ -33,5 +33,5 @@ theme:
     self              : green
     modifier          : green (b)
     escape            : cyan (b)
-    delimite          : green (b)
+    delimiter         : green (b)
   symbol              : green (b)
