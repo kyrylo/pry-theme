@@ -2,13 +2,14 @@ require 'fileutils'
 
 module PryTheme
   class WhenStartedHook
+    include PryTheme::Helper
 
     def call(target, options, _pry_)
       FileUtils.mkdir_p(THEME_DIR) unless File.exists?(THEME_DIR)
 
-      (Dir.entries(EXAMPLES_ROOT) - %w{ . .. }).each do |f|
-        unless File.exists?(File.join(THEME_DIR, f))
-          FileUtils.cp(File.join(EXAMPLES_ROOT, f), THEME_DIR)
+      each_theme_in(EXAMPLES_ROOT) do |theme|
+        unless File.exists?(File.join(THEME_DIR, theme))
+          FileUtils.cp(File.join(EXAMPLES_ROOT, theme), THEME_DIR)
         end
       end
 
