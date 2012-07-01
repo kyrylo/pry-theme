@@ -58,13 +58,9 @@ Creating new themes isn't hard. [Check out Pry Theme Wiki article on that][new_t
 Theme files must have `.prytheme` extension. Check out [Pry Theme Collection][ptc],
 if you want to find some themes other than default ones.
 
-* On GNU/Linux
+* On GNU/Linux and Mac OS
 
-    Put your theme file in `$XDG_CONFIG_HOME/pry-theme` directory. 
-
-* On Mac OS
-
-    Put your theme file in `$HOME/Library/Application Support/pry-theme` directory. 
+    Put your theme file in `$HOME/.pry/themes` directory.
 
 And don't forget to adjust your `.pryrc`!
 

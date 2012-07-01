@@ -18,16 +18,14 @@ module PryTheme
 
   # The root path for the directory with configuration files for OS you're using.
   CONFIG_DIR = case RbConfig::CONFIG["host_os"]
-               when /darwin/
-                 File.join(ENV["HOME"], "Library", "Application Support")
-               when /linux/
-                 ENV["XDG_CONFIG_HOME"]
+               when /darwin|linux/
+                 File.join(ENV["HOME"], ".pry")
                when /mingw|mswin/
-                 ENV["APPDATA"]
+                 File.join(ENV["APPDATA"], "pry-theme")
                end
 
   # Pry themes' directory.
-  THEME_DIR = File.join(CONFIG_DIR, "pry-theme")
+  THEME_DIR = File.join(CONFIG_DIR, "themes")
 
   def self.set_theme(theme_name)
     if theme = PryTheme.convert(theme_name)
