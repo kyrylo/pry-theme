@@ -143,7 +143,7 @@ module PryTheme
 
   def self.install_gem_hooks
     Gem.post_uninstall do |u|
-      Uninstaller.run(u)
+      Uninstaller.run(u) if u.spec.name == "pry-theme"
     end
   end
 
