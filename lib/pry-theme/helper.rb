@@ -2,8 +2,11 @@ module PryTheme
   module Helper
 
     def each_theme_in(dir, &block)
-      (Dir.entries(dir) - %w{ . .. }).each do |file|
-        yield(file)
+      themes = Dir.entries(dir) - %w{ . .. }
+      n = themes.size
+
+      themes.each_with_index do |theme, index|
+        yield(theme, index, n)
       end
     end
 

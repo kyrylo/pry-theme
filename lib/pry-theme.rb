@@ -1,4 +1,5 @@
 require 'pry-theme/version'
+require 'pry-theme/helper'
 require 'pry-theme/commands'
 require 'pry-theme/palette'
 require 'pry-theme/theme'
@@ -28,10 +29,19 @@ module PryTheme
   # Pry themes' directory.
   THEME_DIR = File.join(CONFIG_DIR, "themes")
 
+  # The name of the default theme of Pry Theme.
+  DEFAULT_THEME_NAME = "pry-classic"
+
   def self.set_theme(theme_name)
-    if theme = PryTheme.convert(theme_name)
+    theme = PryTheme.convert(theme_name)
+    if theme ||= PryTheme.convert(theme_name = DEFAULT_THEME_NAME)
       ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(theme)
+      @current_theme = theme_name
     end
+  end
+
+  def self.current_theme
+    @current_theme
   end
 
   def self.convert(theme_name)

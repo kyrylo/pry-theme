@@ -2,6 +2,7 @@ module PryTheme
   Commands = Pry::CommandSet.new do
 
     create_command "pry-theme", "Manage your Pry themes." do
+      include PryTheme::Helper
 
       banner <<-BANNER
         Usage: pry-theme [OPTIONS] [--help]
@@ -29,6 +30,7 @@ module PryTheme
         opt.on :a, "all-colors", "Show all available 8/256 colors."
         opt.on :c, "color",      "Show information about a specific color (256)."
         opt.on :t, "test",       "Test your current theme", :argument => false
+        opt.on :l, "list",       "Show a list with all available themes", :argument => false
       end
 
       def process
@@ -38,6 +40,8 @@ module PryTheme
           show_specific_color
         elsif opts.t?
           test_theme
+        elsif opts.l?
+          show_list
         elsif args[0] =~ /\A\w+-?\w+\z/
           switch_to_theme
         end
@@ -107,6 +111,30 @@ end
         TEST
 
         output.puts colorize_code(example)
+      end
+
+      def show_list
+        old_theme = PryTheme.current_theme.dup
+
+        each_theme_in(THEME_DIR) do |theme, index, all_themes_num|
+          theme.sub!(/\.prytheme\z/, "")
+          PryTheme.set_theme(theme)
+
+          chunk = <<-CHUNK
+class PickMe
+  def please
+    @i, @@beg, you = 10_000, 400.00, "please!"
+  end
+end
+          CHUNK
+
+          output.puts "\e[038;0;1m[#{theme}]\e[0m#{ " *" if theme == old_theme }"
+          output.puts "---"
+          output.puts colorize_code(chunk)
+          output.puts unless index+1 == all_themes_num
+        end
+      ensure
+        PryTheme.set_theme(old_theme)
       end
     end
 
