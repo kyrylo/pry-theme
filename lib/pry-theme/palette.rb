@@ -58,7 +58,7 @@ module PryTheme
       end
     end
 
-    def to_s
+    def to_a
       @colors.map { |c| c.to_term(@notation) }
     end
 

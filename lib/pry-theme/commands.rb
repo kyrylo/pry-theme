@@ -63,7 +63,7 @@ module PryTheme
       end
 
       def show_palette_colors
-        output.puts Palette.new(args[0]).to_s
+        lputs Palette.new(args[0]).to_a.join("\n")
       end
 
       def show_specific_color
@@ -114,13 +114,13 @@ end
 # Testing complete.
         TEST
 
-        output.puts colorize_code(example)
+        lputs colorize_code(example)
       end
 
       def show_list
         old_theme = PryTheme.current_theme.dup
 
-        each_theme_in(THEME_DIR) do |theme, index, all_themes_num|
+        all_themes = installed_themes.map do |theme|
           theme.sub!(/\.prytheme\z/, "")
           PryTheme.set_theme(theme)
 
@@ -132,11 +132,13 @@ class PickMe
 end
           CHUNK
 
-          output.puts "\e[038;0;1m[#{theme}]\e[0m#{ " *" if theme == old_theme }"
-          output.puts "---"
-          output.puts colorize_code(chunk)
-          output.puts unless index+1 == all_themes_num
+          header = make_bold("[#{theme}]")
+          header.concat(" *") if theme == old_theme
+          snippet = colorize_code(chunk)
+          [header, "---", snippet].join("\n")
         end
+
+        lputs all_themes.join("\n")
       ensure
         PryTheme.set_theme(old_theme)
       end

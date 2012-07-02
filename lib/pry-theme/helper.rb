@@ -1,13 +1,20 @@
 module PryTheme
   module Helper
 
-    def each_theme_in(dir, &block)
-      themes = Dir.entries(dir) - %w{ . .. }
-      n = themes.size
+    def example_themes
+      (Dir.entries(EXAMPLES_ROOT) - %w{ . .. })
+    end
 
-      themes.each_with_index do |theme, index|
-        yield(theme, index, n)
-      end
+    def installed_themes
+      (Dir.entries(THEME_DIR) - %w{ . .. })
+    end
+
+    def lputs(text, out=nil)
+      Pry::Helpers::BaseHelpers.stagger_output(text, out)
+    end
+
+    def make_bold(text)
+      Pry::Helpers::Text.bold(text)
     end
 
   end
