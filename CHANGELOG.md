@@ -1,6 +1,23 @@
 Pry Theme changelog
 ===================
 
+### v0.0.8 (July 02, 2012)
+
+* **IMPORTANT**: Changed directory where to store themes! Themes now live in
+  `$HOME/.pry/themes` directory on Mac OS and GNU/Linux, both. Do not forget
+  to delete or move your themes form the old path (On Mac OS it is
+  `$HOME/Library/Application Support/pry-theme` and on GNU/Linux it is
+  `$HOME/.pry/themes`).
+* On some operating systems Pry Theme was failing to detect correct config path.
+  Fixed.
+* Fixed wrong behaviour, when uninstalling an unrelated gem. Pry Theme asked to
+  uninstall themes every time you wanted to uninstall _any_ gem.
+* Fixed a typo in `pry-classic` theme, which was preventing to set `delimiter`
+  parameter to a string.
+* Fixed wrong convertation of theme files.
+* Implemented `--list` (`-l`) option, which displays a list of all installed
+  themes.
+
 ### v0.0.7 (June 30, 2012)
 
 * **HOTFIX**: v0.0.6 is broken (because of my inattentiveness).
