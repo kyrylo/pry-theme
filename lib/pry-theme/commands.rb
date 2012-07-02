@@ -23,6 +23,10 @@ module PryTheme
 
           pry-theme -t
 
+        Show a list with currently installed themes
+
+          pry-theme --list
+
         Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
       BANNER
 
