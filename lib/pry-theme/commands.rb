@@ -162,7 +162,7 @@ end
 
         remote_themes = body.map.with_index do |theme, i|
           if (name = theme["name"]) =~ /\A[[a-z][0-9]-]+\z/
-            "#{i}. #{installed?(name) ? make_bold(name) : name}"
+            "#{i+1}. #{installed?(name) ? make_bold(name) : name}"
           end
         end.compact
 
