@@ -121,7 +121,7 @@ end
         old_theme = PryTheme.current_theme.dup
 
         all_themes = installed_themes.map do |theme|
-          theme.sub!(/\.prytheme\z/, "")
+          theme = File.basename(theme, ".prytheme")
           PryTheme.set_theme(theme)
 
           chunk = <<-CHUNK
