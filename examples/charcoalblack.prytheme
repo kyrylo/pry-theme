@@ -14,7 +14,7 @@ theme:
   error               : tenne (i)
   float               : silver01
   global_variable     : robin_egg_blue02
-  instance_variable   : pale_blue03 
+  instance_variable   : pale_blue03
   integer             : seroburomalinovyj01
   keyword             : pale_blue03 (b)
   method              : royal_blue05
