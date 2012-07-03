@@ -1,5 +1,3 @@
-require "./lib/pry-theme/version"
-
 Gem::Specification.new do |s|
   s.name         = "pry-theme"
   s.version      = PryTheme::VERSION
