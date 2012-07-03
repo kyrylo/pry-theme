@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name  : charcoal black
+  version     : 2
+  color-depth : 256
+  description : Based on Charcoalblack theme from Emacs
+  author      : John Mair
+
+theme:
+  class               : robin_egg_blue02 (b)
+  class_variable      : pale_blue03 (b)
+  comment             : light_grey03
+  constant            : alizarin
+  error               : tenne (i)
+  float               : silver01
+  global_variable     : robin_egg_blue02
+  instance_variable   : pale_blue03 
+  integer             : seroburomalinovyj01
+  keyword             : pale_blue03 (b)
+  method              : royal_blue05
+  predefined_constant : robin_egg_blue02 (b)
+  regexp:
+    self              : alizarin
+    content           : alizarin
+    delimiter         : alizarin
+    modifier          : alizarin
+    function          : alizarin
+  shell:
+    self              : puce01
+    content           : puce01
+    delimiter         : gray02
+  string:
+    self              : bluish03
+    modifier          : bluish03
+    escape            : bluish03
+    delimiter         : bluish03
+  symbol              : bluish03
