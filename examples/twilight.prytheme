@@ -8,22 +8,22 @@ meta:
 
 theme:
   class               : khaki02
-  class_variable      : pale_conflower_blue (b)
+  class_variable      : pale_cornflower_blue (b)
   comment             : gray03
   constant            : khaki02
   error               : tenne (i)
   float               : silver01
-  global_variable     : pale_conflower_blue
-  instance_variable   : pale_conflower_blue
+  global_variable     : pale_cornflower_blue
+  instance_variable   : pale_cornflower_blue
   integer             : pale_blue01
   keyword             : tan
   method              : khaki02
-  predefined_constant : pale_conflower_blue
+  predefined_constant : pale_cornflower_blue
   regexp:
     self              : moss_green
     content           : moss_green
     delimiter         : moss_green
-    modifier          : pale_conflower_blue
+    modifier          : pale_cornflower_blue
     function          : moss_green
   shell:
     self              : moss_green
@@ -31,7 +31,7 @@ theme:
     delimiter         : moss_green
   string:
     self              : moss_green
-    modifier          : pale_conflower_blue
+    modifier          : pale_cornflower_blue
     escape            : moss_green
     delimiter         : moss_green
   symbol              : chestnut01
