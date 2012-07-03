@@ -1,3 +1,7 @@
+require 'net/https'
+require 'base64'
+require 'json'
+
 module PryTheme
   Commands = Pry::CommandSet.new do
 
@@ -23,7 +27,7 @@ module PryTheme
 
           pry-theme -t
 
-        Show a list with currently installed themes
+        Show a list with currently installed themes.
 
           pry-theme --list
 
@@ -35,6 +39,7 @@ module PryTheme
         opt.on :c, "color",      "Show information about a specific color (256)."
         opt.on :t, "test",       "Test your current theme", :argument => false
         opt.on :l, "list",       "Show a list with all available themes", :argument => false
+        opt.on :i, "install",    "Install a theme from Pry Theme Collection"
       end
 
       def process
@@ -46,6 +51,8 @@ module PryTheme
           test_theme
         elsif opts.l?
           show_list
+        elsif opts.i?
+          install_theme
         elsif args[0] =~ /\A\w+-?\w+\z/
           switch_to_theme
         end
@@ -142,6 +149,34 @@ end
         lputs all_themes.join("\n")
       ensure
         PryTheme.set_theme(old_theme)
+      end
+
+      def install_theme
+        return unless args[0]
+
+        uri = URI.parse("https://api.github.com/repos/kyrylo/pry-theme-collection/contents/#{args[0]}/#{args[0]}.prytheme")
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+
+        output.puts "Fetching theme from the collection..."
+        response = http.request(Net::HTTP::Get.new(uri.request_uri))
+
+        body = JSON.parse(response.body)
+
+        if body["message"]
+          output.puts "Cannot find theme: #{args[0]}"
+          return
+        end
+
+        theme = Base64.decode64(body["content"])
+
+        File.open(local_theme("#{args[0]}.prytheme"), "w") do |f|
+          f.puts theme
+        end
+
+        output.puts "Successfully installed #{args[0]}!"
+      rescue
+        output.puts "An error occurred!"
       end
     end
 
