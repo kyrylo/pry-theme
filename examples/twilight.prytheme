@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name  : twilight
+  version     : 2
+  color-depth : 256
+  description : Based on Twilight from Emacs color-theme package
+  author      : John Mair
+
+theme:
+  class               : khaki02
+  class_variable      : pale_conflower_blue (b)
+  comment             : gray03
+  constant            : khaki02
+  error               : tenne (i)
+  float               : silver01
+  global_variable     : pale_conflower_blue
+  instance_variable   : pale_conflower_blue
+  integer             : pale_blue01
+  keyword             : tan
+  method              : khaki02
+  predefined_constant : pale_conflower_blue
+  regexp:
+    self              : moss_green
+    content           : moss_green
+    delimiter         : moss_green
+    modifier          : pale_conflower_blue
+    function          : moss_green
+  shell:
+    self              : moss_green
+    content           : moss_green
+    delimiter         : moss_green
+  string:
+    self              : moss_green
+    modifier          : pale_conflower_blue
+    escape            : moss_green
+    delimiter         : moss_green
+  symbol              : chestnut01

@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name  : solarized
+  version     : 3
+  color-depth : 256
+  description : Precision colors for machines and people
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Ethan Schoonover
+
+theme:
+  class               : dark_goldenrod
+  class_variable      : azure01
+  comment             : wet_asphalt05
+  constant            : dark_goldenrod
+  error               : abdel_kerims_beard04
+  float               : robin_egg_blue01
+  global_variable     : azure01
+  instance_variable   : azure01
+  integer             : robin_egg_blue01
+  keyword             : gray03 (b)
+  method              : azure01
+  predefined_constant : azure01
+  regexp:
+    self              : tenne
+    content           : olive_drab
+    delimiter         : titian
+    modifier          : titian
+    function          : black
+  shell:
+    self              :
+    content           : robin_egg_blue01
+    delimiter         : titian
+  string:
+    self              : robin_egg_blue01
+    modifier          :
+    escape            :
+    delimiter         : titian
+  symbol              : robin_egg_blue01

@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name  : zenburn
+  version     : 2
+  color-depth : 256
+  description : Based on Jani Nurminen's Zenburn
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>
+
+theme:
+  class               : dark_peach (b)
+  class_variable      : dark_peach
+  comment             : swamp_green01
+  constant            : dark_peach (b)
+  error               : tenne (i)
+  float               : silver01
+  global_variable     : dark_peach
+  instance_variable   : dark_peach
+  integer             : pale_blue01
+  keyword             : dark_salmon (b)
+  method              : corn02
+  predefined_constant : dark_peach
+  regexp:
+    self              : abdel_kerims_beard01
+    content           : puce01
+    delimiter         : gray02
+    modifier          : gray02
+    function          :
+  shell:
+    self              :
+    content           : puce01
+    delimiter         : gray02
+  string:
+    self              : puce01
+    modifier          :
+    escape            :
+    delimiter         : gray02
+  symbol              : puce01 (b)
