@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name  : tomorrow
+  version     : 2
+  color-depth : 256
+  description : Based on Tomorrow by Chris Kempson
+  author      : John Mair
+
+theme:
+  class               : gold
+  class_variable      : flea_belly (b)
+  comment             : gray03
+  constant            : gold
+  error               : tenne (i)
+  float               : silver01
+  global_variable     : dark_peach
+  instance_variable   : alizarin
+  integer             : tangerine
+  keyword             : heliotrope03
+  method              : royal_blue05
+  predefined_constant : tangerine
+  regexp:
+    self              : alizarin
+    content           : old_gold
+    delimiter         : alizarin
+    modifier          : old_gold
+    function          : old_gold
+  shell:
+    self              :
+    content           : puce01
+    delimiter         : gray02
+  string:
+    self              : old_gold
+    modifier          :
+    escape            :
+    delimiter         : old_gold
+  symbol              : old_gold
