@@ -122,6 +122,7 @@ end
 
         all_themes = installed_themes.map do |theme|
           theme = File.basename(theme, ".prytheme")
+          meta = Theme.new(theme)
           PryTheme.set_theme(theme)
 
           chunk = <<-CHUNK
@@ -132,10 +133,10 @@ class PickMe
 end
           CHUNK
 
-          header = make_bold("[#{theme}]")
-          header.concat(" *") if theme == old_theme
+          mark_current = "* " if theme == old_theme
+          header = make_bold("#{mark_current}[#{theme}]")
           snippet = colorize_code(chunk)
-          [header, "---", snippet].join("\n")
+          [header, meta.description, "---", snippet].compact.join("\n")
         end
 
         lputs all_themes.join("\n")
