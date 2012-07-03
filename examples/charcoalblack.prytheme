@@ -10,7 +10,7 @@ theme:
   class               : robin_egg_blue02 (b)
   class_variable      : pale_blue03 (b)
   comment             : light_grey03
-  constant            : alizarin
+  constant            : robin_egg_blue02 (b)
   error               : tenne (i)
   float               : silver01
   global_variable     : robin_egg_blue02
