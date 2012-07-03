@@ -8,8 +8,18 @@ module PryTheme
       FileUtils.mkdir_p(THEME_DIR) unless File.exists?(THEME_DIR)
 
       example_themes.each do |theme|
-        unless File.exists?(File.join(THEME_DIR, theme))
-          FileUtils.cp(File.join(EXAMPLES_ROOT, theme), THEME_DIR)
+        # Copy a default theme to theme directory if it isn't there yet. Update
+        # an installed theme if a theme from the gem has a more recent version
+        # (version determines by theme's meta information).
+        if File.exists?(local_theme(theme))
+          new_version = theme_file_version(default_theme(theme))
+          old_version = theme_file_version(local_theme(theme))
+
+          if new_version > old_version
+            FileUtils.cp(default_theme(theme), THEME_DIR)
+          end
+        else
+          FileUtils.cp(default_theme(theme), THEME_DIR)
         end
       end
 
