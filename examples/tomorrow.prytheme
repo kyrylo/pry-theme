@@ -26,12 +26,12 @@ theme:
     modifier          : old_gold
     function          : old_gold
   shell:
-    self              :
+    self              : puce01
     content           : puce01
     delimiter         : gray02
   string:
     self              : old_gold
-    modifier          :
-    escape            :
+    modifier          : old_gold
+    escape            : old_gold
     delimiter         : old_gold
   symbol              : old_gold
