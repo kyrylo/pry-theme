@@ -32,6 +32,9 @@ module PryTheme
   # The name of the default theme of Pry Theme.
   DEFAULT_THEME_NAME = "pry-classic"
 
+  # The URI for GitHub API link to Pry Theme Collection contents.
+  COLLECTION = "https://api.github.com/repos/kyrylo/pry-theme-collection/contents"
+
   def self.set_theme(theme_name)
     theme = PryTheme.convert(theme_name)
     if theme ||= PryTheme.convert(theme_name = DEFAULT_THEME_NAME)

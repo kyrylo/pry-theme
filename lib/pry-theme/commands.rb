@@ -38,7 +38,8 @@ module PryTheme
         opt.on :a, "all-colors", "Show all available 8/256 colors."
         opt.on :c, "color",      "Show information about a specific color (256)."
         opt.on :t, "test",       "Test your current theme", :argument => false
-        opt.on :l, "list",       "Show a list with all available themes", :argument => false
+        opt.on :l, "list",       "Show a list of installed themes", :argument => false
+        opt.on :r, "remote",     "Show a list of themes from Pry Theme Collection", :argument => false
         opt.on :i, "install",    "Install a theme from Pry Theme Collection"
       end
 
@@ -50,7 +51,7 @@ module PryTheme
         elsif opts.t?
           test_theme
         elsif opts.l?
-          show_list
+          opts.r? ? show_remote_list : show_list
         elsif opts.i?
           install_theme
         elsif args[0] =~ /\A\w+-?\w+\z/
@@ -151,17 +152,32 @@ end
         PryTheme.set_theme(old_theme)
       end
 
+      def show_remote_list
+        body = {}
+        fetch_collection("/") do |http, uri|
+          output.puts "Fetching list of themes..."
+          response = http.request(Net::HTTP::Get.new(uri.request_uri))
+          body = JSON.parse(response.body)
+        end
+
+        remote_themes = body.map.with_index do |theme, i|
+          if (name = theme["name"]) =~ /\A[[a-z][0-9]-]+\z/
+            "#{i}. #{installed?(name) ? make_bold(name) : name}"
+          end
+        end.compact
+
+        lputs remote_themes.join("\n")
+      end
+
       def install_theme
         return unless args[0]
 
-        uri = URI.parse("https://api.github.com/repos/kyrylo/pry-theme-collection/contents/#{args[0]}/#{args[0]}.prytheme")
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
-
-        output.puts "Fetching theme from the collection..."
-        response = http.request(Net::HTTP::Get.new(uri.request_uri))
-
-        body = JSON.parse(response.body)
+        body = {}
+        fetch_collection("/#{args[0]}/#{args[0]}.prytheme") do |http, uri|
+          output.puts "Fetching theme from the collection..."
+          response = http.request(Net::HTTP::Get.new(uri.request_uri))
+          body = JSON.parse(response.body)
+        end
 
         if body["message"]
           output.puts "Cannot find theme: #{args[0]}"

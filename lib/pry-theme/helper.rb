@@ -9,6 +9,10 @@ module PryTheme
       (Dir.entries(THEME_DIR) - %w{ . .. })
     end
 
+    def installed?(theme)
+      installed_themes.any? { |t| /\A#{theme}.prytheme\z/ =~ t }
+    end
+
     def lputs(text, out=nil)
       Pry::Helpers::BaseHelpers.stagger_output(text, out)
     end
@@ -28,6 +32,14 @@ module PryTheme
 
     def local_theme(name)
       File.join(THEME_DIR, name)
+    end
+
+    def fetch_collection(path, &block)
+      uri = URI.parse(COLLECTION + path)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+
+      yield(http, uri)
     end
 
   end
