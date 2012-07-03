@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name  : github
+  version     : 2
+  color-depth : 256
+  description : Based on github theme
+  author      : John Mair
+
+theme:
+  class               : denim02 (b)
+  class_variable      : aquamarine02 (b)
+  comment             : light_grey03
+  constant            : aquamarine02
+  error               : tenne (i)
+  float               : silver01
+  global_variable     : robin_egg_blue02
+  instance_variable   : aquamarine02
+  integer             : aquamarine02
+  keyword             : seashell (b)
+  method              : maroon01
+  predefined_constant : robin_egg_blue02 (b)
+  regexp:
+    self              : toad_in_love01
+    content           : toad_in_love01
+    delimiter         : toad_in_love01
+    modifier          : toad_in_love01
+    function          : toad_in_love01
+  shell:
+    self              : puce01
+    content           : puce01
+    delimiter         : gray02
+  string:
+    self              : alizarin
+    modifier          : alizarin
+    escape            : alizarin
+    delimiter         : alizarin
+  symbol              : pale_magenta
