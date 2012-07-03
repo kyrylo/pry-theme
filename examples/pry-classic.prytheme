@@ -1,10 +1,10 @@
 ---
 meta:
   theme-name  : pry-classic
-  version     : 2
+  version     : 3
   color-depth : 8
-  description : Based on Kornelius Kalnbach's default CodeRay's color theme
-  author      : Kyrylo Silin <kyrylosilin@gmail.com>
+  description : Default Pry theme
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Kornelius Kalnbach
 
 theme:
   class               : magenta (b)

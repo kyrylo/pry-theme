@@ -1,9 +1,9 @@
 ---
 meta:
   theme-name  : pry-modern
-  version     : 1
+  version     : 2
   color-depth : 256
-  description :
+  description : Nifty version of pry-classic
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
