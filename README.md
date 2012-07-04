@@ -41,7 +41,7 @@ That's all! Launch your Pry and you will see the changes.
 
 Pry Theme has a command-line interface available via Pry. Just launch Pry and
 start working with it. For example, you can _temporary_ change themes on the
-fly:
+fly (only for the current session):
 
     [1] pry(main)> pry-theme pry-classic
 
@@ -62,7 +62,11 @@ if you want to find some themes other than default ones.
 
     Put your theme file in `$HOME/.pry/themes` directory.
 
-And don't forget to adjust your `.pryrc`!
+If you don't want to bother with routine operations, you can install a theme
+the Collection with help of `pry-theme -i <name>` command. For example, you
+can install tomorrow-night theme: `pry-theme -i tomorrow-night`.
+
+Oh, and don't forget to adjust your `.pryrc`!
 
 Limitations
 -----------
@@ -73,7 +77,7 @@ but with a couple of admonishments. They are listed below.
 ### OS support
 
 * GNU/Linux;
-* Mac OS (I hope so, leastwise);
+* Mac OS.
 
 I hope it runs on Windows too, but I couldn't find any sane terminal, that
 would support 256 colors. Sorry, Windows guys. Please, file an issue, if you
@@ -93,6 +97,12 @@ Under the hood
 Basically, Pry Theme is nothing but a CodeRay color scheme with a human-readable
 syntax.
 
+Credits
+-------
+
+* Thanks to [banister][johndogg] for bringing the plugin in masses and
+  contributing a bunch of themes.
+
 License
 -------
 
@@ -105,3 +115,4 @@ The project uses Zlib License. See LICENSE file for more information.
 [cli]: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
 [wiki]: https://github.com/kyrylo/pry-theme/wiki
 [ptc]: https://github.com/kyrylo/pry-theme-collection
+[johndogg]: https://github.com/banister/ "John Dogg"
