@@ -7,17 +7,17 @@ meta:
   author      : John Mair
 
 theme:
-  class               : khaki02
+  class               : vert_de_peche
   class_variable      : pale_cornflower_blue (b)
   comment             : gray03
-  constant            : khaki02
+  constant            : vert_de_peche
   error               : tenne (i)
   float               : silver01
   global_variable     : pale_cornflower_blue
-  instance_variable   : pale_cornflower_blue
+  instance_variable   : cornflower_blue02
   integer             : pale_blue01
-  keyword             : tan
-  method              : khaki02
+  keyword             : brass02 (b)
+  method              : ochre (b)
   predefined_constant : pale_cornflower_blue
   regexp:
     self              : moss_green

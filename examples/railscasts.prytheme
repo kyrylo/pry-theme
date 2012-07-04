@@ -1,10 +1,10 @@
 ---
 meta:
-  theme-name:   "Rails Casts"
+  theme-name:   "Ryans Theme"
   version:      3
   color-depth:  256
-  description:  Railscasts theme
-  author:       John Mair, Ryan Fitzgerald, Ryan Bates(?)
+  description:  Ryan Fitzgerald
+  author:       Ryan Fitzgerald, John Mair
 
 theme:
   comment:              brass02 
