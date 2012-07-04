@@ -1,10 +1,10 @@
 ---
 meta:
-  theme-name:   railscasts
-  version:      4
-  color-depth:  256
-  description:  RailsCasts theme
-  author:       Ryan Fitzgerald, John Mair
+  theme-name  : railscasts
+  version     : 5
+  color-depth : 256
+  description : RailsCasts theme
+  author      : Ryan Fitzgerald, John Mair
 
 theme:
   class               : red
