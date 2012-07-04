@@ -162,9 +162,10 @@ end
           body = JSON.parse(response.body)
         end
 
-        remote_themes = body.map.with_index do |theme, i|
+        i = 0
+        remote_themes = body.map do |theme|
           if (name = theme["name"]) =~ /\A[[a-z][0-9]-]+\z/
-            "#{i+1}. #{installed?(name) ? make_bold(name) : name}"
+            "#{i+=1}. #{installed?(name) ? make_bold(name) : name}"
           end
         end.compact
 
