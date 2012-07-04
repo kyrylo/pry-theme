@@ -63,7 +63,7 @@ if you want to find some themes other than default ones.
     Put your theme file in `$HOME/.pry/themes` directory.
 
 If you don't want to bother with routine operations, you can install a theme
-the Collection with help of `pry-theme -i <name>` command. For example, you
+from the Collection with help of `pry-theme -i <name>` command. For example, you
 can install tomorrow-night theme: `pry-theme -i tomorrow-night`.
 
 Oh, and don't forget to adjust your `.pryrc`!
