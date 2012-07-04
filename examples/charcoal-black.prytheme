@@ -1,7 +1,7 @@
 ---
 meta:
-  theme-name  : charcoal black
-  version     : 2
+  theme-name  : charcoal-black
+  version     : 3
   color-depth : 256
   description : Based on Charcoalblack theme from Emacs
   author      : John Mair
