@@ -56,7 +56,7 @@ module PryTheme
           install_theme
         elsif args[0] =~ /\A\w+-?\w+\z/
           switch_to_theme
-        else
+        elsif args.empty?
           output.puts "Current theme: #{PryTheme.current_theme}"
         end
       rescue NoPaletteError => no_palette_error
