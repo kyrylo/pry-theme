@@ -23,9 +23,8 @@ Synopsis
 ### Theme files
 
 Theme file is a valid YAML file, which has `.prytheme` extension (for example,
-`beautiful.prytheme`). Pry Theme ships only with two themes: `pry-classic` and
-`pry-modern`. In order to set up the desired theme, add the following line into
-your `.pryrc`:
+`beautiful.prytheme`). In order to set up the desired theme, add the following
+line into your `.pryrc`:
 
     Pry.config.theme = "theme-name"
 
