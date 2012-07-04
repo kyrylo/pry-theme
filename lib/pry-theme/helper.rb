@@ -1,6 +1,8 @@
 module PryTheme
   module Helper
 
+    module_function
+
     def example_themes
       (Dir.entries(EXAMPLES_ROOT) - %w{ . .. })
     end

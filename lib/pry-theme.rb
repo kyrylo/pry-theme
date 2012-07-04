@@ -36,11 +36,9 @@ module PryTheme
   COLLECTION = "https://api.github.com/repos/kyrylo/pry-theme-collection/contents"
 
   def self.set_theme(theme_name)
-    theme = PryTheme.convert(theme_name)
-    if theme ||= PryTheme.convert(theme_name = DEFAULT_THEME_NAME)
-      ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(theme)
-      @current_theme = theme_name
-    end
+    return unless theme = PryTheme.convert(theme_name)
+    ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(theme)
+    @current_theme = theme_name
   end
 
   def self.current_theme
