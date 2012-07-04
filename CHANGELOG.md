@@ -1,6 +1,22 @@
 Pry Theme changelog
 ===================
 
+### v0.0.9 (July 05, 2012)
+
+* **HOT**: Added `--install` flag. Now, you can easily install Pry themes from
+  Pry Theme Collection via command line (`pry-theme -i nifty-theme`);
+* Added pager for long output. Try `pry-theme -a 256` and you will immediately
+  notice the difference;
+* Added more informative output for `--list` flag;
+* Added a bunch of new default themes: solarized, zenburn, twilight, tomorrow,
+  saturday, railscasts, monokai, github and charcoal-black;
+* Fixed wrong color name in 256-color palette (`pale_conflower_blue` →
+  `pale_cornflower_blue`);
+* Fixed bug with respect to unwanted fall back to the `pry-classic` theme,
+  when a user tries to switch to nonexistent theme;
+* Added a feature to `pry-theme` command: when a user invokes `pry-theme`
+  command without arguments, it returns name of the current theme.
+
 ### v0.0.8 (July 02, 2012)
 
 * **IMPORTANT**: Changed directory where to store themes! Themes now live in
