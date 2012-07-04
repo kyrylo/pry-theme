@@ -1,10 +1,10 @@
 ---
 meta:
   theme-name  : zenburn
-  version     : 2
+  version     : 3
   color-depth : 256
-  description : Based on Jani Nurminen's Zenburn
-  author      : Kyrylo Silin <kyrylosilin@gmail.com>
+  description : A low-contrast color scheme
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Jani Nurminen
 
 theme:
   class               : dark_peach (b)
