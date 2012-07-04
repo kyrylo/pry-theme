@@ -1,0 +1,37 @@
+---
+meta:
+  theme-name:   "Rails Casts"
+  version:      3
+  color-depth:  256
+  description:  Railscasts theme
+  author:       John Mair, Ryan Fitzgerald, Ryan Bates(?)
+
+theme:
+  comment:              brass02 
+  class:                red
+  error:                green (u) on maroon
+  class_variable:       periwinkle (b)
+  instance_variable:    periwinkle
+  global_variable:      red
+  constant:             red
+  float:                lilac01
+  integer:              cornflower_blue03
+  keyword:              international_orange (b)
+  method:               mustard02 (b)
+  predefined_constant:  sky02
+  regexp:
+    self:       green
+    content:    green
+    delimiter:  green
+    modifier:   green
+    function:   green
+  shell:
+    self:       toad_in_love
+    content:    green
+    delimiter:  green
+  string:
+    self:       pistachio04
+    modifier:   robin_egg_blue01
+    escape:     old_gold
+    delimiter:  pistachio04
+  symbol:       sky02
