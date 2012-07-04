@@ -11,25 +11,21 @@ module PryTheme
       banner <<-BANNER
         Usage: pry-theme [OPTIONS] [--help]
 
-        Change your theme on the fly.
+        Change your theme on the fly (for one session).
 
           pry-theme pry-modern
 
-        Display 8-color palette.
+        Show all themes from Pry Theme Collection.
 
-          pry-theme --all-colors 8
+          pry-theme -lr
 
-        Display Pry Theme code for terminal color 34.
+        Install a theme from Pry Theme Collection.
 
-          pry-theme -c 34
+          pry-theme -i pry-classic
 
         Test your current color theme.
 
           pry-theme -t
-
-        Show a list with currently installed themes.
-
-          pry-theme --list
 
         Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
       BANNER
