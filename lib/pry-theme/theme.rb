@@ -17,7 +17,14 @@ module PryTheme
       @name        = meta["theme-name"]
       @version     = meta["version"]
       @color_depth = meta["color-depth"].to_i
-      @description = meta["description"]
+
+      # Forbid too long descriptions.
+      if @description = meta["description"]
+        if (size = @description.size) > 80
+          raise ThemeDescriptionError, "Description of #{name} theme is too long (#{size}). Max size is 80 characters."
+        end
+      end
+
       @author      = meta["author"]
       @scheme      = theme["theme"]
     end
@@ -33,4 +40,5 @@ module PryTheme
   end
 
   class NoThemeError < StandardError; end
+  class ThemeDescriptionError < StandardError; end
 end

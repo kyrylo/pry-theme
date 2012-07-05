@@ -50,6 +50,10 @@ module PryTheme
     rescue NoThemeError => no_theme_error
       warn no_theme_error
       return
+    rescue ThemeDescriptionError => long_descr
+      Pry.output.puts long_descr
+      Pry.output.puts "Using #{DEFAULT_THEME_NAME} theme."
+      return
     end
 
     palette = Palette.new(theme.color_depth)
