@@ -17,7 +17,7 @@ module PryTheme
 
         Show all themes from Pry Theme Collection.
 
-          pry-theme -lr
+          pry-theme -r
 
         Install a theme from Pry Theme Collection.
 
@@ -31,12 +31,12 @@ module PryTheme
       BANNER
 
       def options(opt)
-        opt.on :a, "all-colors", "Show all available 8/256 colors."
-        opt.on :c, "color",      "Show information about a specific color (256)."
-        opt.on :t, "test",       "Test your current theme", :argument => false
-        opt.on :l, "list",       "Show a list of installed themes", :argument => false
-        opt.on :r, "remote",     "Show a list of themes from Pry Theme Collection", :argument => false
-        opt.on :i, "install",    "Install a theme from Pry Theme Collection"
+        opt.on :a, "all-colors",  "Show all available 8/256 colors."
+        opt.on :c, "color",       "Show information about a specific color (256)."
+        opt.on :t, "test",        "Test your current theme", :argument => false
+        opt.on :l, "list",        "Show a list of installed themes", :argument => false
+        opt.on :r, "remote-list", "Show a list of themes from Pry Theme Collection", :argument => false
+        opt.on :i, "install",     "Install a theme from Pry Theme Collection"
       end
 
       def process
@@ -47,7 +47,9 @@ module PryTheme
         elsif opts.t?
           test_theme
         elsif opts.l?
-          opts.r? ? show_remote_list : show_list
+          show_list
+        elsif opts.r?
+          show_remote_list
         elsif opts.i?
           install_theme
         elsif args[0] =~ /\A\w+-?\w+\z/
