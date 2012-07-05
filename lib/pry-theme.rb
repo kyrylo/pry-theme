@@ -100,7 +100,7 @@ module PryTheme
                         \s?
                         on\s
                         (
-                          [a-z]+(0[1-9])?
+                          \w+(0[1-9])?
                         )
                       )?
 
@@ -110,17 +110,7 @@ module PryTheme
     if color
       m = color.match(color_pattern)
 
-      color_fg   = if $2
-                     c = palette.colors.find do |color|
-                       color.human == $2.to_sym
-                     end
-
-                     if c
-                       c.term
-                     else
-                       raise NoColorError
-                     end
-                   end
+      color_fg   = find_color($2, palette) { |c| c.term }
 
       formatting = if $5
                      formatting = $5.each_char.map do |ch|
@@ -128,8 +118,12 @@ module PryTheme
                      end
                    end
 
-      color_bg   = if $7
-                     Formatting::BACKGROUNDS[$7]
+      color_bg   = find_color($7, palette) do |c|
+                     if palette.color_depth == 256
+                       "48;5;#{c.term}"
+                      else
+                        Formatting::BACKGROUNDS[c.human.to_s]
+                     end
                    end
 
       # Uh oh :(
@@ -149,12 +143,26 @@ module PryTheme
       "38;0;0"
     end
   rescue NoColorError => e
-    Pry.output.puts "#{e}: wrong color value: `#{$2}`. Typo?"
+    Pry.output.puts "#{e}: wrong color value: `#{color}`. Typo?"
   end
 
   def self.install_gem_hooks
     Gem.post_uninstall do |u|
       Uninstaller.run(u) if u.spec.name == "pry-theme"
+    end
+  end
+
+  def self.find_color(color, palette, &block)
+    if color
+      c = palette.colors.find do |palette_color|
+        palette_color.human == color.to_sym
+      end
+
+      if c
+        block.call(c)
+      else
+        raise NoColorError
+      end
     end
   end
 
