@@ -6,7 +6,6 @@ require 'pry-theme/theme'
 require 'pry-theme/when_started_hook'
 require 'pry-theme/uninstaller'
 
-require 'pry'
 require 'yaml'
 
 module PryTheme
