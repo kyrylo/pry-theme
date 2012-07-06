@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : saturday-night
-  version     : 4
+  version     : 5
   color-depth : 256
   description : A modification of "tommorow night"
   author      : John Mair (banisterfiend)
@@ -31,7 +31,7 @@ theme:
     delimiter         : green
   string:
     self              : old_gold
-    content           :
+    content           : old_gold
     modifier          : old_gold
     escape            : old_gold
     delimiter         : old_gold

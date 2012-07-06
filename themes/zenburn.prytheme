@@ -1,10 +1,11 @@
 ---
 meta:
   theme-name  : zenburn
-  version     : 3
+  version     : 4
   color-depth : 256
   description : A low-contrast color scheme
-  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Jani Nurminen
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>,
+                Jani Nurminen
 
 theme:
   class               : dark_peach (b)
@@ -24,15 +25,15 @@ theme:
     content           : puce01
     delimiter         : gray02
     modifier          : gray02
-    function          :
+    function          : gray02
   shell:
-    self              :
+    self              : puce01
     content           : puce01
     delimiter         : gray02
   string:
     self              : puce01
-    content           :
-    modifier          :
-    escape            :
+    content           : puce01
+    modifier          : puce01
+    escape            : puce01
     delimiter         : gray02
   symbol              : puce01 (b)

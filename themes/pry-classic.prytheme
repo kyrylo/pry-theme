@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : pry-classic
-  version     : 3
+  version     : 4
   color-depth : 8
   description : Default Pry theme
   author      : Kyrylo Silin <kyrylosilin@gmail.com>, Kornelius Kalnbach
@@ -31,7 +31,7 @@ theme:
     delimiter         : white
   string:
     self              : green
-    content           :
+    content           : green
     modifier          : green (b)
     escape            : cyan (b)
     delimiter         : green (b)

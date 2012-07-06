@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : charcoal-black
-  version     : 3
+  version     : 4
   color-depth : 256
   description : Based on Charcoalblack theme from Emacs
   author      : John Mair
@@ -31,7 +31,7 @@ theme:
     delimiter         : gray02
   string:
     self              : bluish03
-    content           :
+    content           : bluish03
     modifier          : bluish03
     escape            : bluish03
     delimiter         : bluish03

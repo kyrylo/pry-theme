@@ -1,10 +1,11 @@
 ---
 meta:
   theme-name  : solarized
-  version     : 3
+  version     : 4
   color-depth : 256
   description : Precision colors for machines and people
-  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Ethan Schoonover
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>,
+                Ethan Schoonover
 
 theme:
   class               : dark_goldenrod
@@ -26,13 +27,13 @@ theme:
     modifier          : titian
     function          : black
   shell:
-    self              :
+    self              : robin_egg_blue01
     content           : robin_egg_blue01
     delimiter         : titian
   string:
     self              : robin_egg_blue01
-    content           :
-    modifier          :
-    escape            :
+    content           : robin_egg_blue01
+    modifier          : robin_egg_blue01
+    escape            : robin_egg_blue01
     delimiter         : titian
   symbol              : robin_egg_blue01

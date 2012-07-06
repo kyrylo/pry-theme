@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : github
-  version     : 2
+  version     : 3
   color-depth : 256
   description : Based on github theme
   author      : John Mair
@@ -31,7 +31,7 @@ theme:
     delimiter         : gray02
   string:
     self              : alizarin
-    content           :
+    content           : alizarin
     modifier          : alizarin
     escape            : alizarin
     delimiter         : alizarin

@@ -1,14 +1,15 @@
 ---
 meta:
   theme-name  : tomorrow
-  version     : 2
+  version     : 3
   color-depth : 256
-  description : Based on Tomorrow by Chris Kempson
-  author      : John Mair
+  description : A theme should not get in your way
+  author      : John Mair,
+                Chris Kempson
 
 theme:
   class               : gold
-  class_variable      : flea_belly (b)
+  class_variable      : alizarin
   comment             : gray03
   constant            : gold
   error               : tenne (i)
@@ -31,7 +32,7 @@ theme:
     delimiter         : gray02
   string:
     self              : old_gold
-    content           :
+    content           : old_gold
     modifier          : old_gold
     escape            : old_gold
     delimiter         : old_gold

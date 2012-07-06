@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : monokai
-  version     : 1
+  version     : 2
   color-depth : 256
   description : Based on Wimer Hazenberg's theme
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
@@ -31,7 +31,7 @@ theme:
     delimiter         : flax
   string:
     self              : flax
-    content           :
+    content           : flax
     modifier          : flax
     escape            : flax
     delimiter         : flax
