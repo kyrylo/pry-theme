@@ -31,6 +31,7 @@ theme:
     delimiter         : flax
   string:
     self              : flax
+    content           :
     modifier          : flax
     escape            : flax
     delimiter         : flax

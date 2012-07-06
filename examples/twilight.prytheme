@@ -31,6 +31,7 @@ theme:
     delimiter         : moss_green
   string:
     self              : moss_green
+    content           :
     modifier          : pale_cornflower_blue
     escape            : moss_green
     delimiter         : moss_green

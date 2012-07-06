@@ -31,6 +31,7 @@ theme:
     delimiter         : green
   string:
     self              : pistachio04
+    content           :
     modifier          : robin_egg_blue01
     escape            : old_gold
     delimiter         : pistachio04

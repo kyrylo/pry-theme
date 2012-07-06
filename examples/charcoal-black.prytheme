@@ -31,6 +31,7 @@ theme:
     delimiter         : gray02
   string:
     self              : bluish03
+    content           :
     modifier          : bluish03
     escape            : bluish03
     delimiter         : bluish03

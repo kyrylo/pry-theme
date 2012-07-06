@@ -31,6 +31,7 @@ theme:
     delimiter         : gray02
   string:
     self              : puce01
+    content           :
     modifier          :
     escape            :
     delimiter         : gray02
