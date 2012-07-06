@@ -1,38 +1,40 @@
 ---
 meta:
   theme-name  : railscasts
-  version     : 5
+  version     : 6
   color-depth : 256
   description : RailsCasts theme
-  author      : Ryan Fitzgerald, John Mair
+  author      : Ryan Fitzgerald,
+                John Mair,
+                Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
-  class               : red
-  class_variable      : periwinkle (b)
-  comment             : brass02
-  constant            : red
-  error               : green (u) on maroon
-  float               : lilac01
-  global_variable     : red
-  instance_variable   : periwinkle
-  integer             : cornflower_blue03
-  keyword             : international_orange (b)
-  method              : mustard02 (b)
-  predefined_constant : sky02
+  class               : (d)
+  class_variable      : robin_egg_blue03
+  comment             : tan
+  constant            : (d)
+  error               : white on maroon
+  float               : asparagus
+  global_variable     : robin_egg_blue03
+  instance_variable   : robin_egg_blue03
+  integer             : asparagus
+  keyword             : international_orange
+  method              : mustard02
+  predefined_constant : robin_egg_blue03
   regexp:
-    self              : green
-    content           : green
-    delimiter         : green
-    modifier          : green
-    function          : green
+    self              : orange
+    content           : asparagus
+    delimiter         : asparagus
+    modifier          : asparagus
+    function          : asparagus
   shell:
-    self              : toad_in_love
-    content           : green
-    delimiter         : green
+    self              : asparagus
+    content           : asparagus
+    delimiter         : asparagus
   string:
-    self              : pistachio04
-    content           :
-    modifier          : robin_egg_blue01
-    escape            : old_gold
-    delimiter         : pistachio04
-  symbol              : sky02
+    self              : asparagus
+    content           : asparagus
+    modifier          : asparagus
+    escape            : asparagus
+    delimiter         : asparagus
+  symbol              : cornflower_blue01
