@@ -71,7 +71,22 @@ module PryTheme
       end
 
       def show_palette_colors
-        lputs Palette.new(args[0]).to_a.join("\n")
+        lputs in_columns(Palette.new(args[0]).to_a)
+      end
+
+      def in_columns(list, cols=3)
+        color_table = []
+
+        list.each_slice(cols) do |slice|
+          slice.each do |c|
+            color = c.scan(/(\e\[[[0-9];]+m)(\w+)(\e\[0m)(:)(\e\[[[0-9];]+m)(\w+)(\e\[0m)/).flatten
+            color[1] = color[1].ljust(3)
+            color[-2] = color[-2].ljust(22)
+            color_table << color
+          end
+          color_table << "\n"
+        end
+        color_table.join
       end
 
       def show_specific_color
