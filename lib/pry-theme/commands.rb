@@ -134,7 +134,7 @@ module PryTheme
     end
   end
 end
-# Testing "#{PryTheme.current_theme}" theme complete.
+# "#{PryTheme.current_theme}" theme.
         TEST
 
         lputs colorize_code(example)
