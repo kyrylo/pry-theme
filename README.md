@@ -105,7 +105,9 @@ Credits
 -------
 
 * Thanks to [banister][johndogg] for bringing the plugin in masses and
-  contributing a bunch of themes.
+  contributing a bunch of themes;
+* Thanks to Karandashev for "Puzzle" font;
+* Thanks to Creatica for "Dited" font.
 
 License
 -------
