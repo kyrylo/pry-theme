@@ -14,7 +14,7 @@ module PryTheme
   ROOT = File.expand_path(File.dirname(__FILE__))
 
   # The root path for PryTheme examples.
-  EXAMPLES_ROOT = File.join(ROOT, "..", "examples")
+  EXAMPLES_ROOT = File.join(ROOT, "..", "themes")
 
   # The root path for the directory with configuration files for OS you're using.
   CONFIG_DIR = case RbConfig::CONFIG["host_os"]
