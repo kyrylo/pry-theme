@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : tomorrow
-  version     : 3
+  version     : 4
   color-depth : 256
   description : A theme should not get in your way
   author      : John Mair,
@@ -12,9 +12,9 @@ theme:
   class_variable      : alizarin
   comment             : gray03
   constant            : gold
-  error               : tenne (i)
-  float               : silver01
-  global_variable     : dark_peach
+  error               : tangerine (i)
+  float               : tangerine
+  global_variable     : alizarin
   instance_variable   : alizarin
   integer             : tangerine
   keyword             : heliotrope03
