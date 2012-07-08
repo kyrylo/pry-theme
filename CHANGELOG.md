@@ -1,6 +1,23 @@
 Pry Theme changelog
 ===================
 
+### v0.0.10 (July 07, 2012)
+
+* Themes can use any color from 256-color palette as background color. Before
+  this release you could use only 8 colors;
+* Changed command flag `--list --remote` to `--remote-list`. Now, to get a list
+  of themes from Pry Theme Collection, you type `pry-theme -r` or
+  `pry-theme --remote-list` instead of `pry-theme -lr`;
+* Limited theme descriptions to 80 characters;
+* Added "content" subparameter for "string" parameter (`.prytheme` syntax).
+* Changed the appearance of output from `pry-theme --all-colors` command, so it
+  displays data in 3 columns instead of 1;
+* Changed some colors of Railscasts and Tomorrow themes;
+* Fixed bug when a user installs fresh gem and gets an improper warning, because
+  `Pry.config.theme` is not defined. Added a proper notification message for
+  such situations;
+* Renamed default theme `charcoal-black` to `pry-cold` (they are not the same).
+
 ### v0.0.9 (July 05, 2012)
 
 * **HOT**: Added `--install` flag. Now, you can easily install Pry themes from
