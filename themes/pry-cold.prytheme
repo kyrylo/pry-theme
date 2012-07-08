@@ -1,17 +1,18 @@
 ---
 meta:
-  theme-name  : charcoal-black
-  version     : 4
+  theme-name  : pry-cold
+  version     : 1
   color-depth : 256
   description : Based on Charcoalblack theme from Emacs
-  author      : John Mair
+  author      : John Mair,
+                Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
   class               : robin_egg_blue02 (b)
   class_variable      : pale_blue03 (b)
   comment             : light_grey03
   constant            : robin_egg_blue02 (b)
-  error               : tenne (i)
+  error               : robin_egg_blue02 (bi)
   float               : silver01
   global_variable     : robin_egg_blue02
   instance_variable   : pale_blue03
@@ -20,11 +21,11 @@ theme:
   method              : royal_blue05
   predefined_constant : robin_egg_blue02 (b)
   regexp:
-    self              : alizarin
-    content           : alizarin
-    delimiter         : alizarin
-    modifier          : alizarin
-    function          : alizarin
+    self              : bluish03
+    content           : bluish03
+    delimiter         : gray02
+    modifier          : gray02
+    function          : gray02
   shell:
     self              : puce01
     content           : puce01
