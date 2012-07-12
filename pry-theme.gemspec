@@ -12,6 +12,5 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
   s.files        = `git ls-files`.split "\n"
 
-  s.add_runtime_dependency "pry",   "~> 0.9"
   s.add_runtime_dependency "json"
 end
