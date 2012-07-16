@@ -4,7 +4,7 @@ module PryTheme
     attr_reader :scheme, :author, :description, :color_depth, :version, :name
 
     def initialize(theme_filename)
-      theme_file = File.join(THEME_DIR, "#{theme_filename}.prytheme")
+      theme_file = self.class.pathify_theme(theme_filename)
 
       if File.exists?(theme_file)
         theme = YAML.load_file(theme_file)
@@ -35,6 +35,10 @@ module PryTheme
       else
         super
       end
+    end
+
+    def self.pathify_theme theme_name
+      File.join(THEME_DIR, "#{theme_name}.prytheme")
     end
 
   end

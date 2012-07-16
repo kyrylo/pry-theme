@@ -34,6 +34,7 @@ module PryTheme
         opt.on :a, "all-colors",  "Show all available 8/256 colors."
         opt.on :c, "color",       "Show information about a specific color (256)."
         opt.on :t, "test",        "Test your current theme", :argument => false
+        opt.on :e, "edit",        "Edit/reload current .prytheme", :argument => false
         opt.on :l, "list",        "Show a list of installed themes", :argument => false
         opt.on :r, "remote-list", "Show a list of themes from Pry Theme Collection", :argument => false
         opt.on :i, "install",     "Install a theme from Pry Theme Collection"
@@ -46,6 +47,8 @@ module PryTheme
           show_specific_color
         elsif opts.t?
           test_theme
+        elsif opts.e?
+          edit_theme
         elsif opts.l?
           show_list
         elsif opts.r?
@@ -138,6 +141,24 @@ end
         TEST
 
         lputs colorize_code(example)
+      end
+
+      def edit_theme
+        cur = PryTheme.current_theme
+        file_name = PryTheme::Theme.pathify_theme cur
+        Pry.run_command 'edit ' + file_name
+        err_msg = proc {
+          output.puts Pry::Helpers::Text.red('Oops. Probably try again.')
+        }
+        begin
+          if PryTheme.set_theme(cur).nil?
+            err_msg.call
+          else
+            test_theme
+          end
+        rescue
+          err_msg.call
+        end
       end
 
       def show_list
