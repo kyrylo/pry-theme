@@ -147,17 +147,13 @@ end
         cur = PryTheme.current_theme
         file_name = PryTheme::Theme.pathify_theme cur
         Pry.run_command 'edit ' + file_name
-        err_msg = proc {
-          output.puts Pry::Helpers::Text.red('Oops. Probably try again.')
-        }
         begin
-          if PryTheme.set_theme(cur).nil?
-            err_msg.call
-          else
-            test_theme
-          end
-        rescue
-          err_msg.call
+          PryTheme.set_theme(cur).nil? and
+            raise Pry::CommandError, 'PryTheme.set_theme failed for ' + cur
+          test_theme
+        rescue Pry::RescuableException => e
+          output.puts e.inspect
+          output.puts Pry::Helpers::Text.red('Oops. Probably try again.')
         end
       end
 
