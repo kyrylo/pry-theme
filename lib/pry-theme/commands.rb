@@ -74,7 +74,7 @@ module PryTheme
       end
 
       def show_palette_colors
-        lputs in_columns(Palette.new(args[0]).to_a)
+        lputs in_columns(Palette.new(args[0]).to_a), output
       end
 
       def in_columns(list, cols=3)
@@ -140,7 +140,7 @@ end
 # "#{PryTheme.current_theme}" theme.
         TEST
 
-        lputs colorize_code(example)
+        lputs colorize_code(example), output
       end
 
       def edit_theme
@@ -179,7 +179,7 @@ end
           [header, meta.description, "---", snippet].compact.join("\n")
         end
 
-        lputs all_themes.join("\n")
+        lputs all_themes.join("\n"), output
       ensure
         PryTheme.set_theme(old_theme)
       end
@@ -199,7 +199,7 @@ end
           end
         end.compact
 
-        lputs remote_themes.join("\n")
+        lputs remote_themes.join("\n"), output
       end
 
       def install_theme
