@@ -36,6 +36,10 @@ module PryTheme
       File.join(THEME_DIR, name)
     end
 
+    def pathify_theme(name)
+      File.join(THEME_DIR, "#{ name }.prytheme")
+    end
+
     def fetch_collection(path, &block)
       uri = URI.parse(COLLECTION + path)
       http = Net::HTTP.new(uri.host, uri.port)

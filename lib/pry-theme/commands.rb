@@ -34,7 +34,7 @@ module PryTheme
         opt.on :a, "all-colors",  "Show all available 8/256 colors."
         opt.on :c, "color",       "Show information about a specific color (256)."
         opt.on :t, "test",        "Test your current theme", :argument => false
-        opt.on :e, "edit",        "Edit/reload current .prytheme", :argument => false
+        opt.on :e, "edit",        "Edit or create a theme"
         opt.on :l, "list",        "Show a list of installed themes", :argument => false
         opt.on :r, "remote-list", "Show a list of themes from Pry Theme Collection", :argument => false
         opt.on :i, "install",     "Install a theme from Pry Theme Collection"
@@ -144,16 +144,81 @@ end
       end
 
       def edit_theme
-        cur = PryTheme.current_theme
-        Pry.run_command 'edit ' + Theme.pathify_theme(cur)
+        theme = args[0] || PryTheme.current_theme
+        new_theme_flag = theme[0] == "+"
 
-        begin
-          PryTheme.set_theme(cur).nil? and
-            raise Pry::CommandError, 'PryTheme.set_theme failed for ' + cur
-          test_theme
-        rescue Pry::RescuableException => e
-          output.puts e.inspect
-          output.puts Pry::Helpers::Text.red('Oops. Probably try again.')
+        if not new_theme_flag and not installed?(theme)
+          output.puts "Can't find #{ theme } theme in #{ THEME_DIR } directory."
+          output.puts "To create a new theme, prepend a `+` sign to the name."
+          output.puts "For example: `pry-theme -e +#{ theme }`."
+          return
+        elsif new_theme_flag and installed?(theme_name = theme.tr("+", ""))
+          output.puts "Can't create a theme with the given name."
+          output.puts "The #{ theme_name } theme is already installed in your system."
+          output.puts "Try to edit it with `pry-theme -e #{ theme_name }` command."
+          return
+        end
+
+        if new_theme_flag
+          theme_path = pathify_theme(theme_name)
+          template = <<-TEMPLATE
+---
+meta:
+  theme-name  : #{ theme_name }
+  version     : 1
+  color-depth : # 8 or 256.
+  description : # Should be less than 80 characters.
+  author      : # John Doe <johndoe@example.com>
+
+theme:
+  class               : # blue on yellow
+  class_variable      : # red
+  comment             : # on green
+  constant            : # (bu)
+  error               : # black (b) on white
+  float               : # (i)
+  global_variable     :
+  instance_variable   :
+  integer             :
+  keyword             :
+  method              :
+  predefined_constant :
+  regexp:
+    self              :
+    content           :
+    delimiter         :
+    modifier          :
+    function          :
+  shell:
+    self              :
+    content           :
+    delimiter         :
+  string:
+    self              :
+    content           :
+    modifier          :
+    escape            :
+    delimiter         :
+  symbol              :
+          TEMPLATE
+
+          begin
+            new_theme = File.new(theme_path, "w")
+            new_theme.puts template
+            Pry.run_command "edit #{ theme_path }"
+
+            output.puts %(Created new theme in `#{ THEME_DIR }` with name "#{ theme_name }")
+            output.puts "and opened in #{ Pry.config.editor } for editing."
+          ensure
+            new_theme.close
+          end
+        else
+          PryTheme.set_theme(theme)
+          output.puts "Using #{ theme } as your current theme."
+
+          Pry.run_command "edit #{ pathify_theme(theme) }"
+          output.puts "Opened #{ theme } theme in #{ Pry.config.editor } for editing."
+          output.puts "Don't forget to increment a version number of theme!"
         end
       end
 
