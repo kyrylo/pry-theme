@@ -27,11 +27,12 @@ module PryTheme
         if Helper.installed?(Pry.config.theme)
           PryTheme.set_theme(Pry.config.theme)
         else
-          _pry_.output.puts %{Can't find "#{Pry.config.theme}" theme. Using "#{DEFAULT_THEME_NAME}"}
+          _pry_.output.puts %{Can't find "#{ Pry.config.theme }" theme. Using "#{ DEFAULT_THEME_NAME }"}
           PryTheme.set_theme(DEFAULT_THEME_NAME)
         end
       else
-        _pry_.output.puts %{Can't find `Pry.config.theme` definition in your `~/.pryrc`.\nUsing "pry-classic" theme now.}
+        _pry_.output.puts %{Can't find `Pry.config.theme` definition in your `~/.pryrc`.\nUsing "#{ DEFAULT_THEME_NAME }" theme now.}
+        PryTheme.set_theme(DEFAULT_THEME_NAME)
       end
     end
 
