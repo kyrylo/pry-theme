@@ -111,33 +111,33 @@ module PryTheme
 module PryTheme
   module JustTesting
 
-    THIS_IS_CONSTANT = :this_is_symbol
+    THIS_IS_A_CONSTANT = :this_is_a_symbol
 
     class ThisIsClass
 
-      def this_is_method
-        this_is_float   = 10_000.00
-        this_is_integer = 10_000
+      def this_is_a_method
+        this_is_a_float   = 10_000.00
+        this_is_an_integer = 10_000
 
-        "this_is_string"
+        "this_is_a_string"
 
         TRUE or FALSE or ARGV # <-- Predefined constants
 
-        @this_is_instance_variable
-        @@this_is_class_variable
+        @this_is_an_instance_variable
+        @@this_is_a_class_variable
 
-        `echo 'Hello, hi, from "system" call!'`
+        `echo 'Hello, hi, from a "system" call!'`
 
         $ # <-- The dollar is an error!
 
-        /[0-9]{1,3}this is regexp\\w+/xi
-        $1 or $2 or $3333
+        /[0-9]{1,3}this is a regexp\\w+/xi
+        $this_is_a_global_variable
       end
 
     end
   end
 end
-# "#{PryTheme.current_theme}" theme.
+# "#{ PryTheme.current_theme }" theme.
         TEST
 
         lputs colorize_code(example), output
