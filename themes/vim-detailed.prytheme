@@ -1,0 +1,38 @@
+---
+meta:
+  theme-name  : vim-detailed
+  version     : 3
+  color-depth : 256
+  description : Like vim-default, but uses more colors.
+  author      : ☈king <rking-pry-vim256scheme@sharpsaw.org>
+
+theme:
+  keyword             : violet_eggplant # (originally: magenta)
+  class               : toad_in_love # (originally: green)
+  class_variable      : mint_green01 # (originally: cyan)
+  global_variable     : robin_egg_blue03 # (originally: cyan)
+  instance_variable   : turquoise # (originally: cyan)
+  predefined_constant : robin_egg_blue02 # (originally: cyan)
+  constant            : toad_in_love01 # (originally: green)
+  method              : pale_cornflower_blue # (originally: cyan)
+  float               : titian # (originally: red)
+  integer             : cerise01 # (originally: red)
+  comment             : navy_blue # (originally: blue)
+  error               : black on bismarck_furious # (originally: white on red)
+  regexp:
+    self              : bright_violet # (originally: magenta)
+    content           : red # (originally: red)
+    delimiter         : orchid01 # (originally: magenta)
+    modifier          : lilac01 # (originally: magenta)
+    function          : amethyst03 # (originally: magenta)
+  shell:
+    self              : pale_mauve02 # (originally: red)
+    content           : eggplant02 # (originally: red)
+    delimiter         : bright_violet # (originally: magenta)
+  string:
+    self              : maroon # (originally: red)
+    content           : maroon01
+    modifier          : hot_pink01 # (originally: red)
+    escape            : eggplant01 # (originally: red)
+    delimiter         : bright_violet # (originally: magenta)
+  symbol              : ochre # (originally: red)
