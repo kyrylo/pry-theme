@@ -145,8 +145,8 @@ end
 
       def edit_theme
         cur = PryTheme.current_theme
-        file_name = PryTheme::Theme.pathify_theme cur
-        Pry.run_command 'edit ' + file_name
+        Pry.run_command 'edit ' + Theme.pathify_theme(cur)
+
         begin
           PryTheme.set_theme(cur).nil? and
             raise Pry::CommandError, 'PryTheme.set_theme failed for ' + cur
