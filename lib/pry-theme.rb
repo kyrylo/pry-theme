@@ -1,10 +1,12 @@
 require 'pry-theme/version'
+require 'pry-theme/uninstaller'
 require 'pry-theme/helper'
-require 'pry-theme/commands'
 require 'pry-theme/palette'
 require 'pry-theme/theme'
+require 'pry-theme/rgb'
+require 'pry-theme/color_converter'
+require 'pry-theme/commands'
 require 'pry-theme/when_started_hook'
-require 'pry-theme/uninstaller'
 
 require 'yaml'
 

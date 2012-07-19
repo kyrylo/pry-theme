@@ -8,12 +8,32 @@ describe "PryTheme::Commands" do
 
     it "should display warning when invalid color number given" do
       out = mock_pry("pry-theme -c 1000")
-      out.should =~ /Invalid color number: 1000/
+      out.should =~ /Invalid color: 1000/
     end
 
     it "should display warning when random symbols given" do
       out = mock_pry("pry-theme -c $_dopey+")
-      out.should =~ /Invalid color number: \$_dopey\+/
+      out.should =~ /Invalid color: \$_dopey\+/
+    end
+
+    it "should display a color when a hex given" do
+      mock_pry("pry-theme -c #625a2d").should =~ /khaki01/
+    end
+
+    it "should display a color when an rgb given" do
+      mock_pry("pry-theme -c 95,196,60").should =~ /pale_green01/
+    end
+
+    it "should display a color when a human-readable name given" do
+      mock_pry("pry-theme -c steel_blue").should =~ /steel_blue/
+    end
+
+    it "should display multiple colors when a substring given" do
+      out = mock_pry("pry-theme -c dark_t")
+
+      out.should =~ /dark_turquoise/
+      out.should =~ /dark_tan/
+      out.should =~ /dark_tea_green/
     end
   end
 

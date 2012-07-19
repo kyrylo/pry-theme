@@ -93,16 +93,42 @@ module PryTheme
       end
 
       def show_specific_color
-        unless args[0] =~ /\A(\d{1,3})\z/ && (0...256).include?($1.to_i)
-          output.puts "Invalid color number: #{ args[0] }"
+        c = args[0]
+
+        unless c
+          output.puts "This option requires an argument. Specify a color. Examples:"
+          output.puts "Pry Theme: black; RGB: 0,0,0; HEX: #000000, ANSI: 0."
+          return
         end
 
-        pal = Palette.new(256)
-        color = pal.colors.detect { |c| c.term == args[0].to_i }
+        color = if ansi?(c)
+                  find_color(c)
+                elsif hex?(c)
+                  find_color(ColorConverter.hex_to_ansi(c))
+                elsif rgb?(c)
+                  find_color(ColorConverter.rgb_to_ansi(c))
+                else
+                  h = ColorConverter::COLORS.select do |color|
+                    (color.human).to_s[c]
+                  end
 
-        if color
-          output.puts color.to_term(pal.notation)
+                  # Return human-readable colors if the
+                  # select selected any. If not, return nil.
+                  h if h.any?
+                end
+
+        case color
+        when Array
+          lputs color.map { |c| c.to_term("38;5;") }.join("\n"), output
+        when nil
+          output.puts "Invalid color: #{ c }"
+        else
+          output.puts color.to_term("38;5;")
         end
+      end
+
+      def find_color(color)
+        ColorConverter::COLORS.find { |c| c.term == color.to_i }
       end
 
       def test_theme

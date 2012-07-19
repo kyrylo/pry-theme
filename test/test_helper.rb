@@ -19,4 +19,27 @@ describe PryTheme::Helper do
     path = File.join(File.dirname(__FILE__), "fixtures", "pry-classic.prytheme")
     @h.theme_file_version(path).should == 4
   end
+
+  it "should detect ansi color" do
+    @h.ansi?(0).should == true
+    @h.ansi?(-1).should == false
+    @h.ansi?(256).should == false
+    @h.ansi?("bashful").should == false
+  end
+
+  it "should detect rgb color" do
+    @h.rgb?("55,55,55").should == true
+    @h.rgb?("0,0,0").should == true
+    @h.rgb?("256,255,255").should == false
+    @h.rgb?("1").should == false
+    @h.rgb?("55,55,55,").should == false
+    @h.rgb?("sneezy").should == false
+  end
+
+  it "should detect hex color" do
+    @h.hex?("#373737").should == true
+    @h.hex?("3A3F3E").should == true
+    @h.hex?("dopey").should == false
+    @h.hex?(373737).should == false
+  end
 end

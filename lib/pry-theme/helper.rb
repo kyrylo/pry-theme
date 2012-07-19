@@ -48,5 +48,32 @@ module PryTheme
       yield(http, uri)
     end
 
+    def ansi?(color)
+      if color.to_s =~ /\A(\d{1,3})\z/
+        (0..255).include?(color.to_i)
+      else
+        false
+      end
+    end
+
+    def rgb?(color)
+      rgb_pattern = /
+                      \A
+
+                      ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])
+                      ,
+                      ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])
+                      ,
+                      ([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])
+
+                      \z
+                    /x
+      color =~ rgb_pattern ? true : false
+    end
+
+    def hex?(color)
+      color =~ /\A#?[A-F\d]{6}\z/i ? true : false
+    end
+
   end
 end

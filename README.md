@@ -107,7 +107,9 @@ Credits
 * Thanks to [banister][johndogg] for bringing the plugin in masses and
   contributing a bunch of themes;
 * Thanks to Karandashev for "Puzzle" font;
-* Thanks to Creatica for "Dited" font.
+* Thanks to Creatica for "Dited" font;
+* Thanks to [noprompt][noprompt] for a HEX to ANSI conversion Ruby
+  implementation, which I borrowed from one of his projects.
 
 License
 -------
@@ -122,3 +124,4 @@ The project uses Zlib License. See LICENSE file for more information.
 [wiki]: https://github.com/kyrylo/pry-theme/wiki
 [ptc]: https://github.com/kyrylo/pry-theme-collection
 [johndogg]: https://github.com/banister/ "John Dogg"
+[noprompt]: https://github.com/noprompt/ "Joel Holdbrooks"
