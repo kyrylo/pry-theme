@@ -1,0 +1,38 @@
+---
+meta:
+  theme-name  : pry-classic
+  version     : 4
+  color-depth : 8
+  description : Default Pry theme
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Kornelius Kalnbach
+
+theme:
+  class               : magenta (b)
+  class_variable      : cyan
+  comment             : blue
+  constant            : blue (bu)
+  error               : yellow (b) on red
+  float               : magenta (b)
+  global_variable     : on green
+  instance_variable   : (d)
+  integer             : blue (b)
+  keyword             : red (b)
+  method              : blue (b)
+  predefined_constant : cyan (b)
+  regexp:
+    self              : red
+    content           : red
+    delimiter         : red (db)
+    modifier          : magenta (b)
+    function          : (db)
+  shell:
+    self              : on green
+    content           : (db)
+    delimiter         : white
+  string:
+    self              : green
+    content           : green
+    modifier          : green (b)
+    escape            : cyan (b)
+    delimiter         : green (b)
+  symbol              : green (b)
