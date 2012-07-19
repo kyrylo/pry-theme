@@ -94,7 +94,7 @@ module PryTheme
 
       def show_specific_color
         unless args[0] =~ /\A(\d{1,3})\z/ && (0...256).include?($1.to_i)
-          raise NoColorError, "Invalid color number: #{ args[0] }"
+          output.puts "Invalid color number: #{ args[0] }"
         end
 
         pal = Palette.new(256)
