@@ -253,9 +253,9 @@ theme:
           PryTheme.set_theme(theme)
 
           chunk = <<-CHUNK
-class PickMe
-  def please
-    @i, @@beg, you = 10_000, 400.00, "please!"
+class Theme
+  def method
+    @ivar, @@cvar, lvar = 10_000, 400.00, "string"
   end
 end
           CHUNK
