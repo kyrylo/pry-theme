@@ -75,5 +75,13 @@ module PryTheme
       color =~ /\A#?[A-F\d]{6}\z/i ? true : false
     end
 
+    def display_header(text, out)
+      safe_width = 80
+
+      out.puts "-" * safe_width
+      out.puts make_bold(text.center(safe_width))
+      out.puts "-" * safe_width
+    end
+
   end
 end

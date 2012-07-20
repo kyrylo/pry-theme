@@ -133,66 +133,53 @@ module PryTheme
 
       def test_theme
         example = <<-TEST
-# Time for testing your colors!
-module PryTheme
-  module JustTesting
+# "#{ PryTheme.current_theme }" theme.
+class PryTheme::ThisIsAClass
+  def this_is_a_method
+    THIS_IS_A_CONSTANT  = :this_is_a_symbol
+    this_is_a_local_var = "This is a string."
+    this_is_a_float     = 10_000.00
+    this_is_an_integer  = 10_000
 
-    THIS_IS_A_CONSTANT = :this_is_a_symbol
+    # TRUE and FALSE are predefined constants.
+    $this_is_a_global_variable = TRUE or FALSE
 
-    class ThisIsClass
+    @this_is_an_instance_variable = `echo 'system call'`
+    @@this_is_a_class_variable    = @$ # An error.
 
-      def this_is_a_method
-        this_is_a_float   = 10_000.00
-        this_is_an_integer = 10_000
-
-        "this_is_a_string"
-
-        TRUE or FALSE or ARGV # <-- Predefined constants
-
-        @this_is_an_instance_variable
-        @@this_is_a_class_variable
-
-        `echo 'Hello, hi, from a "system" call!'`
-
-        $ # <-- The dollar is an error!
-
-        /[0-9]{1,3}this is a regexp\\w+/xi
-        $this_is_a_global_variable
-      end
-
-    end
+    /[0-9]{1,3}this is a regexp\\w+/xi
   end
 end
-# "#{ PryTheme.current_theme }" theme.
         TEST
 
         lputs colorize_code(example), output
       end
 
       def edit_theme
-        theme = args[0] || PryTheme.current_theme
-        new_theme_flag = theme[0] == "+"
+        theme = args.first || PryTheme.current_theme
+        theme.tr!("+", "") if new_theme_flag = (theme[0] == "+")
 
         if not new_theme_flag and not installed?(theme)
-          output.puts "Can't find #{ theme } theme in #{ THEME_DIR } directory."
-          output.puts "To create a new theme, prepend a `+` sign to the name."
-          output.puts "For example: `pry-theme -e +#{ theme }`."
+          output.puts %(Can't find "#{ theme }" theme in `#{ THEME_DIR }`.)
+          output.puts "To create a new theme, prepend a `+` sign to its name."
+          output.puts "Example: `pry-theme -e +#{ theme }`."
           return
-        elsif new_theme_flag and installed?(theme_name = theme.tr("+", ""))
+        elsif new_theme_flag and installed?(theme)
           output.puts "Can't create a theme with the given name."
-          output.puts "The #{ theme_name } theme is already installed in your system."
-          output.puts "Try to edit it with `pry-theme -e #{ theme_name }` command."
+          output.puts %(The "#{ theme }" theme is already exist in your system.)
+          output.puts "You can edit it with `pry-theme -e #{ theme }` command."
           return
         end
 
+        theme_path = pathify_theme(theme)
+
         if new_theme_flag
-          theme_path = pathify_theme(theme_name)
           template = <<-TEMPLATE
 ---
 meta:
-  theme-name  : #{ theme_name }
+  theme-name  : #{ theme }
   version     : 1
-  color-depth : # 8 or 256.
+  color-depth : 256 # Supports 8 or 256 colors.
   description : # Should be less than 80 characters.
   author      : # John Doe <johndoe@example.com>
 
@@ -228,24 +215,33 @@ theme:
   symbol              :
           TEMPLATE
 
-          begin
-            new_theme = File.new(theme_path, "w")
-            new_theme.puts template
-            _pry_.run_command "edit #{ theme_path }"
+          # Create a template in themes directory.
+          File.open(theme_path, "w") { |f| f.puts template }
 
-            output.puts %(Created new theme in `#{ THEME_DIR }` with name "#{ theme_name }")
-            output.puts "and opened in #{ Pry.config.editor } for editing."
-          ensure
-            new_theme.close
-          end
+          output.puts %(Created "#{ theme }" theme in `#{ THEME_DIR }`.)
+          output.puts "Opened it in #{ Pry.config.editor } for editing."
         else
-          PryTheme.set_theme(theme)
-          output.puts "Using #{ theme } as your current theme."
-
-          _pry_.run_command "edit #{ pathify_theme(theme) }"
           output.puts "Opened #{ theme } theme in #{ Pry.config.editor } for editing."
           output.puts "Don't forget to increment a version number of theme!"
         end
+
+        begin
+          old_theme = PryTheme.current_theme
+
+          display_preview!(theme, %<Current "#{ theme }">)
+          invoke_editor(theme_path, line=1, reloading=true)
+          display_preview!(theme, %<Edited "#{ theme }">)
+        ensure
+          PryTheme.set_theme(old_theme)
+        end
+      end
+
+      # Please, pay attention to the fact that this method changes current
+      # theme to the given theme.
+      def display_preview!(theme, header_text)
+        PryTheme.set_theme(theme)
+        display_header(header_text, output)
+        test_theme
       end
 
       def show_list
