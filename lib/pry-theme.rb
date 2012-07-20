@@ -2,6 +2,7 @@ require 'pry-theme/version'
 require 'pry-theme/uninstaller'
 require 'pry-theme/helper'
 require 'pry-theme/palette'
+require 'pry-theme/term_notation'
 require 'pry-theme/theme'
 require 'pry-theme/rgb'
 require 'pry-theme/color_converter'
@@ -125,7 +126,7 @@ module PryTheme
 
       color_bg   = find_color($7, palette) do |c|
                      if palette.color_depth == 256
-                       "48;5;#{c.term}"
+                       "#{ TermNotation::BACKGROUND256 }#{c.term}"
                       else
                         Formatting::BACKGROUNDS[c.human.to_s]
                      end
@@ -133,7 +134,7 @@ module PryTheme
 
       # Uh oh :(
       notation = if !color_fg
-                   "38;0"
+                   TermNotation::NO_FOREGROUND
                  elsif palette.notation
                    palette.notation[0..-2]
                  else
@@ -145,7 +146,7 @@ module PryTheme
       # In cases when a user decided not to provide an argument value in theme,
       # use default color. Not handling this situation results in CodeRay's
       # error ("can't convert nil into String" stuff).
-      "38;0;0"
+      TermNotation::EMPTY
     end
   rescue NoColorError => e
     Pry.output.puts "#{e}: wrong color value: `#{color}`. Typo?"

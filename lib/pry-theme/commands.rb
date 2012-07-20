@@ -119,11 +119,11 @@ module PryTheme
 
         case color
         when Array
-          lputs color.map { |c| c.to_term("38;5;") }.join("\n"), output
+          lputs color.map { |c| c.to_term(TermNotation::COLOR256) }.join("\n"), output
         when nil
           output.puts "Invalid color: #{ c }"
         else
-          output.puts color.to_term("38;5;")
+          output.puts color.to_term(TermNotation::COLOR256)
         end
       end
 

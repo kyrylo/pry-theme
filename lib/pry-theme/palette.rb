@@ -43,7 +43,7 @@ module PryTheme
     # @param [Integer] colors The number of colors to be used in the palette.
     def initialize(colors=8)
       @color_depth = colors.to_i
-      @notation = "38;5;" if color_depth == 256
+      @notation = TermNotation::COLOR256 if color_depth == 256
 
       init_palette = "init_#{@color_depth}_colors"
 
