@@ -231,7 +231,7 @@ theme:
           begin
             new_theme = File.new(theme_path, "w")
             new_theme.puts template
-            Pry.run_command "edit #{ theme_path }"
+            _pry_.run_command "edit #{ theme_path }"
 
             output.puts %(Created new theme in `#{ THEME_DIR }` with name "#{ theme_name }")
             output.puts "and opened in #{ Pry.config.editor } for editing."
@@ -242,7 +242,7 @@ theme:
           PryTheme.set_theme(theme)
           output.puts "Using #{ theme } as your current theme."
 
-          Pry.run_command "edit #{ pathify_theme(theme) }"
+          _pry_.run_command "edit #{ pathify_theme(theme) }"
           output.puts "Opened #{ theme } theme in #{ Pry.config.editor } for editing."
           output.puts "Don't forget to increment a version number of theme!"
         end
