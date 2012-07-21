@@ -1,7 +1,14 @@
+require 'rubygems'
 require 'pry'
-require 'bacon'
 
-require "#{ File.dirname(__FILE__) }/../lib/pry-theme"
+# Brute force or otherwise it won't work for all platforms.
+begin
+  $:.unshift File.expand_path("../../lib", __FILE__)
+  require 'pry-theme'
+rescue
+end
+
+require 'bacon'
 
 puts "Ruby version: #{RUBY_VERSION}; Pry Theme version: #{PryTheme::VERSION}"
 
