@@ -1,3 +1,7 @@
+unless defined? PryTheme::VERSION
+  require File.expand_path('../lib/pry-theme/version', __FILE__)
+end
+
 Gem::Specification.new do |s|
   s.name         = "pry-theme"
   s.version      = PryTheme::VERSION
