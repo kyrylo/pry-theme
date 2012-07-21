@@ -78,7 +78,7 @@ module PryTheme
 
         list.each_slice(cols) do |slice|
           slice.each do |c|
-            color = c.scan(/(\e\[[[0-9];]+m)(\w+)(\e\[0m)(:)(\e\[[[0-9];]+m)(\w+)(\e\[0m)/).flatten
+            color = c.scan(/(\e\[[\d;]+m)(\w+)(\e\[0m)(:)(\e\[[\d;]+m)(\w+)(\e\[0m)/).flatten
             color[1] = color[1].ljust(3)
             color[-2] = color[-2].ljust(22)
             color_table << color
@@ -280,7 +280,7 @@ end
 
         i = 0
         remote_themes = body.map do |theme|
-          if (name = theme["name"]) =~ /\A[[a-z][0-9]-]+\z/
+          if (name = theme["name"]) =~ /\A(?:[a-z]|[0-9]|-)+\z/
             "#{i+=1}. #{installed?(name) ? make_bold(name) : name}"
           end
         end.compact
