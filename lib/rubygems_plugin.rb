@@ -4,6 +4,5 @@ begin
 
   PryTheme.install_gem_hooks
 rescue LoadError
-  # Be silent, when we can't load Pry (when it's uninstalled).
+  # Be silent when we can't load Pry (when it's uninstalled).
 end
-
