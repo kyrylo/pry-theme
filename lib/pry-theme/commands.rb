@@ -1,7 +1,3 @@
-require 'net/https'
-require 'base64'
-require 'json'
-
 module PryTheme
   Commands = Pry::CommandSet.new do
 
@@ -272,6 +268,9 @@ end
       end
 
       def show_remote_list
+        require 'net/https'
+        require 'json'
+
         body = {}
         fetch_collection("/") do |http, uri|
           output.puts "Fetching list of themes..."
@@ -291,6 +290,10 @@ end
 
       def install_theme
         return unless args[0]
+
+        require 'net/https'
+        require 'json'
+        require 'base64'
 
         body = {}
         fetch_collection("/#{args[0]}/#{args[0]}.prytheme") do |http, uri|
