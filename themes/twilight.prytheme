@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : twilight
-  version     : 2
+  version     : 3
   color-depth : 256
   description : Based on Twilight from Emacs color-theme package
   author      : John Mair
@@ -24,7 +24,6 @@ theme:
     content           : moss_green
     delimiter         : moss_green
     modifier          : pale_cornflower_blue
-    function          : moss_green
   shell:
     self              : moss_green
     content           : moss_green
@@ -32,7 +31,5 @@ theme:
   string:
     self              : moss_green
     content           : moss_green
-    modifier          : pale_cornflower_blue
-    escape            : moss_green
     delimiter         : moss_green
   symbol              : chestnut01

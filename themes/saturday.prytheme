@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : saturday-night
-  version     : 5
+  version     : 6
   color-depth : 256
   description : A modification of "tommorow night"
   author      : John Mair (banisterfiend)
@@ -24,7 +24,6 @@ theme:
     content           : alizarin
     delimiter         : alizarin
     modifier          : lilac01
-    function          : alizarin
   shell:
     self              : toad_in_love
     content           : green
@@ -32,7 +31,5 @@ theme:
   string:
     self              : old_gold
     content           : old_gold
-    modifier          : old_gold
-    escape            : old_gold
     delimiter         : old_gold
   symbol              : old_gold (b)

@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : github
-  version     : 3
+  version     : 4
   color-depth : 256
   description : Based on github theme
   author      : John Mair
@@ -24,7 +24,6 @@ theme:
     content           : toad_in_love01
     delimiter         : toad_in_love01
     modifier          : toad_in_love01
-    function          : toad_in_love01
   shell:
     self              : puce01
     content           : puce01
@@ -32,7 +31,5 @@ theme:
   string:
     self              : alizarin
     content           : alizarin
-    modifier          : alizarin
-    escape            : alizarin
     delimiter         : alizarin
   symbol              : pale_magenta

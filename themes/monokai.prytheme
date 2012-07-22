@@ -1,20 +1,20 @@
 ---
 meta:
   theme-name  : monokai
-  version     : 2
+  version     : 3
   color-depth : 256
   description : Based on Wimer Hazenberg's theme
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
   class               : sky01
-  class_variable      :
+  class_variable      : (d)
   comment             : pale_mauve01
   constant            : sky01
   error               : crimson (i)
   float               : amethyst04
-  global_variable     :
-  instance_variable   :
+  global_variable     : (d)
+  instance_variable   : (d)
   integer             : amethyst01
   keyword             : crimson
   method              : lime01
@@ -24,7 +24,6 @@ theme:
     content           : flax
     delimiter         : flax
     modifier          : flax
-    function          : flax
   shell:
     self              : flax
     content           : flax
@@ -32,7 +31,5 @@ theme:
   string:
     self              : flax
     content           : flax
-    modifier          : flax
-    escape            : flax
     delimiter         : flax
   symbol              : old_gold

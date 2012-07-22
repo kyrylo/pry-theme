@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : pry-cold
-  version     : 1
+  version     : 2
   color-depth : 256
   description : Based on Charcoalblack theme from Emacs
   author      : John Mair,
@@ -25,7 +25,6 @@ theme:
     content           : bluish03
     delimiter         : gray02
     modifier          : gray02
-    function          : gray02
   shell:
     self              : puce01
     content           : puce01
@@ -33,7 +32,5 @@ theme:
   string:
     self              : bluish03
     content           : bluish03
-    modifier          : bluish03
-    escape            : bluish03
     delimiter         : bluish03
   symbol              : bluish03

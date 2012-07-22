@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : railscasts
-  version     : 6
+  version     : 7
   color-depth : 256
   description : RailsCasts theme
   author      : Ryan Fitzgerald,
@@ -26,7 +26,6 @@ theme:
     content           : asparagus
     delimiter         : asparagus
     modifier          : asparagus
-    function          : asparagus
   shell:
     self              : asparagus
     content           : asparagus
@@ -34,7 +33,5 @@ theme:
   string:
     self              : asparagus
     content           : asparagus
-    modifier          : asparagus
-    escape            : asparagus
     delimiter         : asparagus
   symbol              : cornflower_blue01

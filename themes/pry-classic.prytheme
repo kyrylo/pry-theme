@@ -1,10 +1,11 @@
 ---
 meta:
   theme-name  : pry-classic
-  version     : 4
+  version     : 5
   color-depth : 8
   description : Default Pry theme
-  author      : Kyrylo Silin <kyrylosilin@gmail.com>, Kornelius Kalnbach
+  author      : Kyrylo Silin <kyrylosilin@gmail.com>,
+                Kornelius Kalnbach
 
 theme:
   class               : magenta (b)
@@ -24,7 +25,6 @@ theme:
     content           : red
     delimiter         : red (db)
     modifier          : magenta (b)
-    function          : (db)
   shell:
     self              : on green
     content           : (db)
@@ -32,7 +32,5 @@ theme:
   string:
     self              : green
     content           : green
-    modifier          : green (b)
-    escape            : cyan (b)
     delimiter         : green (b)
   symbol              : green (b)
