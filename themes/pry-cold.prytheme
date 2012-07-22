@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : pry-cold
-  version     : 2
+  version     : 3
   color-depth : 256
   description : Based on Charcoalblack theme from Emacs
   author      : John Mair,
@@ -21,12 +21,12 @@ theme:
   method              : royal_blue05
   predefined_constant : robin_egg_blue02 (b)
   regexp:
-    self              : bluish03
+    self              : gray02
     content           : bluish03
     delimiter         : gray02
     modifier          : gray02
   shell:
-    self              : puce01
+    self              : gray02
     content           : puce01
     delimiter         : gray02
   string:

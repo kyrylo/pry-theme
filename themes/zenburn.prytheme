@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : zenburn
-  version     : 5
+  version     : 6
   color-depth : 256
   description : A low-contrast color scheme
   author      : Kyrylo Silin <kyrylosilin@gmail.com>,
@@ -21,16 +21,16 @@ theme:
   method              : corn02
   predefined_constant : dark_peach
   regexp:
-    self              : abdel_kerims_beard01
+    self              : gray02
     content           : puce01
     delimiter         : gray02
     modifier          : gray02
   shell:
-    self              : puce01
+    self              : gray02
     content           : puce01
     delimiter         : gray02
   string:
-    self              : puce01
+    self              : gray02
     content           : puce01
     delimiter         : gray02
   symbol              : puce01 (b)

@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : tomorrow
-  version     : 5
+  version     : 6
   color-depth : 256
   description : A theme should not get in your way
   author      : John Mair,
@@ -26,7 +26,7 @@ theme:
     delimiter         : alizarin
     modifier          : old_gold
   shell:
-    self              : puce01
+    self              : gray02
     content           : puce01
     delimiter         : gray02
   string:

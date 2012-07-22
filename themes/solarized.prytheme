@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : solarized
-  version     : 5
+  version     : 6
   color-depth : 256
   description : Precision colors for machines and people
   author      : Kyrylo Silin <kyrylosilin@gmail.com>,
@@ -21,16 +21,16 @@ theme:
   method              : azure01
   predefined_constant : azure01
   regexp:
-    self              : tenne
+    self              : titian
     content           : olive_drab
     delimiter         : titian
     modifier          : titian
   shell:
-    self              : robin_egg_blue01
+    self              : titian
     content           : robin_egg_blue01
     delimiter         : titian
   string:
-    self              : robin_egg_blue01
+    self              : titian
     content           : robin_egg_blue01
     delimiter         : titian
   symbol              : robin_egg_blue01
