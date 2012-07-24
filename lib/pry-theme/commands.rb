@@ -187,6 +187,8 @@ theme:
   error               : # black (b) on white
   float               : # (i)
   global_variable     :
+  inline              :
+  inline_delimiter    :
   instance_variable   :
   integer             :
   keyword             :
@@ -194,20 +196,23 @@ theme:
   predefined_constant :
   regexp:
     self              :
+    char              :
     content           :
     delimiter         :
-    modifier          :
-    function          :
-  shell:
-    self              :
-    content           :
-    delimiter         :
-  string:
-    self              :
-    content           :
     modifier          :
     escape            :
+  shell:
+    self              :
+    char              :
+    content           :
     delimiter         :
+    escape            :
+  string:
+    self              :
+    char              :
+    content           :
+    delimiter         :
+    escape            :
   symbol              :
           TEMPLATE
 
