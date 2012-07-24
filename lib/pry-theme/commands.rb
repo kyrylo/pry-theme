@@ -143,7 +143,7 @@ class PryTheme::ThisIsAClass
     @this_is_an_instance_variable = `echo '\#{system} call\\n'`
     @@this_is_a_class_variable    = @$ # An error.
 
-    /[0-9]{1,3}this \#{is} a regexp\w+/xi
+    /[0-9]{1,3}this \#{is} a regexp\\w+/xi
   end
 end
         TEST
