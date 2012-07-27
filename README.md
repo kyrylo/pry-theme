@@ -87,13 +87,14 @@ I hope it runs on Windows too, but I couldn't find any sane terminal, that
 would support 256 colors. Sorry, Windows guys. Please, file an issue, if you
 noticed bugs or something.
 
-### Ruby versions
+### Ruby implementations support
 
 * MRI 1.9.3
 * MRI 1.9.2
 * MRI 1.8.7
 * REE 1.8.7-2012.02
 * JRuby 1.6.7
+* Rubinius 1.2.4
 
 Under the hood
 --------------
