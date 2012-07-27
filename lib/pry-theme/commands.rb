@@ -24,6 +24,7 @@ module PryTheme
           pry-theme -t
 
         Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
+        Cheatsheet: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-Cheatsheet
       BANNER
 
       def options(opt)
