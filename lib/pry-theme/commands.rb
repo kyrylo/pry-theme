@@ -187,7 +187,6 @@ theme:
   error               : # black (b) on white
   float               : # (i)
   global_variable     :
-  inline              :
   inline_delimiter    :
   instance_variable   :
   integer             :
