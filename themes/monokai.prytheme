@@ -1,35 +1,42 @@
 ---
 meta:
   theme-name  : monokai
-  version     : 3
+  version     : 4
   color-depth : 256
   description : Based on Wimer Hazenberg's theme
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
   class               : sky01
-  class_variable      : (d)
+  class_variable      : white
   comment             : pale_mauve01
   constant            : sky01
   error               : crimson (i)
-  float               : amethyst04
-  global_variable     : (d)
-  instance_variable   : (d)
+  float               : amethyst01
+  global_variable     : white
+  inline_delimiter    : white
+  instance_variable   : white
   integer             : amethyst01
   keyword             : crimson
   method              : lime01
   predefined_constant : sky01
   regexp:
     self              : flax
+    char              : white
     content           : flax
     delimiter         : flax
     modifier          : flax
+    escape            : white
   shell:
     self              : flax
+    char              : white
     content           : flax
     delimiter         : flax
+    escape            : white
   string:
     self              : flax
+    char              : white
     content           : flax
     delimiter         : flax
-  symbol              : old_gold
+    escape            : white
+  symbol              : amethyst01

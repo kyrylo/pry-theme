@@ -15,6 +15,7 @@ theme:
   error               : tenne (i)
   float               : silver01
   global_variable     : dark_peach
+  inline_delimiter    : gray02
   instance_variable   : dark_peach
   integer             : pale_blue01
   keyword             : dark_salmon (b)
@@ -22,15 +23,21 @@ theme:
   predefined_constant : dark_peach
   regexp:
     self              : gray02
+    char              : gray02
     content           : puce01
     delimiter         : gray02
     modifier          : gray02
+    escape            : gray02
   shell:
     self              : gray02
+    char              : gray02
     content           : puce01
     delimiter         : gray02
+    escape            : gray02
   string:
     self              : gray02
+    char              : gray02
     content           : puce01
     delimiter         : gray02
+    escape            : gray02
   symbol              : puce01 (b)

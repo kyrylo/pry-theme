@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : pry-classic
-  version     : 5
+  version     : 6
   color-depth : 8
   description : Default Pry theme
   author      : Kyrylo Silin <kyrylosilin@gmail.com>,
@@ -15,6 +15,7 @@ theme:
   error               : yellow (b) on red
   float               : magenta (b)
   global_variable     : on green
+  inline_delimiter    : (d)
   instance_variable   : (d)
   integer             : blue (b)
   keyword             : red (b)
@@ -22,15 +23,21 @@ theme:
   predefined_constant : cyan (b)
   regexp:
     self              : red
+    char              : (d)
     content           : red
     delimiter         : red (db)
     modifier          : magenta (b)
+    escape            : (d)
   shell:
     self              : on green
+    char              : (d)
     content           : (db)
     delimiter         : white
+    escape            : (d)
   string:
     self              : green
+    char              : (d)
     content           : green
     delimiter         : green (b)
+    escape            : (d)
   symbol              : green (b)

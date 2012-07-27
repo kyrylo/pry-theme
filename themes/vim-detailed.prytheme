@@ -1,35 +1,42 @@
 ---
 meta:
   theme-name  : vim-detailed
-  version     : 4
+  version     : 5
   color-depth : 256
   description : Like vim-default, but uses more colors.
   author      : ☈king <rking-pry-vim256scheme@sharpsaw.org>
 
 theme:
-  keyword             : violet_eggplant # (originally: magenta)
   class               : toad_in_love # (originally: green)
   class_variable      : mint_green01 # (originally: cyan)
-  global_variable     : robin_egg_blue03 # (originally: cyan)
-  instance_variable   : turquoise # (originally: cyan)
-  predefined_constant : robin_egg_blue02 # (originally: cyan)
-  constant            : toad_in_love01 # (originally: green)
-  method              : pale_cornflower_blue # (originally: cyan)
-  float               : titian # (originally: red)
-  integer             : cerise01 # (originally: red)
   comment             : navy_blue # (originally: blue)
+  constant            : toad_in_love01 # (originally: green)
   error               : black on bismarck_furious # (originally: white on red)
+  float               : titian # (originally: red)
+  global_variable     : robin_egg_blue03 # (originally: cyan)
+  inline_delimiter    : pale_mauve02
+  instance_variable   : turquoise # (originally: cyan)
+  integer             : cerise01 # (originally: red)
+  predefined_constant : robin_egg_blue02 # (originally: cyan)
+  keyword             : violet_eggplant # (originally: magenta)
+  method              : pale_cornflower_blue # (originally: cyan)
   regexp:
     self              : bright_violet # (originally: magenta)
+    char              : red
     content           : red # (originally: red)
     delimiter         : orchid01 # (originally: magenta)
     modifier          : lilac01 # (originally: magenta)
+    escape            : red
   shell:
     self              : pale_mauve02 # (originally: red)
+    char              : eggplant02
     content           : eggplant02 # (originally: red)
     delimiter         : bright_violet # (originally: magenta)
+    escape            : eggplant02
   string:
     self              : eggplant01 # (originally: red)
+    char              : maroon01
     content           : maroon01
     delimiter         : bright_violet # (originally: magenta)
+    escape            : maroon01
   symbol              : ochre # (originally: red)

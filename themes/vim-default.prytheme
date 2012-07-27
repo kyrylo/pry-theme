@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : vim-default
-  version     : 5
+  version     : 6
   color-depth : 8
   description : For those familiar with the default vim colorscheme.
   author      : ☈king <rking-pry-vimscheme@sharpsaw.org>
@@ -14,6 +14,7 @@ theme:
   error               : white on red
   float               : red
   global_variable     : cyan
+  inline_delimiter    : red
   instance_variable   : cyan
   integer             : red
   keyword             : magenta # some should be yellow. CodeRay's limited.
@@ -21,15 +22,21 @@ theme:
   predefined_constant : cyan
   regexp:
     self              : magenta
+    char              : red
     content           : red
     delimiter         : magenta
     modifier          : magenta
+    escape            : red
   shell:
     self              : magenta
+    char              : red
     content           : red
     delimiter         : magenta
+    escape            : red
   string:
     self              : magenta
+    char              : red
     content           : red
     delimiter         : magenta
+    escape            : red
   symbol              : red

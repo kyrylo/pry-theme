@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : pry-modern
-  version     : 4
+  version     : 5
   color-depth : 256
   description : Nifty version of pry-classic
   author      : Kyrylo Silin <kyrylosilin@gmail.com>
@@ -14,6 +14,7 @@ theme:
   error               : cerulean_grey02
   float               : dark_pink01 (b)
   global_variable     : gold
+  inline_delimiter    : malachite01 (b)
   instance_variable   : (d)
   integer             : robin_egg_blue01 (b)
   keyword             : chestnut01 (b)
@@ -21,15 +22,21 @@ theme:
   predefined_constant : cyan (b)
   regexp:
     self              : tangerine
+    char              : tangerine
     content           : violaceous03
     delimiter         : tangerine (db)
     modifier          : dark_pink01 (b)
+    escape            : malachite01 (b)
   shell:
-    self              : on green
+    self              : grass01
+    char              : grass01
     content           : grass01
     delimiter         : white
+    escape            : malachite01 (b)
   string:
     self              : malachite01
+    char              : malachite01
     content           : malachite01
     delimiter         : malachite01 (b)
+    escape            : malachite01 (b)
   symbol              : malachite02 (b)

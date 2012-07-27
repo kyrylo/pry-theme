@@ -1,35 +1,43 @@
 ---
 meta:
   theme-name  : github
-  version     : 4
+  version     : 5
   color-depth : 256
   description : Based on github theme
-  author      : John Mair
+  author      : John Mair,
+                Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
-  class               : denim02 (b)
-  class_variable      : aquamarine02 (b)
-  comment             : light_grey03
-  constant            : aquamarine02
-  error               : tenne (i)
-  float               : silver01
-  global_variable     : robin_egg_blue02
-  instance_variable   : aquamarine02
-  integer             : aquamarine02
-  keyword             : seashell (b)
-  method              : maroon01
-  predefined_constant : robin_egg_blue02 (b)
+  class               : seroburomalinovyj01 (b)
+  class_variable      : teal01
+  comment             : gray01
+  constant            : teal
+  error               : bismarck_furious on periwinkle
+  float               : teal01
+  global_variable     : teal01
+  inline_delimiter    : cerise01
+  instance_variable   : teal01
+  integer             : teal01
+  keyword             : black (b)
+  method              : maroon01 (b)
+  predefined_constant : teal01
   regexp:
     self              : toad_in_love01
+    char              : toad_in_love01
     content           : toad_in_love01
     delimiter         : toad_in_love01
     modifier          : toad_in_love01
+    escape            : toad_in_love01
   shell:
-    self              : puce01
-    content           : puce01
-    delimiter         : gray02
+    self              : cerise01
+    char              : cerise01
+    content           : cerise01
+    delimiter         : cerise01
+    escape            : cerise01
   string:
-    self              : alizarin
-    content           : alizarin
-    delimiter         : alizarin
-  symbol              : pale_magenta
+    self              : cerise01
+    char              : cerise01
+    content           : cerise01
+    delimiter         : cerise01
+    escape            : cerise01
+  symbol              : violet_eggplant01

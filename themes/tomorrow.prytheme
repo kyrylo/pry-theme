@@ -1,7 +1,7 @@
 ---
 meta:
   theme-name  : tomorrow
-  version     : 6
+  version     : 7
   color-depth : 256
   description : A theme should not get in your way
   author      : John Mair,
@@ -15,6 +15,7 @@ theme:
   error               : tangerine (i)
   float               : tangerine
   global_variable     : alizarin
+  inline_delimiter    : heliotrope01
   instance_variable   : alizarin
   integer             : tangerine
   keyword             : heliotrope03
@@ -22,15 +23,21 @@ theme:
   predefined_constant : tangerine
   regexp:
     self              : alizarin
+    char              : heliotrope01
     content           : old_gold
     delimiter         : alizarin
     modifier          : old_gold
+    escape            : heliotrope01
   shell:
     self              : gray02
+    char              : heliotrope01
     content           : puce01
     delimiter         : gray02
+    escape            : heliotrope01
   string:
     self              : old_gold
+    char              : heliotrope01
     content           : old_gold
     delimiter         : old_gold
+    escape            : heliotrope01
   symbol              : old_gold

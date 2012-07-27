@@ -9,29 +9,36 @@ meta:
                 Kyrylo Silin <kyrylosilin@gmail.com>
 
 theme:
-  class               : (d)
+  class               : white
   class_variable      : robin_egg_blue03
   comment             : tan
-  constant            : (d)
+  constant            : white
   error               : white on maroon
   float               : asparagus
   global_variable     : robin_egg_blue03
+  inline_delimiter    : emerald02
   instance_variable   : robin_egg_blue03
   integer             : asparagus
   keyword             : international_orange
   method              : mustard02
   predefined_constant : robin_egg_blue03
   regexp:
-    self              : orange
+    self              : asparagus
+    char              : orange
     content           : asparagus
     delimiter         : asparagus
     modifier          : asparagus
+    escape            : emerald02
   shell:
     self              : asparagus
+    char              : orange
     content           : asparagus
     delimiter         : asparagus
+    escape            : emerald02
   string:
     self              : asparagus
+    char              : orange
     content           : asparagus
     delimiter         : asparagus
+    escape            : emerald02
   symbol              : cornflower_blue01
