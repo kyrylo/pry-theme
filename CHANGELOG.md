@@ -1,6 +1,12 @@
 Pry Theme changelog
 ===================
 
+### v0.1.1 (August 1, 2012)
+
+* Fixed bug in `--test` command not displaying current theme name;
+* Added new Pry Theme attributes: `escape`, `inline_delimiter` and `char`;
+* Amended output of `--test` command in order to reflect new attributes.
+
 ### v0.1.0 (July 23, 2012)
 
 * **HOT**: Boosted the load speed of the plugin:
