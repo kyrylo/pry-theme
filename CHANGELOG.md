@@ -1,6 +1,11 @@
 Pry Theme changelog
 ===================
 
+### v0.1.2 (August 31, 2012)
+
+* Removed uninstaller. Actually, adding it, was a terrible idea. Remove theme
+  files by hand, from now on.
+
 ### v0.1.1 (August 1, 2012)
 
 * Fixed bug in `--test` command not displaying current theme name;
