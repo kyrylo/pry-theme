@@ -1,5 +1,4 @@
 require 'pry-theme/version'
-require 'pry-theme/uninstaller'
 require 'pry-theme/helper'
 require 'pry-theme/palette'
 require 'pry-theme/term_notation'
@@ -150,12 +149,6 @@ module PryTheme
     end
   rescue NoColorError => e
     Pry.output.puts "#{e}: wrong color value: `#{color}`. Typo?"
-  end
-
-  def self.install_gem_hooks
-    Gem.post_uninstall do |u|
-      Uninstaller.run(u) if u.spec.name == "pry-theme"
-    end
   end
 
   def self.find_color(color, palette, &block)
