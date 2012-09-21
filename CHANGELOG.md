@@ -1,6 +1,10 @@
 Pry Theme changelog
 ===================
 
+### v0.1.3 (September 21, 2012)
+
+* Improved integration with [pry-rescue][prescue] plugin.
+
 ### v0.1.2 (August 31, 2012)
 
 * Removed uninstaller. Actually, adding it, was a terrible idea. Remove theme
@@ -149,3 +153,4 @@ Last but not least:
 
 [cli]: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
 [cheatsheet]: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-Cheatsheet
+[prescue]: https://github.com/ConradIrwin/pry-rescue/
