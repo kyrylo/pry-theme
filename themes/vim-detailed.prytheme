@@ -1,42 +1,42 @@
 ---
 meta:
   theme-name  : vim-detailed
-  version     : 5
+  version     : 6
   color-depth : 256
-  description : Like vim-default, but uses more colors.
-  author      : ☈king <rking-pry-vim256scheme@sharpsaw.org>
+  description : Lil' pal of http://www.vim.org/scripts/script.php?script_id=4297
+  author      : ☈king <rking-pry-vim-detailed@sharpsaw.org>
 
 theme:
-  class               : toad_in_love # (originally: green)
-  class_variable      : mint_green01 # (originally: cyan)
-  comment             : navy_blue # (originally: blue)
-  constant            : toad_in_love01 # (originally: green)
+  class               : vert_de_pomme02 # (originally: green)
+  class_variable      : bluish01 on flea_belly # Intentionally ugly as a warning
+  comment             : wet_asphalt07 # (originally: blue)
+  constant            : vert_de_pomme01 # (originally: green)
   error               : black on bismarck_furious # (originally: white on red)
+  global_variable     : cerise01 on black03 # Intentionally ugly as chastisement
+  inline_delimiter    : pale_mauve02 (i)
+  instance_variable   : light_blue02 # (originally: cyan)
   float               : titian # (originally: red)
-  global_variable     : robin_egg_blue03 # (originally: cyan)
-  inline_delimiter    : pale_mauve02
-  instance_variable   : turquoise # (originally: cyan)
-  integer             : cerise01 # (originally: red)
-  predefined_constant : robin_egg_blue02 # (originally: cyan)
-  keyword             : violet_eggplant # (originally: magenta)
-  method              : pale_cornflower_blue # (originally: cyan)
+  integer             : bismarck_furious # (originally: red)
+  predefined_constant : pale_mauve02 # (originally: cyan)
+  keyword             : magenta
+  method              : royal_blue02 (b) # (originally: cyan)
   regexp:
-    self              : bright_violet # (originally: magenta)
-    char              : red
-    content           : red # (originally: red)
-    delimiter         : orchid01 # (originally: magenta)
+    self              : maroon01 # (originally: magenta)
+    char              : red on black03 # (originally: red)
+    content           : red on black03 # (originally: red)
+    delimiter         : maroon01 # (originally: magenta)
     modifier          : lilac01 # (originally: magenta)
-    escape            : red
+    escape            : violet_eggplant (b)
   shell:
     self              : pale_mauve02 # (originally: red)
-    char              : eggplant02
+    char              : eggplant02 on black03
     content           : eggplant02 # (originally: red)
-    delimiter         : bright_violet # (originally: magenta)
-    escape            : eggplant02
+    delimiter         : bright_violet on black03 # (originally: magenta)
+    escape            : eggplant02 (b)
   string:
-    self              : eggplant01 # (originally: red)
-    char              : maroon01
-    content           : maroon01
-    delimiter         : bright_violet # (originally: magenta)
-    escape            : maroon01
-  symbol              : ochre # (originally: red)
+    self              : titian # (originally: red)
+    char              : violet_eggplant01 on black03
+    content           : bismarck_furious on black03
+    delimiter         : azure01 # (originally: magenta)
+    escape            : violet_eggplant01 on black03 (b)
+  symbol              : cornflower_blue02 # (originally: red)
