@@ -169,6 +169,3 @@ end
 
 # Apply a theme of a user from their theme file.
 Pry.config.hooks.add_hook(:when_started, :apply_user_theme, PryTheme::WhenStartedHook.new)
-
-# Import the PryTheme commands.
-Pry.config.commands.import PryTheme::Commands
