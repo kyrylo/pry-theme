@@ -48,6 +48,18 @@ describe PryTheme::RGB do
     RGB.new([0, 101, 69]).to_term(16).to_i.should == 1
   end
 
+  it "converts itself to term 8" do
+    RGB.new([0, 0, 0]).to_term(8).to_i.should == 0
+    RGB.new([255, 255, 255]).to_term(8).to_i.should == 0
+    RGB.new([255, 0, 255]).to_term(8).to_i.should == 0
+  end
+
+  it "converts itself to and determines the nearest term colour" do
+    RGB.new([0, 101, 69]).to_term(16).to_i.should == 1
+    RGB.new([122, 122, 122]).to_term(8).to_i.should == 3
+    RGB.new([176, 127, 30]).to_term(8).to_i.should == 4
+  end
+
   it "converts itself to hex" do
     RGB.new([0, 0, 0]).to_hex.to_s.should == '#000000'
     RGB.new([255, 255, 255]).to_hex.to_s.should == '#ffffff'

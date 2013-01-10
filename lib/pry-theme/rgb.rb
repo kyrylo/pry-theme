@@ -1,14 +1,35 @@
 module PryTheme
+  # @since 0.2.0
+  # @api private
+  #
+  # Represents an RGB colour. It's possible to convert an RGB instance into
+  # {HEX} or {TERM} colours. However, this conversion is half-duplex. If an RGB
+  # instance gets converted to {TERM} format, there is a high chance that it
+  # will be approximated to fit in range of colour model (colour model can be
+  # set via an argument of the conversion method). This class validates its
+  # input (you won't see malformed of nonexistent RGB colours).
+  #
+  # @example Conversion to HEX
+  #   RGB.new([0, 0, 0]).to_hex #=> (HEX: #000000)
+  # @example Conversion to TERM
+  #   RGB.new([0, 0, 0]).to_term(8) #=> (TERM-8: 0)
+  #
+  #   # Approximation.
+  #   RGB.new([254, 244, 231]).to_term(8) #=> (TERM-8: 7)
   class RGB
+
+    # 8 colours. For the standard GNU/Linux terminal emulator.
+    LINUX = [
+      [  0,   0,   0], [128,   0,   0], [  0, 128,   0],
+      [128, 128,   0], [  0,   0, 128], [128,   0, 128],
+      [  0, 128, 128], [192, 192, 192]
+    ]
 
     # 16 colours. For cmd.exe on Windows and other miserable terminals.
     SYSTEM = [
-      [  0,   0,   0], [128,   0,   0], [  0, 128,   0],
-      [128, 128,   0], [  0,   0, 128], [128,   0, 128],
-      [  0, 128, 128], [192, 192, 192], [128, 128, 128],
-      [255,   0,   0], [  0, 255,   0], [255, 255,   0],
-      [  0,   0, 255], [255,   0, 255], [  0, 255, 255],
-      [255, 255, 255]
+      *LINUX,
+      [128, 128, 128], [255,   0,   0], [  0, 255,   0], [255, 255,   0],
+      [  0,   0, 255], [255,   0, 255], [  0, 255, 255], [255, 255, 255]
     ]
 
     # The next 216 colours. For men.
@@ -75,6 +96,13 @@ module PryTheme
     # Combine everything into a full featured 256 colour RGB model.
     TABLE = SYSTEM + COLORS + GREYSCALE
 
+    # The key points that are used to calculate the nearest match of an RGB.
+    BYTEPOINTS_256 = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff]
+
+    private_constant :COLORS, :GREYSCALE, :BYTEPOINTS_256
+
+    # @param [Array<Integer>, String] value a String will be converted to Array
+    # @raise [TypeError] if the +value+ is neither Array or String
     def initialize(value)
       @value =
         case value
@@ -89,28 +117,57 @@ module PryTheme
         end
     end
 
+    # @return [String]
     def inspect
       "(RGB: #{ to_s })"
     end
 
+    # Converts the RGB to a terminal colour equivalent.
+    #
+    # @note Accepts the following numbers: 256, 16, 8.
+    # @param [Integer] color_model
+    # @raise [ArgumentError] if +color_model+ parameter is incorrect
+    # @return [TERM] a TERM representation of the RGB
     def to_term(color_model = 256)
-      to_hex.to_term(color_model)
+      term = case color_model
+             when 256 then PryTheme::RGB::TABLE.index(@value)
+             when 16  then PryTheme::RGB::SYSTEM.index(@value)
+             when 8   then PryTheme::RGB::LINUX.index(@value)
+             else raise ArgumentError,
+                        "invalid value for PryTheme::HEX#to_term(): #{ @value }"
+             end
+      term = find_among_term_colors(term, color_model) if term.nil?
+      PryTheme::TERM.new(term, color_model)
     end
 
+    # Converts the RGB to a HEX colour equivalent.
+    # @return [HEX] a HEX representation of the RGB
     def to_hex
       PryTheme::HEX.new("#%02x%02x%02x" % @value)
     end
 
+    # @example
+    #   RGB.new([0, 12, 255]).to_s #=> "0, 12, 255"
+    # @return [String]
     def to_s
       @value.join(', ')
     end
 
+    # @example
+    #   RGB.new([0, 12, 255]).to_s #=> [0, 12, 255]
+    # @return [Array<Integer>]
     def to_a
       @value
     end
 
     private
 
+    # Checks whether the +ary+ has correct number of elements and these elements
+    # are valid RGB numbers.
+    #
+    # @param [Array<Integer>] ary
+    # @raise [ArgumentError] if the +ary+ is invalid
+    # @return [void]
     def validate_array(ary)
       correct_size = ary.size.equal?(3)
       correct_vals = ary.all?{ |val| val.is_a?(Fixnum) && val.between?(0, 255) }
@@ -118,5 +175,71 @@ module PryTheme
       raise ArgumentError,
             %|invalid value for PryTheme::RGB#validate_array(): "#{ ary }"|
     end
+
+    # Approximates the given +byte+ to a terminal colour value within range of
+    # 256 colours.
+    #
+    # @param [Integer] byte a number between 0 and 255
+    # @return [Integer] approximated number
+    def nearest_term_256(byte)
+      for i in 0..4
+        lower, upper = BYTEPOINTS_256[i], BYTEPOINTS_256[i + 1]
+        next unless byte.between?(lower, upper)
+
+        distance_from_lower = (lower - byte).abs
+        distance_from_upper = (upper - byte).abs
+        closest = distance_from_lower < distance_from_upper ? lower : upper
+      end
+      closest
+    end
+
+    # The same as {#nearest_term_256}, but returns a number beteen 0 and 15.
+    #
+    # @note Oh, come on. At least it works!
+    # @todo use more realistic algorithm.
+    def nearest_term_16(byte)
+      byte / 16
+    end
+
+    # The same as {#nearest_term_256}, but returns a number beteen 0 and 7.
+    #
+    # @note Oh, come on. At least it works!
+    # @todo use more realistic algorithm.
+    def nearest_term_8(byte)
+      byte / 32
+    end
+
+    # Finds an approximated +term+ colour among the colour numbers within the
+    # given +color_model+.
+    #
+    # @param [Integer] term a colour to be approximated
+    # @param [Integer] color_model possible values {#to_term}
+    # @return [Integer] approximated number, which fits in range of color_model
+    def find_among_term_colors(term, color_model)
+      rgb = @value.map { |byte| nearest_term_256(byte) }
+      term = PryTheme::RGB::TABLE.index(rgb)
+      approximate(term, color_model)
+    end
+
+    # Approximates +term+ in correspondence with +color_model+
+    #
+    # @see #nearest_term_16
+    # @see #nearest_term_8
+    # @param [Integer] term a colour to be approximated
+    # @param [Integer] color_model possible values {#to_term}
+    # @return [Integer] approximated number, which fits in range of color_model
+    def approximate(term, color_model)
+      needs_approximation = (term > color_model - 1)
+
+      if needs_approximation
+        case color_model
+        when 16 then nearest_term_16(term)
+        when 8  then nearest_term_8(term)
+        end
+      else
+        term
+      end
+    end
+
   end
 end
