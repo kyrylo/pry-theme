@@ -1,4 +1,21 @@
 module PryTheme
+  # @since 0.2.0
+  # @api private
+  #
+  # Represents a HEX colour. It's possible to convert a HEX instance into {TERM}
+  # or {RGB} colours. However, this conversion is half-duplex (see {RGB}). This
+  # class validates its input (you won't see malformed or nonexistent HEX
+  # colours).
+  #
+  # @note Conversion to {TERM} relies on {RGB#to_term}, as a {HEX} instance
+  #   converts itself to {RGB} first, and only then to {TERM}.
+  # @example Conversion to RGB
+  #   HEX.new('#ffffff').to_rgb #=> (RGB: 255, 255, 255)
+  # @example Conversion to TERM
+  #   HEX.new('#ffffff').to_term(16) #=> (TERM-16: 15)
+  #
+  #   # Approximation.
+  #   HEX.new('#fc33ea').to_term #=> (TERM-256: 207)
   class HEX
 
     # Represents a single HEX "digit".
@@ -7,44 +24,44 @@ module PryTheme
     # A hex String must be prefixed with an octothorp. Use any letter case.
     PATTERN = /\A#(#{ BYTE }){3}\z/i
 
-    # The key points that are used to calculate the nearest match of an RGB.
-    BYTEPOINTS_256 = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff]
-
+    # @param [String] value must be a valid hex number
     def initialize(value)
       validate_value(value)
       @value = value
     end
 
+    # @return [String]
     def inspect
       "(HEX: #{ @value })"
     end
 
+    # @example
+    #   HEX.new('#33aabb').to_s #=> "#33aabb"
+    # @return [String]
     def to_s
       @value
     end
 
+    # Converts `self` into {RGB}.
+    # @return [RGB]
     def to_rgb
       RGB.new(@value[1..-1].scan(BYTE).map! { |b| b.to_i(16) })
     end
 
+    # Converts `self` into {TERM}.
+    # @return [RGB]
     def to_term(color_model = 256)
-      rgb  = to_rgb.to_a
-      term = case color_model
-             when 256 then PryTheme::RGB::TABLE.index(rgb)
-             when 16  then PryTheme::RGB::SYSTEM.index(rgb)
-             else raise ArgumentError,
-                        "invalid value for PryTheme::HEX#to_term(): #{ rgb }"
-             end
-      if term.nil?
-        rgb.map! { |byte| nearest_term_256(byte) }
-        term = PryTheme::RGB::TABLE.index(rgb)
-        term = nearest_term_16(term) if color_model == 16 && term > 15
-      end
-      PryTheme::TERM.new(term, color_model)
+      to_rgb.to_term(color_model)
     end
 
     private
 
+    # Validates whether +value+ is a valid hex colour value.
+    #
+    # @param [String] value
+    # @raise [TypeError] if +value+ isn't String
+    # @raise [ArgumentError] if +value+ is malformed
+    # @return [void]
     def validate_value(value)
       unless value.is_a?(String)
         raise TypeError, "can't convert #{ value.class } into PryTheme::HEX"
@@ -53,24 +70,6 @@ module PryTheme
         raise ArgumentError, %|invalid value for PryTheme::HEX#new(): "#{ value }"|
       end
       true
-    end
-
-    def nearest_term_256(byte)
-      for i in 0..4
-        lower = BYTEPOINTS_256[i]
-        upper = BYTEPOINTS_256[i + 1]
-        next unless byte.between?(lower, upper)
-        distance_from_lower = (lower - byte).abs
-        distance_from_upper = (upper - byte).abs
-        closest = distance_from_lower < distance_from_upper ? lower : upper
-      end
-      closest
-    end
-
-    # Oh, come on. At least it works!
-    # TODO: use more realistic algorithm.
-    def nearest_term_16(byte)
-      byte / 16
     end
 
   end

@@ -38,6 +38,14 @@ describe PryTheme::HEX do
     HEX.new('#cecece').to_term(16).to_i.should == 11
   end
 
+  it "converts itself to term 8" do
+    HEX.new('#ffffff').to_term(8).to_i.should == 0
+  end
+
+  it "converts itself to term 8 and determines the nearest term colour" do
+    HEX.new('#3a6e9c').to_term(8).to_i.should == 1
+  end
+
   it "represents itself as String" do
     HEX.new('#ffffff').to_s.should == '#ffffff'
   end
