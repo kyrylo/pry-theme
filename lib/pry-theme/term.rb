@@ -8,6 +8,10 @@ module PryTheme
       @color_model = color_model
     end
 
+    def inspect
+      "(TERM-#{ @color_model }: #{ @value })"
+    end
+
     def to_i
       @value
     end
@@ -21,6 +25,7 @@ module PryTheme
           case color_model
           when 256 then value.between?(0, 255)
           when 16  then value.between?(0, 15)
+          when 8   then value.between?(0, 7)
           else raise ArgumentError,
                     'invalid color model for PryTheme::TERM#new(): ' \
                     "\"#{ color_model }\""
