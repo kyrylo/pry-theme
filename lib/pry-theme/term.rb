@@ -1,4 +1,7 @@
 module PryTheme
+  # @since 0.2.0
+  # @api private
+  #
   # Represents a terminal colour (not ANSI). Checks whether a number fits in its
   # colour model.
   class TERM
