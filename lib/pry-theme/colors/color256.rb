@@ -1,5 +1,6 @@
 require 'pry-theme/layer'
 require 'pry-theme/ansi'
+require 'pry-theme/effects'
 require 'pry-theme/colors/color256/fg'
 
 module PryTheme
@@ -15,28 +16,6 @@ module PryTheme
     }
 
     private_constant :OPTS
-
-    module Effects
-      extend self
-
-      LIST = {
-        :bold      => 1,
-        :italic    => 3,
-        :underline => 4
-      }
-
-      def bold(options)
-        options[:bold] && LIST[:bold]
-      end
-
-      def italic(options)
-        options[:italic] && LIST[:italic]
-      end
-
-      def underline(options)
-        options[:underline] && LIST[:underline]
-      end
-    end
 
     def initialize(options = {})
       ansi = ANSI.new(OPTS.merge(options))
