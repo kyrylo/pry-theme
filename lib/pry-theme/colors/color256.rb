@@ -1,8 +1,3 @@
-require 'pry-theme/layer'
-require 'pry-theme/ansi'
-require 'pry-theme/effects'
-require 'pry-theme/colors/color256/fg'
-
 module PryTheme
   class Color256
 
@@ -18,7 +13,7 @@ module PryTheme
     private_constant :OPTS
 
     def initialize(options = {})
-      ansi = ANSI.new(OPTS.merge(options))
+      ansi = Color.new(OPTS.merge(options).merge!(:fg => self.class))
       @foreground  = ansi.foreground
       @background  = ansi.background
       @readable_fg = ansi.readable_fg

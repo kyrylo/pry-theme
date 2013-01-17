@@ -1,9 +1,8 @@
 module PryTheme
-  module Layer
-    extend self
+  module Layered
 
-    def foreground(options)
-      fg = FG[extract_options(options, :foreground)]
+    def foreground
+      fg = fg_hash[extract_options(options, :foreground)]
       if fg
         fg.is_a?(Array) ? fg.first : fg
       else
@@ -11,8 +10,8 @@ module PryTheme
       end
     end
 
-    def background(options)
-      bg = FG[extract_options(options, :background)]
+    def background
+      bg = fg_hash[extract_options(options, :background)]
       if bg
         bg.is_a?(Array) ? bg.first : bg
       else
@@ -35,15 +34,20 @@ module PryTheme
       end
 
       unless value.is_a?(String)
-        val = FG.find { |r, *t| t.flatten.include?(value) }
+        val = fg_hash.find { |r, *t| t.flatten.include?(value) }
         value = val.first if val
       end
 
-      if FG.has_key?(value) || value == false
+      if fg_hash.has_key?(value) || value == false
         value
       else
         raise ArgumentError, %|invalid #{opt.to_s} value "#{ options[opt] }"|
       end
     end
+
+    def fg_hash
+      options[:fg].const_get(:FG)
+    end
+
   end
 end
