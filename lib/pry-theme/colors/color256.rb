@@ -1,3 +1,5 @@
+require 'pry-theme/layer'
+require 'pry-theme/ansi'
 require 'pry-theme/colors/color256/fg'
 
 module PryTheme
@@ -12,7 +14,7 @@ module PryTheme
       :underline  => false,
     }
 
-    private_constant :FG, :OPTS
+    private_constant :OPTS
 
     module Effects
       extend self
