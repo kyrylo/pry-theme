@@ -41,29 +41,12 @@ module PryTheme
       create_ansi_sequence(fg, bg)
     end
 
-    def bold
-      @bold
-    end
-
-    def bold?
-      !!bold
-    end
-
-    def underline
-      @underline
-    end
-
-    def underline?
-      !!underline
-    end
-
-    def italic
-      @italic
-    end
-
-    def italic?
-      !!italic
-    end
+    def bold; @bold; end
+    def bold?; !!bold; end
+    def underline; @underline; end
+    def underline?; !!underline; end
+    def italic; @italic; end
+    def italic?; !!italic; end
 
     private
 
