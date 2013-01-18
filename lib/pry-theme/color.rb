@@ -254,22 +254,14 @@ module PryTheme
           'seashell'             => 255
         },
         16 => {
-          'black'          => 30,
-          'red'            => 31,
-          'green'          => 32,
-          'yellow'         => 33,
-          'blue'           => 34,
-          'magenta'        => 35,
-          'cyan'           => 36,
-          'white'          => 37,
-          'bright_black'   => 38,
-          'bright_red'     => 10,
-          'bright_green'   => 11,
-          'bright_yellow'  => 12,
-          'bright_blue'    => 13,
-          'bright_magenta' => 14,
-          'bright_cyan'    => 15,
-          'bright_white'   => 16,
+          'bright_black'   => [30, 1],
+          'bright_red'     => [31, 1],
+          'bright_green'   => [32, 1],
+          'bright_yellow'  => [33, 1],
+          'bright_blue'    => [34, 1],
+          'bright_magenta' => [35, 1],
+          'bright_cyan'    => [36, 1],
+          'bright_white'   => [37, 1],
         },
         8 => {
           'black'   => 30,
@@ -284,36 +276,28 @@ module PryTheme
       },
       :background => {
         16 => {
-          'black'          => -1,
-          'red'            => -2,
-          'green'          => -3,
-          'yellow'         => -4,
-          'blue'           => -5,
-          'magenta'        => -6,
-          'cyan'           => -7,
-          'white'          => -8,
-          'bright_black'   => -9,
-          'bright_red'     => -10,
-          'bright_green'   => -11,
-          'bright_yellow'  => -12,
-          'bright_blue'    => -13,
-          'bright_magenta' => -14,
-          'bright_cyan'    => -15,
-          'bright_white'   => -16,
+          'black'          => 40,
+          'red'            => 41,
+          'green'          => 42,
+          'yellow'         => 43,
+          'blue'           => 44,
+          'magenta'        => 45,
+          'cyan'           => 46,
+          'white'          => 47,
+          'bright_black'   => 40,
+          'bright_red'     => 41,
+          'bright_green'   => 42,
+          'bright_yellow'  => 43,
+          'bright_blue'    => 44,
+          'bright_magenta' => 45,
+          'bright_cyan'    => 46,
+          'bright_white'   => 47,
         },
-        8 => {
-          'black'   => 40,
-          'red'     => 41,
-          'green'   => 42,
-          'yellow'  => 43,
-          'blue'    => 44,
-          'magenta' => 45,
-          'cyan'    => 46,
-          'white'   => 47,
-        }
       }
     }
+    @@colors[:foreground][16].merge!(@@colors[:foreground][8])
     @@colors[:background][256] = @@colors[:foreground][256]
+    @@colors[:background][8]   = @@colors[:background][16]
 
     # The default colour options Hash.
     OPTS = {
@@ -419,10 +403,14 @@ module PryTheme
 
     def layer_color(layer)
       if layer
-        layer.is_a?(Array) ? layer.first : layer
+        layer.is_a?(Array) ? build_layer(layer) : layer
       else
         false
       end
+    end
+
+    def build_layer(layer)
+      layer.first
     end
 
     def find_color(layer)
