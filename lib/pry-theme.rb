@@ -1,3 +1,8 @@
+require 'pry-theme/hex'
+require 'pry-theme/rgb'
+require 'pry-theme/term'
+require 'pry-theme/color'
+
 module PryTheme
 
   # The VERSION file must be in the root directory of the library.
