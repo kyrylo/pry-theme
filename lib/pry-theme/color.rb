@@ -325,15 +325,13 @@ module PryTheme
     def initialize(color_model, options = {})
       @options     = OPTS.merge(options)
       @color_model = color_model
-      @foreground  = foreground_layer
-      @background  = background_layer
     end
 
     def foreground(readable = false)
       if readable
         options[:foreground]
       else
-        @foreground ||= foreground_layer
+        foreground_layer
       end
     end
 
@@ -341,7 +339,7 @@ module PryTheme
       if readable
         options[:background]
       else
-        @background ||= background_layer
+        background_layer
       end
     end
 
@@ -351,17 +349,17 @@ module PryTheme
     end
 
     def bold
-      @bold ||= options[:bold] && EFFECTS[:bold]
+      options[:bold] && EFFECTS[:bold]
     end
     def bold?; !!bold; end
 
     def italic
-      @italic ||= options[:italic] && EFFECTS[:italic]
+      options[:italic] && EFFECTS[:italic]
     end
     def italic?; !!italic; end
 
     def underline
-      @underline ||= options[:underline] && EFFECTS[:underline]
+      options[:underline] && EFFECTS[:underline]
     end
     def underline?; !!underline; end
 
@@ -441,7 +439,7 @@ module PryTheme
     end
 
     def colors(layer = :foreground)
-      @@colors[layer][@color_model]
+      @@colors[layer][color_model]
     end
 
   end
