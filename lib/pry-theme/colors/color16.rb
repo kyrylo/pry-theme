@@ -19,6 +19,11 @@ module PryTheme
       [background]
     end
 
+    def build_effects_sequence
+      []
+    end
+
+
     def find_from_fixnum(color_id)
       color = colors.each_with_index.to_a.rassoc(color_id)
       color.first.last if color

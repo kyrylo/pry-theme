@@ -91,6 +91,13 @@ describe PryTheme::Color16 do
             :background => [123, 11, 44])
         }.should.raise(TypeError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color16.new(:from => :hex,
+                            :foreground => '#afaf11',
+                            :background => '#eaeaea')
+        binding.pry
+      end
     end
 
     describe "rgb" do

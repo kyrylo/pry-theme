@@ -1,6 +1,8 @@
 module PryTheme
   class Color256 < PryTheme::Color
 
+    include Formattable
+
     def initialize(options = {})
       super(256, options)
     end
@@ -20,8 +22,8 @@ module PryTheme
     end
 
     def find_from_fixnum(color_id)
-      found_color = colors.find { |_, *term| term.flatten.include?(color_id) }
-      found_color.first if found_color
+      pair = colors.find { |_, *term| term.flatten.include?(color_id) }
+      pair.first if pair
     end
 
   end

@@ -309,13 +309,7 @@ module PryTheme
       :underline   => false,
     }
 
-    EFFECTS = {
-      :bold      => 1,
-      :italic    => 3,
-      :underline => 4
-    }
-
-    private_constant :OPTS, :EFFECTS
+    private_constant :OPTS
 
     attr_reader :color_model
 
@@ -325,22 +319,17 @@ module PryTheme
     def initialize(color_model, options = {})
       @options     = OPTS.merge(options)
       @color_model = color_model
+      set_layers
     end
 
     def foreground(readable = false)
-      if readable
-        options[:foreground]
-      else
-        foreground_layer
-      end
+      @readable_fg = find_color(:foreground)
+      readable ? @readable_fg : layer_color(colors[@readable_fg])
     end
 
     def background(readable = false)
-      if readable
-        options[:background]
-      else
-        background_layer
-      end
+      @readable_bg = find_color(:background)
+      readable ? @readable_bg : layer_color(colors(:background)[@readable_bg])
     end
 
     def to_ansi
@@ -348,22 +337,12 @@ module PryTheme
       create_ansi_sequence(fg, bg)
     end
 
-    def bold
-      options[:bold] && EFFECTS[:bold]
-    end
-    def bold?; !!bold; end
-
-    def italic
-      options[:italic] && EFFECTS[:italic]
-    end
-    def italic?; !!italic; end
-
-    def underline
-      options[:underline] && EFFECTS[:underline]
-    end
-    def underline?; !!underline; end
-
     private
+
+    def set_layers
+      foreground
+      background
+    end
 
     def create_ansi_sequence(fg, bg, default_seq)
       (if fg && bg
@@ -391,14 +370,6 @@ module PryTheme
       [background]
     end
 
-    def foreground_layer
-      layer_color(colors[find_color(:foreground)])
-    end
-
-    def background_layer
-      layer_color(colors(:background)[find_color(:background)])
-    end
-
     def layer_color(layer)
       if layer
         layer.is_a?(Array) ? build_layer(layer) : layer
@@ -416,8 +387,8 @@ module PryTheme
       when String
         return color_id if colors.has_key?(color_id)
       when Fixnum
-        id = find_from_fixnum(color_id)
-        return id if id
+        color_id = find_from_fixnum(color_id)
+        return color_id if color_id
       when false
         return color_id
       end
