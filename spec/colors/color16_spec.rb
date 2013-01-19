@@ -71,6 +71,32 @@ describe PryTheme::Color16 do
             :background => '')
         }.should.raise(ArgumentError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color16.new(:from => :readable,
+                            :foreground => 'bright_black',
+                            :background => 'green')
+        color.foreground.should == '30;1'
+        color.foreground(true).should == 'bright_black'
+        color.background.should == 42
+        color.background(true).should == 'green'
+      end
+
+      it "sets foreground properly" do
+        color = Color16.new(:from => :readable, :foreground => 'bright_black')
+        color.foreground.should == '30;1'
+        color.foreground(true).should == 'bright_black'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color16.new(:from => :readable, :background => 'green')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 42
+        color.background(true).should == 'green'
+      end
     end
 
     describe "hex" do
@@ -96,7 +122,26 @@ describe PryTheme::Color16 do
         color = Color16.new(:from => :hex,
                             :foreground => '#afaf11',
                             :background => '#eaeaea')
-        binding.pry
+        color.foreground.should == '30;1'
+        color.foreground(true).should == 'bright_black'
+        color.background.should == 43
+        color.background(true).should == 'bright_yellow'
+      end
+
+      it "sets foreground properly" do
+        color = Color16.new(:from => :hex, :foreground => '#afaf11')
+        color.foreground.should == '30;1'
+        color.foreground(true).should == 'bright_black'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color16.new(:from => :hex, :background => '#eaeaea')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 43
+        color.background(true).should == 'bright_yellow'
       end
     end
 
@@ -118,6 +163,32 @@ describe PryTheme::Color16 do
             :background => [123, 11, 44])
         }.should.raise(ArgumentError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color16.new(:from => :rgb,
+                            :foreground => '31, 31, 101',
+                            :background => '125, 101, 255')
+        color.foreground.should == 31
+        color.foreground(true).should == 'red'
+        color.background.should == 46
+        color.background(true).should == 'cyan'
+      end
+
+      it "sets foreground properly" do
+        color = Color16.new(:from => :rgb, :foreground => '31, 31, 101')
+        color.foreground.should == 31
+        color.foreground(true).should == 'red'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color16.new(:from => :rgb, :background => '125, 101, 255')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 46
+        color.background(true).should == 'cyan'
+      end
     end
 
     describe "term" do
@@ -137,6 +208,30 @@ describe PryTheme::Color16 do
             :foreground => 10,
             :background => 'asd')
         }.should.raise(TypeError)
+      end
+
+      it "sets background and foreground properly" do
+        color = Color16.new(:from => :term, :foreground => 4, :background => 8)
+        color.foreground.should == 34
+        color.foreground(true).should == 'blue'
+        color.background.should == 40
+        color.background(true).should == 'bright_black'
+      end
+
+      it "sets foreground properly" do
+        color = Color16.new(:from => :term, :foreground => 4)
+        color.foreground.should == 34
+        color.foreground(true).should == 'blue'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color16.new(:from => :term, :background => 8)
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 40
+        color.background(true).should == 'bright_black'
       end
     end
   end

@@ -254,6 +254,14 @@ module PryTheme
           'seashell'             => 255
         },
         16 => {
+          'black'          => 30,
+          'red'            => 31,
+          'green'          => 32,
+          'yellow'         => 33,
+          'blue'           => 34,
+          'magenta'        => 35,
+          'cyan'           => 36,
+          'white'          => 37,
           'bright_black'   => [30, 1],
           'bright_red'     => [31, 1],
           'bright_green'   => [32, 1],
@@ -295,7 +303,6 @@ module PryTheme
         },
       }
     }
-    @@colors[:foreground][16].merge!(@@colors[:foreground][8])
     @@colors[:background][256] = @@colors[:foreground][256]
     @@colors[:background][8]   = @@colors[:background][16]
 
@@ -397,6 +404,8 @@ module PryTheme
     end
 
     def cast_color(layer)
+      return false unless options[layer]
+
       case options[:from]
       when :readable
         options[layer]

@@ -155,6 +155,32 @@ describe PryTheme::Color256 do
             :background => [123, 11, 44])
         }.should.raise(ArgumentError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color256.new(:from => :readable,
+                             :foreground => 'dark_indigo',
+                             :background => 'klein_blue')
+        color.foreground.should == 17
+        color.foreground(true).should == 'dark_indigo'
+        color.background.should == 32
+        color.background(true).should == 'klein_blue'
+      end
+
+      it "sets foreground properly" do
+        color = Color256.new(:from => :readable, :foreground => 'dark_indigo')
+        color.foreground.should == 17
+        color.foreground(true).should == 'dark_indigo'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color256.new(:from => :readable, :background => 'klein_blue')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 32
+        color.background(true).should == 'klein_blue'
+      end
     end
 
     describe "hex" do
@@ -174,6 +200,32 @@ describe PryTheme::Color256 do
             :foreground => '#222222',
             :background => [123, 11, 44])
         }.should.raise(TypeError)
+      end
+
+      it "sets background and foreground properly" do
+        color = Color256.new(:from => :hex,
+                            :foreground => '#afaf11',
+                            :background => '#eaeaea')
+        color.foreground.should == 142
+        color.foreground(true).should == 'old_gold'
+        color.background.should == 189
+        color.background(true).should == 'periwinkle'
+      end
+
+      it "sets foreground properly" do
+        color = Color256.new(:from => :hex, :foreground => '#afaf11')
+        color.foreground.should == 142
+        color.foreground(true).should == 'old_gold'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color256.new(:from => :hex, :background => '#eaeaea')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 189
+        color.background(true).should == 'periwinkle'
       end
     end
 
@@ -195,6 +247,32 @@ describe PryTheme::Color256 do
             :background => [123, 11, 44])
         }.should.raise(ArgumentError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color256.new(:from => :rgb,
+                            :foreground => '31, 31, 101',
+                            :background => '125, 101, 255')
+        color.foreground.should == 17
+        color.foreground(true).should == 'dark_indigo'
+        color.background.should == 99
+        color.background(true).should == 'heliotrope01'
+      end
+
+      it "sets foreground properly" do
+        color = Color256.new(:from => :rgb, :foreground => '31, 31, 101')
+        color.foreground.should == 17
+        color.foreground(true).should == 'dark_indigo'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color256.new(:from => :rgb, :background => '125, 101, 255')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 99
+        color.background(true).should == 'heliotrope01'
+      end
     end
 
     describe "term" do
@@ -214,6 +292,30 @@ describe PryTheme::Color256 do
             :foreground => '#222222',
             :background => 'gray05')
         }.should.raise(TypeError)
+      end
+
+      it "sets background and foreground properly" do
+        color = Color256.new(:from => :term, :foreground => 4, :background => 84)
+        color.foreground.should == 4
+        color.foreground(true).should == 'navy_blue'
+        color.background.should == 84
+        color.background(true).should == 'spring_green03'
+      end
+
+      it "sets foreground properly" do
+        color = Color256.new(:from => :term, :foreground => 4)
+        color.foreground.should == 4
+        color.foreground(true).should == 'navy_blue'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color256.new(:from => :term, :background => 84)
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 84
+        color.background(true).should == 'spring_green03'
       end
     end
   end

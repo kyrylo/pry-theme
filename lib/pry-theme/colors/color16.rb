@@ -23,10 +23,8 @@ module PryTheme
       []
     end
 
-
     def find_from_fixnum(color_id)
-      color = colors.each_with_index.to_a.rassoc(color_id)
-      color.first.last if color
+      colors.each_with_index.to_a.rassoc(color_id).first.first
     end
 
     def build_layer(layer)

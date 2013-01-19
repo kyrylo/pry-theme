@@ -71,6 +71,32 @@ describe PryTheme::Color8 do
             :background => [123, 11, 44])
         }.should.raise(ArgumentError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color8.new(:from => :readable,
+                            :foreground => 'black',
+                            :background => 'green')
+        color.foreground.should == 30
+        color.foreground(true).should == 'black'
+        color.background.should == 42
+        color.background(true).should == 'green'
+      end
+
+      it "sets foreground properly" do
+        color = Color8.new(:from => :readable, :foreground => 'black')
+        color.foreground.should == 30
+        color.foreground(true).should == 'black'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color8.new(:from => :readable, :background => 'green')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 42
+        color.background(true).should == 'green'
+      end
     end
 
     describe "hex" do
@@ -90,6 +116,32 @@ describe PryTheme::Color8 do
             :foreground => '#222222',
             :background => [123, 11, 44])
         }.should.raise(TypeError)
+      end
+
+      it "sets background and foreground properly" do
+        color = Color8.new(:from => :hex,
+                            :foreground => '#afaf11',
+                            :background => '#eaeaea')
+        color.foreground.should == 34
+        color.foreground(true).should == 'blue'
+        color.background.should == 45
+        color.background(true).should == 'magenta'
+      end
+
+      it "sets foreground properly" do
+        color = Color8.new(:from => :hex, :foreground => '#afaf11')
+        color.foreground.should == 34
+        color.foreground(true).should == 'blue'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color8.new(:from => :hex, :background => '#eaeaea')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 45
+        color.background(true).should == 'magenta'
       end
     end
 
@@ -111,6 +163,32 @@ describe PryTheme::Color8 do
             :background => [123, 11, 44])
         }.should.raise(ArgumentError)
       end
+
+      it "sets background and foreground properly" do
+        color = Color8.new(:from => :rgb,
+                            :foreground => '31, 31, 101',
+                            :background => '125, 101, 255')
+        color.foreground.should == 30
+        color.foreground(true).should == 'black'
+        color.background.should == 43
+        color.background(true).should == 'yellow'
+      end
+
+      it "sets foreground properly" do
+        color = Color8.new(:from => :rgb, :foreground => '31, 31, 101')
+        color.foreground.should == 30
+        color.foreground(true).should == 'black'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color8.new(:from => :rgb, :background => '125, 101, 255')
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 43
+        color.background(true).should == 'yellow'
+      end
     end
 
     describe "term" do
@@ -130,6 +208,30 @@ describe PryTheme::Color8 do
             :foreground => 33,
             :background => 42)
         }.should.raise(ArgumentError)
+      end
+
+      it "sets background and foreground properly" do
+        color = Color8.new(:from => :term, :foreground => 0, :background => 7)
+        color.foreground.should == 30
+        color.foreground(true).should == 'black'
+        color.background.should == 47
+        color.background(true).should == 'white'
+      end
+
+      it "sets foreground properly" do
+        color = Color8.new(:from => :term, :foreground => 0)
+        color.foreground.should == 30
+        color.foreground(true).should == 'black'
+        color.background.should == false
+        color.background(true).should == false
+      end
+
+      it "sets background properly" do
+        color = Color8.new(:from => :term, :background => 7)
+        color.foreground.should == false
+        color.foreground(true).should == false
+        color.background.should == 47
+        color.background(true).should == 'white'
       end
     end
   end

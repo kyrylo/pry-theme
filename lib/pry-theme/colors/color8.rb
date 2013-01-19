@@ -20,7 +20,7 @@ module PryTheme
     end
 
     def find_from_fixnum(color_id)
-      colors.each_with_index.to_a.rassoc(color_id)
+      colors.each_with_index.to_a.rassoc(color_id).first.first
     end
 
     def build_effects_sequence
