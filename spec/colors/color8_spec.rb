@@ -52,6 +52,22 @@ describe PryTheme::Color8 do
     end
   end
 
+  describe "effects" do
+    it "can't be bold" do
+      lambda { Color8.new(:bold => true).bold? }.should.raise(NoMethodError)
+    end
+
+    it "can't be italic" do
+      lambda { Color8.new(:italic => true).italic?
+        }.should.raise(NoMethodError)
+    end
+
+    it "can't be underlined" do
+      lambda { Color8.new(:underline => true).underline?
+        }.should.raise(NoMethodError)
+    end
+  end
+
   describe "argument types" do
     describe "readable" do
       it "works" do
