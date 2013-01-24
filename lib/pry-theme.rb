@@ -15,6 +15,18 @@ module PryTheme
   VERSION = File.exist?(VERSION_FILE) ?
     File.read(VERSION_FILE).chomp : '(could not find VERSION file)'
 
+  # The root path of Pry Theme source code.
+  ROOT = File.expand_path(File.dirname(__FILE__))
+
+  # The path of the directory with Pry configuration files.
+  CONFIG_DIR = File.join(ENV['HOME'], '.pry')
+
+  # The path of the default Pry Theme themes.
+  DEF_THEMES = File.join(ROOT, '..', 'themes')
+
+  # The path where the user should keep their themes.
+  USER_THEMES = File.join(CONFIG_DIR, 'themes')
+
   class << self
     # @since 0.2.0
     # @api public
