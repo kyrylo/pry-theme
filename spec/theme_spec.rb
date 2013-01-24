@@ -403,4 +403,24 @@ describe PryTheme::Theme do
       #message.should.match /foreground and background are not of the same type/
     #end
   end
+
+  describe "state" do
+    it "can be active" do
+      theme = PryTheme.create{}
+      theme.activate
+      theme.active?.should == true
+    end
+
+    it "can be disabled" do
+      theme = PryTheme.create{}
+      theme.activate
+      theme.disable
+      theme.active?.should == false
+    end
+
+    it "is inactive by default" do
+      theme = PryTheme.create{}
+      theme.active?.should == false
+    end
+  end
 end

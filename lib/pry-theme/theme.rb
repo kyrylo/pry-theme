@@ -27,11 +27,16 @@ module PryTheme
     #   definitions
     attr_reader :definition
 
+    # @return [Boolean] whether this theme is a current theme
+    attr_reader :active
+    alias_method :active?, :active
+
     # @see PryTheme::create
     def initialize(config = {}, &block)
       @config = DEFAULT_CONFIG.merge(config)
       @authors = [{ :name => @config[:author] }]
       @default_author = true
+      @active = false
 
       validate_config
 
@@ -76,6 +81,14 @@ module PryTheme
 
     def color_model
       @config[:color_model]
+    end
+
+    def disable
+      @active = false
+    end
+
+    def activate
+      @active = true
     end
 
     private
