@@ -1,5 +1,5 @@
 t = PryTheme.create name: 'github' do
-  author 'John Mair'
+  author name: 'John Mair'
   author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
   description 'Based on GitHub theme'
 

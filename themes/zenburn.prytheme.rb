@@ -1,5 +1,5 @@
 t = PryTheme.create name: 'zenburn' do
-  author name: 'Kyrylo Silin', 'kyrylosilin@gmail.com'
+  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
   description 'A low-contrast color scheme'
 
   define_theme do
