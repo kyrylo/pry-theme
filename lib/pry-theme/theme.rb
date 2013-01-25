@@ -88,7 +88,27 @@ module PryTheme
     end
 
     def activate
+      ::CodeRay::Encoders::Terminal::TOKEN_COLORS.merge!(to_coderay)
       @active = true
+    end
+
+    def to_coderay
+      {}.tap do |coderay|
+        @definition.class.instance_methods(false).each { |attr|
+          val = @definition.__send__(attr) if @definition
+
+          unless val.kind_of?(Color)
+            coderay[attr] = {}
+            ivars = val.instance_variables.delete_if { |v| v == :@color_model}
+            ivars.each do |ivar|
+              coderay[attr][ivar.to_s.chomp('_')[1..-1].to_sym] =
+                val.instance_variable_get(ivar).to_ansi
+            end
+          else
+            coderay[attr.to_s.chomp('_').to_sym] = val.to_ansi
+          end
+        }
+      end
     end
 
     private

@@ -423,4 +423,58 @@ describe PryTheme::Theme do
       theme.active?.should == false
     end
   end
+
+  describe "#to_coderay" do
+    before do
+      @coderay_hash = {
+        :class => '48;5;118',
+        :class_variable => '0',
+        :comment => '0',
+        :constant => '0',
+        :error => '0',
+        :float => '0',
+        :global_variable => '38;5;81;4',
+        :integer => '38;5;64;48;5;208',
+        :inline_delimiter => '0',
+        :instance_variable => '0',
+        :keyword => '0',
+        :method => '0',
+        :predefined_constant => '0',
+        :symbol => '0',
+        :regexp => {
+          :self => '0',
+          :char => '0',
+          :content => '0',
+          :delimiter => '0',
+          :modifier => '38;5;148',
+          :escape => '0',
+        },
+        :shell => {
+          :self => '0',
+          :char => '0',
+          :content => '0',
+          :delimiter => '0',
+          :escape => '0',
+        },
+        :string => {
+          :self => '38;5;186',
+          :char => '0',
+          :content => '0',
+          :delimiter => '0',
+          :escape => '0',
+        }
+      }
+    end
+
+    it "represents theme definition as a hash" do
+      theme = PryTheme.create{
+        define_theme{
+          class_(:bg => 'viridian')
+          integer('olive_drab', 'tangerine')
+          global_variable('sky01', [:underline])
+          string{ self_('flax') }
+          regexp{ modifier('lime01') } } }
+      theme.to_coderay.should == @coderay_hash
+    end
+  end
 end
