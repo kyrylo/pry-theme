@@ -1,10 +1,6 @@
-unless defined? PryTheme::VERSION
-  require File.expand_path('../lib/pry-theme/version', __FILE__)
-end
-
 Gem::Specification.new do |s|
   s.name         = "pry-theme"
-  s.version      = PryTheme::VERSION
+  s.version      = File.read('VERSION')
   s.date         = Time.now.strftime('%Y-%m-%d')
   s.summary      = "Easy way to customize your Pry colors"
   s.description  = "The plugin enables color theme support for your Pry. No more .pryrc bustling."
