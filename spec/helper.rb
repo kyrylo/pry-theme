@@ -1,13 +1,12 @@
 require 'rubygems'
 require 'pry'
+require 'pry/test/helper'
 
 Pry.config.theme = nil
 
-# Brute force or otherwise it won't work for all platforms.
-begin
-  $:.unshift File.expand_path('../../lib', __FILE__)
+unless Object.const_defined? 'PryTheme'
+  $:.unshift File.expand_path '../../lib', __FILE__
   require 'pry-theme'
-rescue
 end
 
 require 'bacon'
