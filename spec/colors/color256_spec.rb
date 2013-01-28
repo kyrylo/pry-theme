@@ -7,7 +7,7 @@ describe PryTheme::Color256 do
     it "can be set" do
       color = Color256.new(:foreground => 'bright_violet')
       color.foreground(true).should == 'bright_violet'
-      color.to_ansi.should == '38;5;164'
+      color.to_ansi.should == '38;5;128'
     end
 
     it "defaults to no colour at all" do
@@ -28,7 +28,7 @@ describe PryTheme::Color256 do
         color.bold?.should == false
         color.underline?.should == false
         color.italic?.should == false
-        color.to_ansi.should == '38;5;164'
+        color.to_ansi.should == '38;5;128'
       end
 
       it "uses bold" do
@@ -99,7 +99,7 @@ describe PryTheme::Color256 do
     it "can be set" do
       color = Color256.new(:background => 'bright_violet')
       color.background(true).should == 'bright_violet'
-      color.to_ansi.should == '48;5;164'
+      color.to_ansi.should == '48;5;128'
     end
 
     it "defaults to no colour at all" do
