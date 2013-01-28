@@ -1,38 +1,36 @@
-require 'fileutils'
-
 module PryTheme
   class WhenStartedHook
-    include PryTheme::Helper
-
     def call(target, options, _pry_)
-      FileUtils.mkdir_p(THEME_DIR) unless File.exists?(THEME_DIR)
-
-      example_themes.each do |theme|
-        # Copy a default theme to theme directory if it isn't there yet. Update
-        # an installed theme if a theme from the gem has a more recent version
-        # (version determines by theme's meta information).
-        if File.exists?(local_theme(theme))
-          new_version = theme_file_version(default_theme(theme))
-          old_version = theme_file_version(local_theme(theme))
-
-          if new_version > old_version
-            FileUtils.cp(default_theme(theme), THEME_DIR)
-          end
-        else
-          FileUtils.cp(default_theme(theme), THEME_DIR)
-        end
-      end
+      recreate_user_themes_from_default_ones
+      load_themes
 
       if Pry.config.theme
-        if Helper.installed?(Pry.config.theme)
-          PryTheme.set_theme(Pry.config.theme)
-        else
-          _pry_.output.puts %{Can't find "#{ Pry.config.theme }" theme. Using "#{ DEFAULT_THEME_NAME }"}
-          PryTheme.set_theme(DEFAULT_THEME_NAME)
-        end
+        ThemeList.activate_theme(Pry.config.theme)
       else
-        _pry_.output.puts %{Can't find `Pry.config.theme` definition in your `~/.pryrc`.\nUsing "#{ DEFAULT_THEME_NAME }" theme now.}
-        PryTheme.set_theme(DEFAULT_THEME_NAME)
+        ThemeList.activate_theme_intelligently
+      end
+    end
+
+    private
+
+    # Copy a default theme to theme directory, but only if it isn't there yet.
+    def recreate_user_themes_from_default_ones
+      FileUtils.mkdir_p(USER_THEMES_DIR) unless File.exists?(USER_THEMES_DIR)
+      default_themes = Dir.entries(DEF_THEMES_DIR) - %w{. ..}
+
+      default_themes.each do |theme|
+        user_theme_path = File.join(USER_THEMES_DIR, theme)
+        unless File.exists?(user_theme_path)
+          def_theme_path = File.join(DEF_THEMES_DIR, theme)
+          FileUtils.cp(def_theme_path, USER_THEMES_DIR)
+        end
+      end
+    end
+
+    def load_themes
+      user_themes = Dir.entries(USER_THEMES_DIR) - %w{. ..}
+      user_themes.each do |theme|
+        require File.join(USER_THEMES_DIR, theme)
       end
     end
 
