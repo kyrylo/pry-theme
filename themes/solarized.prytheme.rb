@@ -10,12 +10,12 @@ t = PryTheme.create name: 'solarized' do
     error 'abdel_kerims_beard04'
     float 'robin_egg_blue01'
     global_variable 'azure01'
-    inline_delimiter 'inline_delimiter'
+    inline_delimiter 'titian'
     instance_variable 'azure01'
     integer 'robin_egg_blue01'
     keyword 'gray03', [:bold]
-    method 'azuer01'
-    predefined_constant 'azuer01'
+    method 'azure01'
+    predefined_constant 'azure01'
     symbol 'robin_egg_blue01'
 
     regexp do
