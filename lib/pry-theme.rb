@@ -1,3 +1,7 @@
+require 'fileutils'
+
+require 'pry-theme/theme_list'
+require 'pry-theme/when_started_hook'
 require 'pry-theme/hex'
 require 'pry-theme/rgb'
 require 'pry-theme/term'
@@ -6,6 +10,7 @@ require 'pry-theme/declaration'
 require 'pry-theme/definition'
 require 'pry-theme/theme'
 require 'pry-theme/color'
+require 'pry-theme/commands'
 
 module PryTheme
 
@@ -22,14 +27,20 @@ module PryTheme
   CONFIG_DIR = File.join(ENV['HOME'], '.pry')
 
   # The path of the default Pry Theme themes.
-  DEF_THEMES = File.join(ROOT, '..', 'themes')
+  DEF_THEMES_DIR = File.join(ROOT, '..', 'themes')
 
   # The path where the user should keep their themes.
-  USER_THEMES = File.join(CONFIG_DIR, 'themes')
+  USER_THEMES_DIR = File.join(CONFIG_DIR, 'themes')
 
+  # Pry Theme Collection.
+  PTC = 'https://api.github.com/repos/kyrylo/pry-theme-collection/contents/'
+
+  # The default URL shortener (used for listing themes from PTC).
+  SHORTENER = 'http://is.gd/create.php?format=simple&url='
+
+  # @since 0.2.0
+  # @api public
   class << self
-    # @since 0.2.0
-    # @api public
     # @see https://github.com/kyrylo/pry-theme/wiki/Creating-a-New-Theme
     #
     # Creates a new Pry Theme theme.
@@ -63,6 +74,21 @@ module PryTheme
     def create(config = {}, &block)
       Theme.new(config, &block)
     end
+
+    # @return [Integer] the number of supported terminal colours. Always equal
+    #   to 16 on Windows.
+    def tput_colors
+      `tput colors`.to_i
+    rescue Errno::ENOENT
+      16
+    end
+
+    # @param [Integer] color
+    # @return [Class] the class, which corresponds to the given +color+
+    def color_const(color)
+      const_get(:"Color#{ color }")
+    end
   end
 
+  Pry.config.hooks.add_hook(:when_started, :pry_theme, WhenStartedHook.new)
 end
