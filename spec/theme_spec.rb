@@ -234,6 +234,12 @@ describe PryTheme::Theme do
     end
 
     describe "broken theme" do
+      it "raises error when colour definition is malformed" do
+        should.raise(PryTheme::ThemeError) {
+          PryTheme.create{ define_theme { class_ 'wowzers' } }
+        }.message.should =~ /malformed color declaration \(wowzers\)/
+      end
+
       describe "with 8 colours" do
         it "doesn't allow effects" do
           lambda { PryTheme.create(:color_model => 8) {

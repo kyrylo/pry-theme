@@ -49,6 +49,8 @@ module PryTheme
             next
           end
         end
+        raise PryTheme::ThemeError,
+          %|malformed color declaration (#{ [@fg, @bg].compact.join(', ') })|
       end
 
       private
