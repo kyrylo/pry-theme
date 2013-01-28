@@ -1,38 +1,46 @@
-t = PryTheme.create name: 'pry-cold-8', color_model: 8 do
+t = PryTheme.create name: 'pry-siberia-16', color_model: 16 do
   author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
-  author name: 'John Mair'
-  description 'Based on Charcoalblack theme from Emacs'
+  description 'This one reminds me of the cold Siberia...'
 
   define_theme do
-    #class_ 'magenta'
-    #class_variable 'cyan'
-    #comment 'blue'
-    #constant 'blue'
-    #error 'yellow', 'red'
-    #float 'magenta'
-    #global_variable bg: 'green'
-    #integer 'blue'
-    #keyword 'red'
-    #method 'blue'
-    #predefined_constant 'cyan'
-    #symbol 'green'
+    class_ 'bright_blue'
+    class_variable 'bright_blue'
+    comment 'yellow'
+    constant 'bright_blue'
+    error 'white', 'bright_blue'
+    float 'bright_yellow'
+    global_variable 'bright_yellow'
+    inline_delimiter 'green'
+    instance_variable 'bright_blue'
+    integer 'bright_yellow'
+    keyword 'bright_blue'
+    method 'bright_cyan'
+    predefined_constant 'bright_cyan'
+    symbol 'cyan'
 
-    #regexp do
-      #self_ 'red'
-      #content 'red'
-      #delimiter 'red'
-      #modifier 'magenta'
-    #end
+    regexp do
+      self_ 'bright_blue'
+      char 'bright_blue'
+      content 'bright_blue'
+      delimiter 'blue'
+      modifier 'blue'
+      escape 'blue'
+    end
 
-    #shell do
-      #self_ bg: 'green'
-      #delimiter 'white'
-    #end
+    shell do
+      self_ 'bright_blue'
+      char 'bright_blue'
+      content 'bright_blue'
+      delimiter 'blue'
+      escape 'blue'
+    end
 
-    #string do
-      #self_ 'green'
-      #content 'green'
-      #delimiter 'green'
-    #end
+    string do
+      self_ 'bright_blue'
+      char 'bright_blue'
+      content 'bright_blue'
+      delimiter 'blue'
+      escape 'blue'
+    end
   end
 end
