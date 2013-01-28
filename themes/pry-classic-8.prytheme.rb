@@ -4,7 +4,7 @@ t = PryTheme.create name: 'pry-classic-8', color_model: 8 do
 
   define_theme do
     class_ 'magenta'
-    class_variable 'cyan'
+    class_variable 'blue'
     comment 'blue'
     constant 'blue'
     error 'yellow', 'red'
