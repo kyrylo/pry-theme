@@ -9,7 +9,9 @@ t = PryTheme.create name: 'pry-classic-8', color_model: 8 do
     constant 'blue'
     error 'yellow', 'red'
     float 'magenta'
-    global_variable bg: 'green'
+    global_variable 'green'
+    inline_delimiter 'red'
+    instance_variable 'blue'
     integer 'blue'
     keyword 'red'
     method 'blue'
@@ -18,20 +20,27 @@ t = PryTheme.create name: 'pry-classic-8', color_model: 8 do
 
     regexp do
       self_ 'red'
+      char 'red'
       content 'red'
       delimiter 'red'
       modifier 'magenta'
+      escape 'red'
     end
 
     shell do
-      self_ bg: 'green'
-      delimiter 'white'
+      self_ 'green'
+      char 'green'
+      content 'green'
+      delimiter 'green'
+      escape 'green'
     end
 
     string do
       self_ 'green'
+      char 'green'
       content 'green'
       delimiter 'green'
+      escape 'green'
     end
   end
 end
