@@ -1,329 +1,322 @@
+# coding: utf-8
+require 'net/https'
+require 'json'
+
+
 module PryTheme
   Command = Class.new
 
   class Command::PryTheme < Pry::ClassCommand
-    include PryTheme::Helper
+    include Pry::Helpers::BaseHelpers
+    include Pry::Helpers::CommandHelpers
 
     match 'pry-theme'
     description 'Manage your Pry themes.'
 
-    banner <<-BANNER
+    banner <<-'BANNER'
       Usage: pry-theme [OPTIONS] [--help]
 
-      Change your theme on the fly (for one session).
-
-        pry-theme pry-modern
-
-      Show all themes from Pry Theme Collection.
-
-        pry-theme -r
-
-      Install a theme from Pry Theme Collection.
-
-        pry-theme -i pry-classic
-
-      Test your current color theme.
-
-        pry-theme -t
+      The command comes from `pry-theme` plugin.
+      It enbales color theme support for your Pry.
 
       Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
       Cheatsheet: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-Cheatsheet
+
+      pry-theme try pry-modern-256 # changes theme on the fly
+      pry-theme current            # shows currently active theme name
+      pry-theme current --colors   # tests colors from the current theme
+      pry-theme list               # shows all installed themes
+      pry-theme list --remote      # shows all themes from Pry Theme Collection
+      pry-theme colors             # shows a list of all colors
+      pry-theme colors --model 8   # shows a list of colors according to 8 color model
+      pry-theme install autumn     # installs a theme from Pry Theme Collection
+      pry-theme uninstall monokai  # uninstalls a theme
+      pry-theme convert -m 16 -t 3 # converts a single color to a term color
     BANNER
 
-    def options(opt)
-      opt.on :a, 'all-colors',  'Show all available 8/256 colors.'
-      opt.on :c, :color,        'Show information about a specific color (256).'
-      opt.on :t, :test,         'Test your current theme', :argument => false
-      opt.on :e, :edit,         'Edit or create a theme'
-      opt.on :l, :list,         'Show a list of installed themes', :argument => false
-      opt.on :r, 'remote-list', 'Show a list of themes from Pry Theme Collection', :argument => false
-      opt.on :i, :install,      'Install a theme from Pry Theme Collection'
+    def def_list(cmd)
+      cmd.command :list do |opt|
+        opt.description 'Show a list of all installed themes'
+
+        opt.on :r, :remote, 'Show a list of all themes from Pry Theme Collection'
+
+        opt.run do |opts, args|
+          opts.present?(:r) ? show_remote_list : show_local_list
+        end
+      end
+    end
+
+    def def_colors(cmd)
+      cmd.command :colors do |opt|
+        opt.description 'Show all available colors'
+
+        opt.on :m, :model=, 'Display colors according to the given color model'
+
+        opt.run do |opts, args|
+          if opts.present?(:m)
+            display_colors(opts[:m].to_i)
+          else
+            display_colors(PryTheme.tput_colors)
+          end
+        end
+      end
+    end
+
+     def def_create(cmd)
+      cmd.command :create do
+      end
+    end
+
+    def def_try(cmd)
+      cmd.command :try do |opt|
+        opt.description 'Change theme on the fly (for the current session only)'
+
+        opt.run do |opts, args|
+          if PryTheme::ThemeList.activate_theme(args.first)
+            output.puts "Using #{ args.first } theme"
+          else
+            output.puts %|Cannot find "#{args.first}" amongst themes in #{USER_THEMES_DIR}|
+          end
+        end
+      end
+    end
+
+    def def_edit(cmd)
+      cmd.command :edit do
+      end
+    end
+
+    def def_convert(cmd)
+      cmd.command :convert do |opt|
+        opt.description 'Convert the given color to proper terminal equivalent'
+
+        opt.on :t, :term=,  'Show a terminal color'
+        opt.on :h, :hex=,   'Convert from HEX'
+        opt.on :r, :rgb=,   'Convert from RGB'
+        opt.on :m, :model=, 'Convert accordingly to the given color model'
+
+        opt.run do |opts, args|
+          if color_model_option_only?(opts)
+            output.puts 'Provide a color value to be converted'
+          else
+            convert_color(opts, args)
+          end
+        end
+      end
+    end
+
+    def def_uninstall(cmd)
+      cmd.command :uninstall do |opt|
+        opt.description 'Uninstall a theme'
+
+        opt.run do |opts, args|
+          args.each { |theme|
+            begin
+              FileUtils.rm(File.join(USER_THEMES_DIR, "#{ theme }.prytheme.rb"))
+              output.puts %|Successfully uninstalled "#{ theme }"!|
+            rescue
+              output.puts %|Cannot find theme "#{ theme }"|
+            end
+          }
+        end
+      end
+    end
+
+    def def_install(cmd)
+      cmd.command :install do |opt|
+        opt.description 'Install a theme from Pry Theme Collection'
+
+        opt.run do |opts, args|
+          install_theme(args)
+        end
+      end
+    end
+
+    def def_current(cmd)
+      cmd.command :current do |opt|
+        opt.description 'Shows information about currently active theme'
+
+        opt.on :c, :colors, 'Display a painted code snippet'
+
+        opt.run do |opts, args|
+          current_theme_name = ThemeList.current_theme.name
+
+          if opts.present?(:c)
+            stagger_output(colorize_code(unindent <<-TEST
+          # "#{ current_theme_name }" theme.
+          class PryTheme::ThisIsAClass
+            def this_is_a_method
+              THIS_IS_A_CONSTANT  = :this_is_a_symbol
+              this_is_a_local_var = "\#{this} \#@is a string.\\n"
+              this_is_a_float     = 10_000.00
+              this_is_an_integer  = 10_000
+
+              # TRUE and FALSE are predefined constants.
+              $this_is_a_global_variable = TRUE or FALSE
+
+              @this_is_an_instance_variable = `echo '\#@hi \#{system} call\\n'`
+              @@this_is_a_class_variable    = @@@\\\\$ # An error.
+
+              /[0-9]{1,3}this \#{is} a regexp\\w+/xi
+            end
+          end
+         TEST
+        ), output)
+          elsif args.empty?
+            output.puts current_theme_name
+          end
+        end
+      end
+    end
+
+    def subcommands(cmd)
+      [:def_list, :def_colors, :def_create, :def_try,
+       :def_uninstall, :def_install, :def_current, :def_convert
+      ].each { |m| __send__(m, cmd) }
+
+      cmd.add_callback(:empty) do
+        stagger_output opts.help, output
+      end
     end
 
     def process
-      if opts.a?
-        show_palette_colors
-      elsif opts.c?
-        show_specific_color
-      elsif opts.t?
-        test_theme
-      elsif opts.e?
-        edit_theme
-      elsif opts.l?
-        show_list
-      elsif opts.r?
-        show_remote_list
-      elsif opts.i?
-        install_theme
-      elsif args[0] =~ /\A\w+-?\w+\z/
-        switch_to_theme
-      elsif args.empty?
-        output.puts "Current theme: #{PryTheme.current_theme}"
-      end
-    rescue NoPaletteError => no_palette_error
-      warn no_palette_error
-    rescue NoColorError => no_color_error
-      warn no_color_error
     end
 
     private
 
-    def switch_to_theme
-      PryTheme.set_theme(args[0].strip) and
-      output.puts "Using #{ args[0] } theme"
+    def show_table(up)
+      colors = []
+      0.upto(up-1) { |i|
+        color = PryTheme.const_get(:"Color#{ up }").new(
+          :from => :term, :foreground => i)
+        build_color_string(color, i)
+      }
+      table = Pry::Helpers.tablify_or_one_line("Color model #{ up }", colors)
+      stagger_output table, output
     end
 
-    def show_palette_colors
-      lputs in_columns(Palette.new(args[0]).to_a), output
+    def build_color_string(color, fg = nil)
+      output.puts "\e[7;%sm%s\e[0m:\e[%sm%s\e[0m" %
+        [color.to_ansi, fg || color.foreground,
+         color.to_ansi, color.foreground(true)]
     end
 
-    def in_columns(list, cols=3)
-      color_table = []
-
-      list.each_slice(cols) do |slice|
-        slice.each do |c|
-          color = c.scan(/(\e\[[\d;]+m)(\w+)(\e\[0m)(:)(\e\[[\d;]+m)(\w+)(\e\[0m)/).flatten
-          color[1] = color[1].ljust(3)
-          color[-2] = color[-2].ljust(22)
-          color_table << color
-        end
-        color_table << "\n"
-      end
-      color_table.join
-    end
-
-    def show_specific_color
-      c = args[0]
-
-      unless c
-        output.puts "This option requires an argument. Specify a color. Examples:"
-        output.puts "Pry Theme: black; RGB: 0,0,0; HEX: #000000, ANSI: 0."
-        return
-      end
-
-      color = if ansi?(c)
-                find_color(c)
-              elsif hex?(c)
-                find_color(ColorConverter.hex_to_ansi(c))
-              elsif rgb?(c)
-                find_color(ColorConverter.rgb_to_ansi(c))
-              else
-                h = ColorConverter::COLORS.select do |color|
-                  (color.human).to_s[c]
-                end
-
-                # Return human-readable colors if the
-                # select selected any. If not, return nil.
-                h if h.any?
-              end
-
-      case color
-      when Array
-        lputs color.map { |c| c.to_term(TermNotation::COLOR256) }.join("\n"), output
-      when nil
-        output.puts "Invalid color: #{ c }"
-      else
-        output.puts color.to_term(TermNotation::COLOR256)
+    def display_colors(color_model)
+      case color_model
+      when 256 then show_table(256)
+      when 16  then show_table(16)
+      when 8   then show_table(8)
       end
     end
 
-    def find_color(color)
-      ColorConverter::COLORS.find { |c| c.term == color.to_i }
-    end
+    def show_local_list
+      out = ''
+      cur_theme = ThemeList.current_theme
+      cur_theme.disable
 
-    def test_theme
-      example = <<-TEST
-# "#{ PryTheme.current_theme }" theme.
-class PryTheme::ThisIsAClass
-  def this_is_a_method
-    THIS_IS_A_CONSTANT  = :this_is_a_symbol
-    this_is_a_local_var = "\#{this} \#@is a string.\\n"
-    this_is_a_float     = 10_000.00
-    this_is_an_integer  = 10_000
+      ThemeList.each { |theme|
+        out += Pry::Helpers::Text.bold("#{theme.name} / #{theme.color_model}\n")
+        out += theme.description
+        out += "\n--\n"
 
-    # TRUE and FALSE are predefined constants.
-    $this_is_a_global_variable = TRUE or FALSE
+        theme.activate
+        out += colorize_code(unindent(<<-'CODE'
+          1: class Theme
+          2:   def method
+          3:     @ivar, @@cvar, lvar = 10_000, 400.00, "string"
+          4:   end
+          5: end
+        CODE
+        ))
+        theme.disable
+        out += "\n"
+      }
 
-    @this_is_an_instance_variable = `echo '\#@hi \#{system} call\\n'`
-    @@this_is_a_class_variable    = @@@\\\\$ # An error.
-
-    /[0-9]{1,3}this \#{is} a regexp\\w+/xi
-  end
-end
-      TEST
-
-      lputs colorize_code(example), output
-    end
-
-    def edit_theme
-      theme = args.first || PryTheme.current_theme
-      theme.tr!("+", "") if new_theme_flag = (theme[0] == "+")
-
-      if not new_theme_flag and not installed?(theme)
-        output.puts %(Can't find "#{ theme }" theme in `#{ THEME_DIR }`.)
-        output.puts "To create a new theme, prepend a `+` sign to its name."
-        output.puts "Example: `pry-theme -e +#{ theme }`."
-        return
-      elsif new_theme_flag and installed?(theme)
-        output.puts "Can't create a theme with the given name."
-        output.puts %(The "#{ theme }" theme is already exist in your system.)
-        output.puts "You can edit it with `pry-theme -e #{ theme }` command."
-        return
-      end
-
-      theme_path = pathify_theme(theme)
-
-      if new_theme_flag
-        template = <<-TEMPLATE
----
-meta:
-  theme-name  : #{ theme }
-  version     : 1
-  color-depth : 256 # Supports 8 or 256 colors.
-  description : # Should be less than 80 characters.
-  author      : # John Doe <johndoe@example.com>
-
-theme:
-  class               : # blue on yellow
-  class_variable      : # red
-  comment             : # on green
-  constant            : # (bu)
-  error               : # black (b) on white
-  float               : # (i)
-  global_variable     :
-  inline_delimiter    :
-  instance_variable   :
-  integer             :
-  keyword             :
-  method              :
-  predefined_constant :
-  regexp:
-    self              :
-    char              :
-    content           :
-    delimiter         :
-    modifier          :
-    escape            :
-  shell:
-    self              :
-    char              :
-    content           :
-    delimiter         :
-    escape            :
-  string:
-    self              :
-    char              :
-    content           :
-    delimiter         :
-    escape            :
-  symbol              :
-        TEMPLATE
-
-        # Create a template in themes directory.
-        File.open(theme_path, "w") { |f| f.puts template }
-
-        output.puts %(Created "#{ theme }" theme in `#{ THEME_DIR }`.)
-        output.puts "Opened it in #{ Pry.config.editor } for editing."
-      else
-        output.puts "Opened #{ theme } theme in #{ Pry.config.editor } for editing."
-        output.puts "Don't forget to increment a version number of theme!"
-      end
-
-      begin
-        old_theme = PryTheme.current_theme
-
-        display_preview!(theme, %<Current "#{ theme }">)
-        invoke_editor(theme_path, line=1, reloading=true)
-        display_preview!(theme, %<Edited "#{ theme }">)
-      ensure
-        PryTheme.set_theme(old_theme)
-      end
-    end
-
-    # Please, pay attention to the fact that this method changes current
-    # theme to the given theme.
-    def display_preview!(theme, header_text)
-      PryTheme.set_theme(theme)
-      display_header(header_text, output)
-      test_theme
-    end
-
-    def show_list
-      old_theme = PryTheme.current_theme.dup
-
-      all_themes = installed_themes.map do |theme|
-        theme = File.basename(theme, ".prytheme")
-        meta = Theme.new(theme)
-        PryTheme.set_theme(theme)
-
-        chunk = <<-CHUNK
-class Theme
-  def method
-    @ivar, @@cvar, lvar = 10_000, 400.00, "string"
-  end
-end
-        CHUNK
-
-        mark_current = "* " if theme == old_theme
-        header = make_bold("#{mark_current}[#{theme}]")
-        snippet = colorize_code(chunk)
-        [header, meta.description, "---", snippet].compact.join("\n")
-      end
-
-      lputs all_themes.join("\n"), output
+      stagger_output(out.chomp, output)
     ensure
-      PryTheme.set_theme(old_theme)
+      cur_theme.activate
     end
 
     def show_remote_list
-      require 'net/https'
-      require 'json'
+      uri = URI.parse(PryTheme::PTC)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      output.puts 'Fetching the list of themes from Pry Theme Collection...'
+      output.puts '→ https://github.com/kyrylo/pry-theme-collection/'
+      response = http.request(Net::HTTP::Get.new(uri.request_uri))
+      body = JSON.parse(response.body)
 
-      body = {}
-      fetch_collection("/") do |http, uri|
-        output.puts "Fetching list of themes..."
-        response = http.request(Net::HTTP::Get.new(uri.request_uri))
-        body = JSON.parse(response.body)
-      end
-
-      i = 0
-      remote_themes = body.map do |theme|
-        if (name = theme["name"]) =~ /\A(?:[a-z]|[0-9]|-)+\z/
-          "#{i+=1}. #{installed?(name) ? make_bold(name) : name}"
+      themes = body.map { |theme|
+        unless installed?(theme)
+          [theme['name'], theme['html_url']]
         end
-      end.compact
+      }.compact
 
-      lputs remote_themes.join("\n"), output
+      out = "--\n"
+      themes.each.with_index(1) { |theme, i|
+        out += "#{ i }. "
+        out += theme.first + "\n"
+
+        uri = URI.parse(PryTheme::SHORTENER + theme.last)
+        http = Net::HTTP.new(uri.host, uri.port)
+        response = http.request(Net::HTTP::Get.new(uri.request_uri))
+
+        out += response.body + "\n\n"
+      }
+      stagger_output out.chomp, output
     end
 
-    def install_theme
-      return unless args[0]
-
-      require 'net/https'
-      require 'json'
+    def install_theme(args)
       require 'base64'
 
-      body = {}
-      fetch_collection("/#{args[0]}/#{args[0]}.prytheme") do |http, uri|
-        output.puts "Fetching theme from the collection..."
+      args.each { |theme|
+        uri = URI.parse(PTC + "%s/%s.prytheme" % [theme, theme])
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+        output.puts %|Installing "#{ theme }" from Pry Theme Collection...|
         response = http.request(Net::HTTP::Get.new(uri.request_uri))
         body = JSON.parse(response.body)
+
+        if body['message']
+          output.puts %|Cannot find theme "#{ theme }"...|
+          next
+        end
+
+        File.open(File.join(USER_THEMES_DIR, "#{theme}.prytheme.rb"), 'w') do |f|
+          f.puts Base64.decode64(body['content'])
+        end
+        require File.join(USER_THEMES_DIR, "#{theme}.prytheme.rb")
+        output.puts %|Successfully installed "#{ theme }"!|
+      }
+    end
+
+    def convert_color(opts, args)
+      color_model = (opts.present?(:m) ? opts[:m] : PryTheme.tput_colors)
+
+      if opts.present?(:t)
+        color = PryTheme.color_const(color_model).new(
+          :from => :term, :foreground => opts[:t].to_i)
+        build_color_string(color)
+      elsif opts.present?(:h)
+        color = PryTheme.color_const(color_model).new(
+          :from => :hex, :foreground => opts[:h])
+        build_color_string(color)
+      elsif opts.present?(:r)
+        color = PryTheme.color_const(color_model).new(
+          :from => :rgb, :foreground => opts[:r])
+        build_color_string(color)
       end
+    rescue NameError
+      output.puts %|Unknown color model "#{ opts[:m] }". Try 8, 16 or 256|
+    end
 
-      if body["message"]
-        output.puts "Cannot find theme: #{args[0]}"
-        return
-      end
+    def color_model_option_only?(opts)
+      opts[:m] && !(opts[:h] || opts[:r] || opts[:t])
+    end
 
-      theme = Base64.decode64(body["content"])
-
-      File.open(local_theme("#{args[0]}.prytheme"), "w") do |f|
-        f.puts theme
-      end
-
-      output.puts "Successfully installed #{args[0]}!"
-    rescue
-      output.puts "An error occurred!"
+    def installed?(theme)
+      theme['name'] == 'README.md' ||
+        ThemeList.themes.map(&:name).include?(theme['name'])
     end
   end
 
