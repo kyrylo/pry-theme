@@ -54,10 +54,10 @@ describe PryTheme::Command::PryTheme do
 
   describe "'try' subcommand" do
     it "temporary switches to a theme" do
-      pry_eval('pry-theme try sick').should == "Using sick theme\n"
+      pry_eval('pry-theme try sick').should == "Using \"sick\" theme\n"
       PryTheme::ThemeList.current_theme.name.should == 'sick'
 
-      pry_eval('pry-theme try wholesome').should == "Using wholesome theme\n"
+      pry_eval('pry-theme try wholesome').should == "Using \"wholesome\" theme\n"
       PryTheme::ThemeList.current_theme.name.should == 'wholesome'
     end
 
