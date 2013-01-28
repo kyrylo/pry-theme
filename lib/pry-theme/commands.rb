@@ -70,7 +70,7 @@ module PryTheme
 
         opt.run do |opts, args|
           if PryTheme::ThemeList.activate_theme(args.first)
-            output.puts "Using #{ args.first } theme"
+            output.puts %|Using "#{ args.first }" theme|
           else
             output.puts %|Cannot find "#{args.first}" amongst themes in #{USER_THEMES_DIR}|
           end
