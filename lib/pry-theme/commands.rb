@@ -1,7 +1,4 @@
 # coding: utf-8
-require 'net/https'
-require 'json'
-
 
 module PryTheme
   Command = Class.new
@@ -238,13 +235,9 @@ module PryTheme
     end
 
     def show_remote_list
-      uri = URI.parse(PryTheme::PTC)
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
       output.puts 'Fetching the list of themes from Pry Theme Collection...'
       output.puts '→ https://github.com/kyrylo/pry-theme-collection/'
-      response = http.request(Net::HTTP::Get.new(uri.request_uri))
-      body = JSON.parse(response.body)
+      body = json_body(PryTheme::PTC)
 
       themes = body.map { |theme|
         unless installed?(theme)
@@ -266,16 +259,23 @@ module PryTheme
       stagger_output out.chomp, output
     end
 
-    def install_theme(args)
+    def json_body(address)
+      require 'net/https'
+      require 'json'
       require 'base64'
 
+      uri = URI.parse(address)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE if windows?
+      response = http.request(Net::HTTP::Get.new(uri.request_uri))
+      JSON.parse(response.body)
+    end
+
+    def install_theme(args)
       args.each { |theme|
-        uri = URI.parse(PTC + "%s/%s.prytheme" % [theme, theme])
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
         output.puts %|Installing "#{ theme }" from Pry Theme Collection...|
-        response = http.request(Net::HTTP::Get.new(uri.request_uri))
-        body = JSON.parse(response.body)
+        body = json_body(PTC + "%s/%s.prytheme" % [theme, theme])
 
         if body['message']
           output.puts %|Cannot find theme "#{ theme }"...|
