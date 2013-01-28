@@ -1,6 +1,6 @@
 # coding: utf-8
 
-t = PryTheme.create name: 'vid-default', color_model: 8 do
+t = PryTheme.create name: 'vim-default', color_model: 8 do
   author name: '☈king', email: 'rking-pry-vimscheme@sharpsaw.org'
   description 'For those familiar with the default vim colorscheme'
 
