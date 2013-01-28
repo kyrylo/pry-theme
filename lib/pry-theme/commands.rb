@@ -186,14 +186,14 @@ module PryTheme
       0.upto(up-1) { |i|
         color = PryTheme.const_get(:"Color#{ up }").new(
           :from => :term, :foreground => i)
-        build_color_string(color, i)
+        colors << build_color_string(color, i)
       }
       table = Pry::Helpers.tablify_or_one_line("Color model #{ up }", colors)
       stagger_output table, output
     end
 
     def build_color_string(color, fg = nil)
-      output.puts "\e[7;%sm%s\e[0m:\e[%sm%s\e[0m" %
+      "\e[7;%sm%s\e[0m:\e[%sm%s\e[0m" %
         [color.to_ansi, fg || color.foreground,
          color.to_ansi, color.foreground(true)]
     end
@@ -296,16 +296,14 @@ module PryTheme
       if opts.present?(:t)
         color = PryTheme.color_const(color_model).new(
           :from => :term, :foreground => opts[:t].to_i)
-        build_color_string(color)
       elsif opts.present?(:h)
         color = PryTheme.color_const(color_model).new(
           :from => :hex, :foreground => opts[:h])
-        build_color_string(color)
       elsif opts.present?(:r)
         color = PryTheme.color_const(color_model).new(
           :from => :rgb, :foreground => opts[:r])
-        build_color_string(color)
       end
+      output.puts build_color_string(color)
     rescue NameError
       output.puts %|Unknown color model "#{ opts[:m] }". Try 8, 16 or 256|
     end
