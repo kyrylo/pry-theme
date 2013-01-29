@@ -32,7 +32,7 @@ t = PryTheme.create name: 'pry-siberia-8', color_model: 8 do
       char 'cyan'
       content 'blue'
       delimiter 'cyan'
-      escape 'blue'
+      escape 'cyan'
     end
 
     string do
@@ -40,7 +40,7 @@ t = PryTheme.create name: 'pry-siberia-8', color_model: 8 do
       char 'cyan'
       content 'blue'
       delimiter 'cyan'
-      escape 'blue'
+      escape 'cyan'
     end
   end
 end
