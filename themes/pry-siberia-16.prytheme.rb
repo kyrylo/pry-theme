@@ -13,7 +13,7 @@ t = PryTheme.create name: 'pry-siberia-16', color_model: 16 do
     inline_delimiter 'green'
     instance_variable 'bright_blue'
     integer 'bright_yellow'
-    keyword 'bright_blue'
+    keyword 'cyan'
     method 'bright_cyan'
     predefined_constant 'bright_cyan'
     symbol 'cyan'
