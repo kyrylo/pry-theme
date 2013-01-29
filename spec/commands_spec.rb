@@ -124,8 +124,10 @@ describe PryTheme::Command::PryTheme do
     end
 
     describe "conversion from term" do
-      it "with implicit model" do
-        pry_eval('pry-theme convert -t 124').should =~ /bismarck_furious/
+      if PryTheme.tput_colors == 256
+        it "with implicit model" do
+          pry_eval('pry-theme convert -t 124').should =~ /bismarck_furious/
+        end
       end
 
       it "with explicit color model 8" do
@@ -142,8 +144,10 @@ describe PryTheme::Command::PryTheme do
     end
 
     describe "conversion from rgb" do
-      it "with implicit model" do
-        pry_eval('pry-theme convert -r 124,0,11').should =~ /maroon01/
+      if PryTheme.tput_colors == 256
+        it "with implicit model" do
+          pry_eval('pry-theme convert -r 124,0,11').should =~ /maroon01/
+        end
       end
 
       it "with explicit color model 8" do
@@ -160,8 +164,10 @@ describe PryTheme::Command::PryTheme do
     end
 
     describe "conversion from hex" do
-      it "with implicit model" do
-        pry_eval('pry-theme convert -h #ae3aff').should =~ /heliotrope02/
+      if PryTheme.tput_colors == 256
+        it "with implicit model" do
+          pry_eval('pry-theme convert -h #ae3aff').should =~ /heliotrope02/
+        end
       end
 
       it "with explicit color model 8" do
