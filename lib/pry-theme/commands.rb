@@ -236,7 +236,7 @@ module PryTheme
 
     def show_remote_list
       output.puts 'Fetching the list of themes from Pry Theme Collection...'
-      output.puts '→ https://github.com/kyrylo/pry-theme-collection/'
+      output.puts "#{windows?? '->':'→'} https://github.com/kyrylo/pry-theme-collection/"
       body = json_body(PryTheme::PTC)
 
       themes = body.map { |theme|
