@@ -307,7 +307,7 @@ describe PryTheme::Theme do
   describe "a wholesome theme" do
     it "works with all options :-)" do
       lambda {
-        PryTheme.create(name: 'wholesome', color_model: 8) {
+        PryTheme.create(:name => 'wholesome', :color_model => 8) {
           author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
           description 'a kool theme!'
           define_theme {
