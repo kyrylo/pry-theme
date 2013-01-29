@@ -7,7 +7,7 @@ t = PryTheme.create name: 'pry-zealand-16', color_model: 16 do
     class_variable 'bright_yellow'
     comment 'white'
     constant 'bright_yellow'
-    error 'bright_black', 'bright_yellow'
+    error 'black', 'bright_yellow'
     float 'bright_white'
     global_variable 'bright_white'
     inline_delimiter 'green'
