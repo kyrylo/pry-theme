@@ -44,3 +44,5 @@ t = PryTheme.create name: 'pry-siberia-16', color_model: 16 do
     end
   end
 end
+
+PryTheme::ThemeList.add_theme(t)
