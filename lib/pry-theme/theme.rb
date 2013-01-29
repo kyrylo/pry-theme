@@ -95,6 +95,7 @@ module PryTheme
     def to_coderay
       {}.tap do |coderay|
         @definition.class.instance_methods(false).each { |attr|
+          attr = attr.to_sym
           val = @definition.__send__(attr) if @definition
 
           unless val.kind_of?(Color)
