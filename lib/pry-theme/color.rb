@@ -315,8 +315,6 @@ module PryTheme
       :underline   => false,
     }
 
-    private_constant :OPTS
-
     attr_reader :color_model
 
     # @return []
@@ -352,11 +350,11 @@ module PryTheme
 
     def create_ansi_sequence(fg, bg, default_seq)
       (if fg && bg
-        [*build_fg_sequence, *build_effects_sequence, *build_bg_sequence]
+        [[build_fg_sequence], [build_effects_sequence], [build_bg_sequence]].flatten
       elsif fg && !bg
-        [*build_fg_sequence, *build_effects_sequence]
+        [[build_fg_sequence], [build_effects_sequence]].flatten
       elsif !fg && bg
-        [*build_bg_sequence, *build_effects_sequence]
+        [[build_bg_sequence], [build_effects_sequence]].flatten
       else
         build_effects_sequence.tap { |sequence|
           sequence << default_seq if sequence.empty?
@@ -369,7 +367,7 @@ module PryTheme
     end
 
     def build_effects_sequence
-      [bold, italic, underline].delete_if(&:!)
+      [bold, italic, underline].delete_if { |e| e == false }
     end
 
     def build_bg_sequence

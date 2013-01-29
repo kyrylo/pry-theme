@@ -99,7 +99,7 @@ module PryTheme
 
           unless val.kind_of?(Color)
             coderay[attr] = {}
-            ivars = val.instance_variables.delete_if { |v| v == :@color_model}
+            ivars = val.instance_variables.delete_if { |v| v =~ /color_model/}
             ivars.each do |ivar|
               coderay[attr][ivar.to_s.chomp('_')[1..-1].to_sym] =
                 val.instance_variable_get(ivar).to_ansi

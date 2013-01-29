@@ -11,7 +11,7 @@ t = PryTheme.create :name => 'railscasts' do
     constant 'white'
     error 'white', 'maroon'
     float 'asparagus'
-    global_variable bg: 'robin_egg_blue03'
+    global_variable :bg => 'robin_egg_blue03'
     inline_delimiter 'emerald02'
     instance_variable 'robin_egg_blue03'
     integer 'asparagus'

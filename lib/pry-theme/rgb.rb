@@ -27,10 +27,10 @@ module PryTheme
 
     # 16 colours. For cmd.exe on Windows and other miserable terminals.
     SYSTEM = [
-      *LINUX,
       [128, 128, 128], [255,   0,   0], [  0, 255,   0], [255, 255,   0],
       [  0,   0, 255], [255,   0, 255], [  0, 255, 255], [255, 255, 255]
     ]
+    SYSTEM.unshift(*LINUX)
 
     # The next 216 colours. For men.
     COLORS = [
@@ -98,8 +98,6 @@ module PryTheme
 
     # The key points that are used to calculate the nearest match of an RGB.
     BYTEPOINTS_256 = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff]
-
-    private_constant :COLORS, :GREYSCALE, :BYTEPOINTS_256
 
     # @param [Array<Integer>, String] value a String will be converted to Array
     # @raise [TypeError] if the +value+ is neither Array or String
