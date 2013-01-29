@@ -419,6 +419,10 @@ module PryTheme
       @@colors[layer][color_model]
     end
 
+    def sorted_colors
+      colors.sort_by { |k, v| v.is_a?(Array) ? v.first + 10 : v }
+    end
+
   end
 end
 
