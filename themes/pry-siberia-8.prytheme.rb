@@ -1,6 +1,6 @@
 t = PryTheme.create name: 'pry-siberia-8', color_model: 8 do
   author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
-  description 'This one reminds me of the cold Siberia...'
+  description 'This one reminds me of the cold Siberia... (just a tad)'
 
   define_theme do
     class_ 'blue'
