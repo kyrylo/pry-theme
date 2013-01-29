@@ -1,6 +1,6 @@
-t = PryTheme.create name: 'github' do
-  author name: 'John Mair'
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'github' do
+  author :name => 'John Mair'
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'Based on GitHub theme'
 
   define_theme do

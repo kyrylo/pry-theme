@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'pry-modern-256' do
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'pry-modern-256' do
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'Nifty version of pry-classic'
 
   define_theme do

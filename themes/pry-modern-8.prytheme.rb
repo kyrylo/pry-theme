@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'pry-modern-8', color_model: 8 do
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'pry-modern-8', :color_model => 8 do
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'Simplied version of pry-modern-16'
 
   define_theme do

@@ -1,7 +1,7 @@
 #coding: utf-8
 
-t = PryTheme.create name: 'vim-detailed' do
-  author name: '☈king', email: 'rking-pry-vim-detailed@sharpsaw.org'
+t = PryTheme.create :name => 'vim-detailed' do
+  author :name => '☈king', :email => 'rking-pry-vim-detailed@sharpsaw.org'
   description "Lil' pal of http://www.vim.org/scripts/script.php?script_id=4297"
 
   define_theme do

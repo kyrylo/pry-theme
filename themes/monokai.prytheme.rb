@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'monokai' do
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'monokai' do
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description "Based on Wimer Hazenberg's theme"
 
   define_theme do

@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'pry-zealand-16', color_model: 16 do
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'pry-zealand-16', :color_model => 16 do
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'Feel the presence of green, ecologic and flourishing New Zealand in your terminal'
 
   define_theme do

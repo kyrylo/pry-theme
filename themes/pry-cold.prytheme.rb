@@ -1,6 +1,6 @@
-t = PryTheme.create name: 'pry-cold' do
-  author name: 'John Mair'
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'pry-cold' do
+  author :name => 'John Mair'
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'Based on Charcoalblack theme from Emacs'
 
   define_theme do

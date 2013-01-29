@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'twilight' do
-  author name: 'John Mair'
+t = PryTheme.create :name => 'twilight' do
+  author :name => 'John Mair'
   description 'Based on Twilight from Emacs color-theme package'
 
   define_theme do

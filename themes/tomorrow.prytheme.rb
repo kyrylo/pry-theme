@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'tomorrow' do
-  author name: 'John Mair'
+t = PryTheme.create :name => 'tomorrow' do
+  author :name => 'John Mair'
   description 'A theme should not get in your way'
 
   define_theme do

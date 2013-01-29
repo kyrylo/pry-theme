@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'solarized' do
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'solarized' do
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'Precision colors for machines and people'
 
   define_theme do

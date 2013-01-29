@@ -1,5 +1,5 @@
-t = PryTheme.create name: 'pry-monochrome' do
-  author name: 'Kyrylo Silin', email: 'kyrylosilin@gmail.com'
+t = PryTheme.create :name => 'pry-monochrome' do
+  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
   description 'For people who hate colors'
 
   define_theme do
