@@ -317,7 +317,7 @@ describe PryTheme::Theme do
             constant 'blue'
             error 'yellow', 'red'
             float 'magenta'
-            global_variable bg: 'green'
+            global_variable :bg => 'green'
             inline_delimiter 'blue'
             instance_variable 'red'
             integer 'blue'
@@ -333,7 +333,7 @@ describe PryTheme::Theme do
               modifier 'magenta'
               escape 'magenta' }
             shell {
-              self_ bg: 'green'
+              self_ :bg => 'green'
               char 'magenta'
               content 'yellow'
               delimiter 'white'
@@ -358,8 +358,8 @@ describe PryTheme::Theme do
           constant 'blue'
           error [111, 111, 101], [31, 125, 255]
           float '0, 0, 125'
-          global_variable bg: 5
-          inline_delimiter bg: '#cabe99'
+          global_variable :bg => 5
+          inline_delimiter :bg => '#cabe99'
           string {
             content '#122122', '#FA4499' } } }
       d = theme.definition
