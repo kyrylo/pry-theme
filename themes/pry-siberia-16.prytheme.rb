@@ -20,27 +20,27 @@ t = PryTheme.create name: 'pry-siberia-16', color_model: 16 do
 
     regexp do
       self_ 'bright_blue'
-      char 'bright_blue'
+      char 'bright_cyan'
       content 'bright_blue'
       delimiter 'blue'
-      modifier 'blue'
-      escape 'blue'
+      modifier 'cyan'
+      escape 'cyan'
     end
 
     shell do
       self_ 'bright_blue'
-      char 'bright_blue'
+      char 'bright_cyan'
       content 'bright_blue'
-      delimiter 'blue'
-      escape 'blue'
+      delimiter 'cyan'
+      escape 'cyan'
     end
 
     string do
       self_ 'bright_blue'
-      char 'bright_blue'
+      char 'bright_cyan'
       content 'bright_blue'
-      delimiter 'blue'
-      escape 'blue'
+      delimiter 'cyan'
+      escape 'cyan'
     end
   end
 end
