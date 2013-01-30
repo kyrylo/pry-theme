@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 
 t = PryTheme.create :name => 'vim-detailed' do
   author :name => '☈king', :email => 'rking-pry-vim-detailed@sharpsaw.org'
