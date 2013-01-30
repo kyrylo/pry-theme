@@ -158,7 +158,7 @@ module PryTheme
             end
           end
          TEST
-        ), output)
+        ))
           elsif args.empty?
             output.puts current_theme_name
           end
@@ -172,7 +172,7 @@ module PryTheme
       ].each { |m| __send__(m, cmd) }
 
       cmd.add_callback(:empty) do
-        stagger_output opts.help, output
+        stagger_output opts.help
       end
     end
 
@@ -189,7 +189,7 @@ module PryTheme
         colors << build_color_string(color, i)
       }
       table = Pry::Helpers.tablify_or_one_line("Color model #{ up }", colors)
-      stagger_output table, output
+      stagger_output table
     end
 
     def build_color_string(color, fg = nil)
@@ -228,7 +228,7 @@ module PryTheme
         theme.disable
         out += "\n"
       }
-      stagger_output(out, output)
+      stagger_output out.chomp
     ensure
       cur_theme.activate
     end
@@ -255,7 +255,7 @@ module PryTheme
 
         out += response.body + "\n\n"
       }
-      stagger_output out, output
+      stagger_output out.chomp
     end
 
     def json_body(address)
