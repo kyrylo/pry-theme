@@ -11,4 +11,5 @@ end
 
 require 'bacon'
 
-puts "Ruby: #{ RUBY_VERSION }; Ruby Engine: #{ RUBY_ENGINE }; Pry Theme: #{ PryTheme::VERSION }"
+puts "Ruby: #{ RUBY_VERSION }; Ruby Engine: #{ defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby' }; " \
+     "Pry Theme: #{ PryTheme::VERSION }"
