@@ -32,6 +32,9 @@ module PryTheme
   # The path where the user should keep their themes.
   USER_THEMES_DIR = File.join(CONFIG_DIR, 'themes')
 
+  # Every Pry Theme file must end with this extension.
+  PT_EXT = '.prytheme.rb'
+
   # Pry Theme Collection.
   PTC = 'https://api.github.com/repos/kyrylo/pry-theme-collection/contents/'
 

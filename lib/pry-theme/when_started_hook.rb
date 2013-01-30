@@ -28,9 +28,9 @@ module PryTheme
     end
 
     def load_themes
-      user_themes = Dir.entries(USER_THEMES_DIR) - %w{. ..}
+      user_themes = Dir[File.join(USER_THEMES_DIR, '*' + PT_EXT)]
       user_themes.each do |theme|
-        require File.join(USER_THEMES_DIR, theme)
+        require theme
       end
     end
 
