@@ -228,8 +228,7 @@ module PryTheme
         theme.disable
         out += "\n"
       }
-
-      stagger_output(out.chomp, output)
+      stagger_output(out, output)
     ensure
       cur_theme.activate
     end
@@ -256,7 +255,7 @@ module PryTheme
 
         out += response.body + "\n\n"
       }
-      stagger_output out.chomp, output
+      stagger_output out, output
     end
 
     def json_body(address)
