@@ -3,6 +3,7 @@ require 'pry'
 require 'pry/test/helper'
 
 Pry.config.theme = nil
+Pry.config.pager = false
 
 unless Object.const_defined? 'PryTheme'
   $:.unshift File.expand_path '../../lib', __FILE__
