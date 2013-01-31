@@ -26,11 +26,10 @@ module PryTheme
     ]
 
     # 16 colours. For cmd.exe on Windows and other miserable terminals.
-    SYSTEM = [
+    SYSTEM = LINUX + [
       [128, 128, 128], [255,   0,   0], [  0, 255,   0], [255, 255,   0],
       [  0,   0, 255], [255,   0, 255], [  0, 255, 255], [255, 255, 255]
     ]
-    SYSTEM.unshift(*LINUX)
 
     # The next 216 colours. For men.
     COLORS = [
