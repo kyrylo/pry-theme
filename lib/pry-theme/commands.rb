@@ -29,6 +29,7 @@ module PryTheme
       pry-theme install autumn     # installs a theme from Pry Theme Collection
       pry-theme uninstall monokai  # uninstalls a theme
       pry-theme convert -m 16 -t 3 # converts a single color to a term color
+      pry-theme edit solarized     # open "solarized" theme in editor
     BANNER
 
     def def_list(cmd)
@@ -166,9 +167,23 @@ module PryTheme
       end
     end
 
+    def def_edit(cmd)
+      cmd.command :edit do |opt|
+        opt.description 'Edits a theme'
+
+        opt.run do |opts, args|
+          if args.first
+            Editor.edit(args.first)
+          else
+            Editor.edit(ThemeList.current_theme)
+          end
+        end
+      end
+    end
+
     def subcommands(cmd)
-      [:def_list, :def_colors, :def_create, :def_try,
-       :def_uninstall, :def_install, :def_current, :def_convert
+      [:def_list, :def_colors, :def_create, :def_try, :def_uninstall,
+       :def_install, :def_current, :def_convert, :def_edit
       ].each { |m| __send__(m, cmd) }
 
       cmd.add_callback(:empty) do
