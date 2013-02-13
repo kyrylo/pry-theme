@@ -74,4 +74,8 @@ describe PryTheme::RGB do
     RGB.new([0, 0, 0]).to_a.should == [0, 0, 0]
     RGB.new('0, 0, 0').to_a.should == [0, 0, 0]
   end
+
+  it "represents itself in CSS format" do
+    RGB.new([0, 0, 0]).to_css.should == 'rgb(0, 0, 0)'
+  end
 end

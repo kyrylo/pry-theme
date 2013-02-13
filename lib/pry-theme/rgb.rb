@@ -157,6 +157,13 @@ module PryTheme
       @value
     end
 
+    # @example
+    #   RGB.new([0, 0, 0]).to_css #=> 'rgb(0, 0, 0)'
+    # @return [String]
+    def to_css
+      "rgb(#{ to_s })"
+    end
+
     private
 
     # Checks whether the +ary+ has correct number of elements and these elements
