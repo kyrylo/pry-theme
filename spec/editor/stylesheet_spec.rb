@@ -5,7 +5,7 @@ describe PryTheme::Editor::Stylesheet do
   it "defaults to some values" do
     stylesheet = PryTheme::Editor::Stylesheet.new('.piglet')
     stylesheet.css.should =~ /color: rgb\(0, 0, 0\)/
-    stylesheet.css.should =~ /background-color: rgb\(255, 255, 255\)/
+    stylesheet.css.should =~ /background-color: transparent/
     stylesheet.css.should =~ /font-style: normal/
     stylesheet.css.should =~ /font-weight: normal/
     stylesheet.css.should =~ /text-decoration: none/

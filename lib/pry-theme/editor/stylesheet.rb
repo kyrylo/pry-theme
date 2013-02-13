@@ -43,7 +43,7 @@ module PryTheme
 
         @selector = selector
         @color            ||= PryTheme::RGB.new([0, 0, 0])
-        @background_color ||= PryTheme::RGB.new([255, 255, 255])
+        @background_color ||= PryTheme::Editor::NoRGB.new
         @font_style       ||= 'normal'
         @font_weight      ||= 'normal'
         @text_decoration  ||= 'none'
@@ -51,7 +51,7 @@ module PryTheme
 
       def css
         Pry::Helpers::CommandHelpers.unindent(<<-CSS)
-          #{ @selector } {
+          .#{ @selector } {
             color: #{ @color.to_css };
             background-color: #{ @background_color.to_css };
             font-style: #@font_style;
