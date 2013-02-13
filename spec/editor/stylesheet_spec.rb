@@ -2,6 +2,11 @@ require 'helper'
 
 describe PryTheme::Editor::Stylesheet do
 
+  it "has selector" do
+    stylesheet = PryTheme::Editor::Stylesheet.new('.piglet')
+    stylesheet.selector.should == '.piglet'
+  end
+
   it "defaults to some values" do
     stylesheet = PryTheme::Editor::Stylesheet.new('.piglet')
     stylesheet.css.should =~ /color: rgb\(0, 0, 0\)/

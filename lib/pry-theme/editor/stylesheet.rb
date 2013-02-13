@@ -37,6 +37,9 @@ module PryTheme
       # @return [String] the "text-decoration" property from CSS
       attr_accessor :text_decoration
 
+      # @return [String]
+      attr_reader :selector
+
       # @param [String] selector The name of the stylesheet
       def initialize(selector)
         yield(self) if block_given?
