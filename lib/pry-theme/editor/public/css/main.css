@@ -1,13 +1,20 @@
+html, body {
+	height: 100%;
+}
+
 body {
 	background-image: url('/img/bg.png');
 	background-repeat: repeat;
 }
 
+#sticky_footer_wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px;
+}
+
 #layout {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	border-radius: 5px;
-	padding: 10px 25px;
 }
 
 #header {
@@ -39,7 +46,7 @@ body {
 	border-bottom: 2px solid #2e2e2e;
 	border-left: 2px solid #202020;
 	border-top: 1px solid #313131;
-	border-right 1px solid #414141;
+	border-right: 1px solid #414141;
 	outline: 1px solid #464646;
 }
 
@@ -47,8 +54,10 @@ body {
 	text-transform: uppercase;
 }
 
-#about {
-	position: absolute;
-	right: 0;
-	top: 0;
+#push, #footer {
+	height: 60px;
+}
+
+#footer {
+	background-color: white;
 }

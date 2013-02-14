@@ -8,15 +8,19 @@
   <link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
 <body>
-  <div id="header" class="row"><%= erb :header %></div>
+  <div id="sticky_footer_wrap">
+    <div id="header" class="row"><%= erb :header %></div>
 
-  <div id="layout" class="container row">
-    <div id="content" class="row">
-      <%= erb :content, :locals => { :code_plates => code_plates } %>
+    <div id="layout" class="container row">
+      <div id="content" class="row">
+        <%= erb :content, :locals => { :code_plates => code_plates } %>
+      </div>
+
+      <div id="push"></div>
     </div>
-
-    <div id="footer" class="row"><%= erb :footer %></div>
   </div>
+  <div id="footer" class="row"><%= erb :footer %></div>
+
 
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
