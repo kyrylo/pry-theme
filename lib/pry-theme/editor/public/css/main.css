@@ -1,0 +1,29 @@
+body {
+	background-image: url('/img/bg.png');
+	background-repeat: repeat;
+}
+
+#layout {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	padding: 10px 25px;
+}
+
+#header {
+	text-align: center;
+	position: relative;
+}
+
+#main_menu {
+	margin: 20px;
+}
+
+#content {
+}
+
+#about {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
