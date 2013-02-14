@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
 <body>
-  <div id="layout" class="container row">
-    <div id="header" class="row"><%= erb :header %></div>
+  <div id="header" class="row"><%= erb :header %></div>
 
+  <div id="layout" class="container row">
     <div id="content" class="row">
       <%= erb :content, :locals => { :code_plates => code_plates } %>
     </div>

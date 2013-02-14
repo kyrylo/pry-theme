@@ -11,12 +11,14 @@ body {
 }
 
 #header {
-	text-align: center;
-	position: relative;
+	background-color: #1a1a1a;
+	border-bottom: 1px solid #3f3f3f;
+	outline: 1px solid #131313;
+	box-shadow: 0px 2px 12px #000;
+	padding: 0.5em 0;
 }
 
 #main_menu {
-	margin: 20px;
 }
 
 #content {
