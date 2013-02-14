@@ -24,6 +24,29 @@ body {
 #content {
 }
 
+#content .code_plate {
+	width: 681px;
+	padding: 14px 14px 13px 14px;
+	background: #000;
+	box-shadow: 6px 6px 10px #141414;
+	border-right: 1px solid #242424;
+	border-bottom: 1px solid #1d1d1d;
+	margin: 0 auto;
+}
+
+#content .code_plate pre {
+	border-radius: 0px !important;
+	border-bottom: 2px solid #2e2e2e;
+	border-left: 2px solid #202020;
+	border-top: 1px solid #313131;
+	border-right 1px solid #414141;
+	outline: 1px solid #464646;
+}
+
+#content .code_plate .code_plate_name {
+	text-transform: uppercase;
+}
+
 #about {
 	position: absolute;
 	right: 0;
