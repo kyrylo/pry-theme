@@ -25,7 +25,7 @@ describe PryTheme::Command::PryTheme do
       PryTheme::ThemeList.activate_theme('wholesome')
 
       pry_eval('pry-theme current --colors').should ==
-        Pry::Helpers::CommandHelpers.unindent(<<-'OUT'
+        Pry::Helpers::CommandHelpers.unindent(<<-'OUT')
         # "wholesome" theme.
         class PryTheme::ThisIsAClass
           def this_is_a_method
@@ -44,7 +44,6 @@ describe PryTheme::Command::PryTheme do
           end
         end
       OUT
-      )
     end
 
     it "doesn't display anything" do
@@ -191,6 +190,12 @@ describe PryTheme::Command::PryTheme do
       it "outputs the error message if colour model is invalid" do
         pry_eval('pry-theme convert -m 23 -t 32').should =~ /Unknown color model/
       end
+    end
+  end
+
+  describe "'edit' subcommand" do
+    it "outputs the error message if cannot find given theme" do
+      pry_eval('pry-theme edit qwqw').should =~ /"qwqw" theme is not found/
     end
   end
 end

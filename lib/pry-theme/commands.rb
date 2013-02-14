@@ -169,7 +169,12 @@ module PryTheme
 
         opt.run do |opts, args|
           if args.first
-            PryTheme::Editor::App.edit(args.first)
+            theme = PryTheme::ThemeList.themes.find { |t| t.name == args.first }
+            if theme
+              PryTheme::Editor::App.edit(theme)
+            else
+              output.puts %|"#{ args.first }" theme is not found|
+            end
           else
             PryTheme::Editor::App.edit(ThemeList.current_theme)
           end
