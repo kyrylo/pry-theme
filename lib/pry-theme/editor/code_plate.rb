@@ -3,6 +3,8 @@ module PryTheme::Editor
 
     include PryTheme::Editor::RandomNameable
 
+    attr_reader :name
+
     def initialize(definition, name = generate_random_name)
       @stylesheets = PryTheme::Editor::CSSParser.parse(definition)
       @name        = name
