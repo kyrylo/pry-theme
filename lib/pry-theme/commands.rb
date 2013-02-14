@@ -13,8 +13,9 @@ module PryTheme
     banner <<-'BANNER'
       Usage: pry-theme [OPTIONS] [--help]
 
-      The command comes from `pry-theme` plugin.
-      It enbales color theme support for your Pry.
+      The command comes from `pry-theme` plugin. It enbales color theme support for your
+      Pry. Pry Theme comes with a built-in editor. In order to use it you must install
+      Sinatra gem (`gem install sinatra`).
 
       Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
       Cheatsheet: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-Cheatsheet
@@ -29,7 +30,7 @@ module PryTheme
       pry-theme install autumn     # installs a theme from Pry Theme Collection
       pry-theme uninstall monokai  # uninstalls a theme
       pry-theme convert -m 16 -t 3 # converts a single color to a term color
-      pry-theme edit solarized     # open "solarized" theme in editor
+      pry-theme edit solarized     # open "solarized" theme in the Pry Theme editor
     BANNER
 
     def def_list(cmd)
@@ -76,11 +77,6 @@ module PryTheme
             output.puts %|Cannot find "#{args.first}" amongst themes in #{USER_THEMES_DIR}|
           end
         end
-      end
-    end
-
-    def def_edit(cmd)
-      cmd.command :edit do
       end
     end
 
@@ -173,9 +169,9 @@ module PryTheme
 
         opt.run do |opts, args|
           if args.first
-            Editor.edit(args.first)
+            PryTheme::Editor::App.edit(args.first)
           else
-            Editor.edit(ThemeList.current_theme)
+            PryTheme::Editor::App.edit(ThemeList.current_theme)
           end
         end
       end
