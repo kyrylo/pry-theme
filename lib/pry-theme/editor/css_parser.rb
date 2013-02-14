@@ -49,24 +49,58 @@ module PryTheme::Editor
 
     def parse_fg_color(attr)
       fg = attr.foreground
-      PryTheme::RGB.new(PryTheme::RGB::TABLE[fg]) if fg
+      if fg
+        color_code =
+          case attr.color_model
+          when 256
+            PryTheme::RGB::TABLE[fg]
+          when 16
+            if fg.is_a?(String)
+              fg, remainder = fg.split(';').map!(&:to_i)
+            end
+
+            if remainder
+              PryTheme::RGB::SYSTEM[fg - 22]
+            else
+              PryTheme::RGB::SYSTEM[fg - 30]
+            end
+          when 8
+            then PryTheme::RGB::LINUX[fg - 30]
+          end
+        PryTheme::RGB.new(color_code)
+      end
     end
 
     def parse_bg_color(attr)
       bg = attr.background
-      PryTheme::RGB.new(PryTheme::RGB::TABLE[bg]) if bg
+      if bg
+        color_code =
+          case attr.color_model
+          when 256
+            PryTheme::RGB::TABLE[bg]
+          when 16
+            bg = bg.split(';').first.to_i if bg.is_a?(String)
+            PryTheme::RGB::SYSTEM[bg - 40]
+          when 8
+            then PryTheme::RGB::LINUX[bg - 40]
+          end
+        PryTheme::RGB.new(color_code)
+      end
     end
 
     def parse_font_style(attr)
-      'italic' if attr.italic?
+      'italic' if attr.color_model == 256 && attr.italic?
     end
 
     def parse_font_weight(attr)
-      'bold' if attr.bold?
+      if (attr.color_model == 256 && attr.bold?) ||
+        (attr.color_model == 16 && attr.foreground.is_a?(String))
+        'bold'
+      end
     end
 
     def parse_text_decoration(attr)
-      'underline' if attr.underline?
+      'underline' if attr.color_model == 256 && attr.underline?
     end
 
   end
