@@ -17,6 +17,7 @@ body {
 #layout {
 }
 
+
 #header {
 	background-color: #1a1a1a;
 	border-bottom: 1px solid #3f3f3f;
@@ -48,6 +49,8 @@ body {
 	border-top: 1px solid #313131;
 	border-right: 1px solid #414141;
 	outline: 1px solid #464646;
+	margin: 0;
+	padding: 0;
 }
 
 #content .code_plate .code_plate_name {
