@@ -33,7 +33,7 @@ body {
 }
 
 #content .code_plate {
-	width: 681px;
+	width: 690px;
 	padding: 14px 14px 13px 14px;
 	background: #000;
 	box-shadow: 6px 6px 10px #141414;
@@ -50,7 +50,7 @@ body {
 	border-right: 1px solid #414141;
 	outline: 1px solid #464646;
 	margin: 0;
-	padding: 0;
+	padding: 6px;
 }
 
 #content .code_plate .code_plate_name {
