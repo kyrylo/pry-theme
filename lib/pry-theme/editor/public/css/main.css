@@ -41,6 +41,7 @@ body {
 	border-right: 1px solid #242424;
 	border-bottom: 1px solid #1d1d1d;
 	margin: 0 auto;
+	overflow: hidden;
 }
 
 #content .code_plate pre {
