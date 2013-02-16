@@ -55,7 +55,18 @@ a:hover {
 	padding: 0.5em 0;
 }
 
+#logo {
+	float: left;
+}
+
 #main_menu {
+	float: left;
+	margin-left: 2em;
+	margin-top: 0.75em;
+}
+
+.hbutton {
+	float: left;
 }
 
 #content {
