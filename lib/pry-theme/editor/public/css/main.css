@@ -91,6 +91,7 @@ a:hover {
 	border-bottom: 1px solid #1d1d1d;
 	margin: 0 auto;
 	overflow: hidden;
+	position: relative;
 }
 
 #content .code_plate pre {
@@ -102,6 +103,34 @@ a:hover {
 	outline: 1px solid #464646;
 	margin: 0;
 	padding: 6px;
+}
+
+.CodeRay {
+	clear: both;
+}
+
+.color_chooser {
+	position: absolute;
+	right: 0px;
+	top: -3px;
+}
+
+#plate_fg, #plate_bg {
+	float: left;
+	font-size: 9px;
+	font-family: Arial, sans-serif;
+	margin-right: 12px;
+}
+
+#plate_fg .color_square, #plate_bg .color_square {
+	width: 8px;
+	height: 8px;
+	background-color: red;
+	float: left;
+	top: 5px;
+	position: relative;
+	right: 4px;
+	border: 1px solid #464646;
 }
 
 #content .code_plate .code_plate_name,
