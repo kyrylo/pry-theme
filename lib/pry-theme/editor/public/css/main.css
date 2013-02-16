@@ -7,6 +7,17 @@ body {
 	background-repeat: repeat;
 }
 
+.pseudo {
+	color: #16A86E;
+	border-bottom: 1px dashed #219466;
+}
+
+.pseudo:hover {
+	cursor: pointer;
+	color: #EC9855;
+	border-bottom-color: #AA8541;
+}
+
 #sticky_footer_wrap {
 	min-height: 100%;
 	height: auto !important;
@@ -57,6 +68,27 @@ body {
 
 #content .code_plate .code_plate_name {
 	text-transform: uppercase;
+}
+
+.arrow_col {
+	vertical-align: middle;
+	width: 110px;
+}
+
+#l_next, #r_next {
+	background-color: rgba(3, 27, 21, 0.3);
+	text-align: center;
+	padding: 8px;
+}
+
+#l_next {
+}
+
+#r_next {
+}
+
+#l_next:hover, #r_next:hover {
+	background-color: rgba(236, 152, 85, 0.3);
 }
 
 #push, #footer {
