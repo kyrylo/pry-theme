@@ -184,6 +184,7 @@ a:hover {
 	background-color: #1A1A1A;
 	outline: 1px solid #3F3F3F;
 	box-shadow: 0px -2px 12px #111;
+	color: #B0B5B6;
 }
 
 #footer_info {
@@ -197,9 +198,12 @@ a:hover {
 	padding-right: 1.4em;
 }
 
-#pt_version {
+#pt_version, #email {
 	float: right;
 	font-variant: small-caps;
-	color: #B0B5B6;
 	font-size: 80%;
+}
+
+#email {
+	clear: both;
 }
