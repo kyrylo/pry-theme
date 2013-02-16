@@ -1,3 +1,13 @@
+@font-face {
+	font-family: Dited;
+	src: url('/dited.otf') format('truetype');
+}
+
+@font-face {
+	font-family: Puzzle;
+	src: url('/puzzle.otf') format('truetype');
+}
+
 html, body {
 	height: 100%;
 }
@@ -94,8 +104,26 @@ a:hover {
 	padding: 6px;
 }
 
+#content .code_plate .code_plate_name,
+#content .code_plate .pt_plate_logo {
+	font-size: 32px;
+	padding-top: 11px;
+
+}
+
 #content .code_plate .code_plate_name {
-	text-transform: uppercase;
+	float: left;
+	text-transform: capitalize;
+	font-family: Dited, Verdana, Arial, sans-serif;
+	color: orange;
+}
+
+#content .code_plate .pt_plate_logo {
+	float: right;
+	color: #90978E;
+	font-family: Puzzle, Verdana, Arial, sans-serif;
+	letter-spacing: 1px;
+	word-spacing: -7px;
 }
 
 .arrow_col {
