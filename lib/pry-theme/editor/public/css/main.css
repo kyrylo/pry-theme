@@ -103,6 +103,7 @@ a:hover {
 	outline: 1px solid #464646;
 	margin: 0;
 	padding: 6px;
+	font-family: PT Mono, Ubuntu Mono, Monaco, Consolas, monospace;
 }
 
 .CodeRay {
