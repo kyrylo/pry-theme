@@ -65,21 +65,16 @@ a:hover {
 	padding: 0.5em 0;
 }
 
-#logo {
-	float: left;
+#main_buttons, #pt_info {
+	margin-top: 12px;
 }
 
-#main_menu {
-	float: left;
-	margin-left: 2em;
-	margin-top: 0.75em;
+#pt_info {
+	float: right;
 }
 
-.hbutton {
-	float: left;
-}
-
-#content {
+#pt_info span {
+	margin-left: 1em;
 }
 
 #content .code_plate {
@@ -138,7 +133,6 @@ a:hover {
 #content .code_plate .pt_plate_logo {
 	font-size: 32px;
 	padding-top: 11px;
-
 }
 
 #content .code_plate .code_plate_name {
