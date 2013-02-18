@@ -78,6 +78,10 @@ a:hover {
 	margin-left: 1em;
 }
 
+#tour_dialog, #about_dialog {
+	display: none;
+}
+
 #content .code_plate {
 	width: 690px;
 	padding: 14px 14px 13px 14px;
@@ -160,6 +164,7 @@ a:hover {
 	background-color: rgba(3, 27, 21, 0.3);
 	text-align: center;
 	padding: 8px;
+	font-size: 85%;
 }
 
 #l_next {
