@@ -145,6 +145,7 @@ a:hover {
 	text-transform: capitalize;
 	font-family: Dited, Verdana, Arial, sans-serif;
 	color: orange;
+	text-shadow: 0px 0px 4px;
 }
 
 #content .code_plate .pt_plate_logo {
