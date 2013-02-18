@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Pry Theme Editor v0.2.0</title>
+  <title><%= code_plates.first.name %> — Pry Theme Editor</title>
 
   <link rel="stylesheet" href="/css/reset.css" type="text/css">
   <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -21,10 +21,19 @@
   </div>
   <div id="footer" class="row"><%= erb :footer %></div>
 
+  <!-- Vendored libraries -->
   <script type="text/javascript" src="/js/lib/jquery.min.js"></script>
   <script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/lib/bootbox.min.js"></script>
+  <script type="text/javascript" src="/js/lib/underscore-min.js"></script>
+  <script type="text/javascript" src="/js/lib/backbone-min.js"></script>
+  <script type="text/javascript" src="/js/lib/backbone.localStorage-min.js"></script>
 
+  <!-- Different scripts -->
   <script type="text/javascript" src="/js/cute_bootboxes.js"></script>
+
+  <!-- Backbone application -->
+  <script type="text/javascript" src="/js/views/app.js"></script>
+  <script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>
