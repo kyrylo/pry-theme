@@ -39,7 +39,7 @@ a:hover {
 	border-bottom: 1px dashed #219466;
 }
 
-.pseudo:hover {
+.pseudo:hover, .pseudo_hover {
 	cursor: pointer;
 	color: #EC9855;
 	border-bottom-color: #AA8541;
@@ -167,14 +167,9 @@ a:hover {
 	font-size: 85%;
 }
 
-#l_next {
-}
-
-#r_next {
-}
-
 #l_next:hover, #r_next:hover {
 	background-color: rgba(236, 152, 85, 0.3);
+	cursor: pointer;
 }
 
 #push, #footer {
