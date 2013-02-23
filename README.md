@@ -9,10 +9,10 @@ Description
 Pry Theme is a plugin for [Pry][pry], which helps you to customize your Pry
 colors via `prytheme` files.
 
-![Railscasts](/kyrylo/pry-theme/raw/master/screenshots/railscasts.png)
-![Solarized](/kyrylo/pry-theme/raw/master/screenshots/solarized.png)
-![Tomorrow](/kyrylo/pry-theme/raw/master/screenshots/tomorrow.png)
-![Zenburn](/kyrylo/pry-theme/raw/master/screenshots/zenburn.png)
+![Railscasts](./screenshots/railscasts.png)
+![Solarized](./screenshots/solarized.png)
+![Tomorrow](./screenshots/tomorrow.png)
+![Zenburn](./screenshots/zenburn.png)
 
 Installation
 ------------
