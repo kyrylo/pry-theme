@@ -1,5 +1,7 @@
 require 'helper'
 
-describe PryTheme::Editor::CodePlate do
-  # Whoops
+if defined?(PryTheme::Editor)
+  describe PryTheme::Editor::CodePlate do
+    # Whoops
+  end
 end
