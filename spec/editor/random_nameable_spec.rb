@@ -18,7 +18,7 @@ describe PryTheme::Editor::RandomNameable do
     it "provides random name" do
       first = Person.new.name
       second = Person.new.name
-      first.should != second
+      first.should.not == second
     end
 
   end
