@@ -17,4 +17,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "bacon"
   s.add_development_dependency "rake"
   s.add_development_dependency "pry"
+  s.add_development_dependency "sinatra"
+  s.add_development_dependency "random-word"
 end
