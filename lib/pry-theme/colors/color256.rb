@@ -22,7 +22,7 @@ module PryTheme
     end
 
     def find_from_fixnum(color_id)
-      pair = colors.find { |_, *term| term.flatten.include?(color_id) }
+      pair = colors.find { |*term| term.first.flatten.include?(color_id) }
       pair.first if pair
     end
 
