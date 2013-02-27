@@ -1,5 +1,7 @@
 ![Pry Theme][logo]
 
+![Pry Theme version badge][ver-badge] [![Build Status][ci-badge]][ci-link]
+
 * Repository: [https://github.com/kyrylo/pry-theme/][pt]
 * Wiki: [https://github.com/kyrylo/pry-theme/wiki][wiki]
 
@@ -118,6 +120,9 @@ License
 The project uses Zlib License. See LICENSE file for more information.
 
 [pt]: https://github.com/kyrylo/pry-theme/ "Home page"
+[ver-badge]: https://badge.fury.io/rb/pry-theme.png "Pry Theme version badge"
+[ci-badge]: https://travis-ci.org/kyrylo/pry-theme.png?branch=master "Build status"
+[ci-link]: https://travis-ci.org/kyrylo/pry-theme/ "Build history"
 [logo]: http://img-fotki.yandex.ru/get/5107/98991937.a/0_7c6c8_871a1842_orig "Pry Theme"
 [pry]: https://github.com/pry/pry/ "Pry's home page"
 [new_theme]: https://github.com/kyrylo/pry-theme/wiki/Creating-a-New-Theme
