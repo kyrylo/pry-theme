@@ -14,8 +14,7 @@ module PryTheme
       Usage: pry-theme [OPTIONS] [--help]
 
       The command comes from `pry-theme` plugin. It enbales color theme support for your
-      Pry. Pry Theme comes with a built-in editor. In order to use it you must install
-      Sinatra gem (`gem install sinatra`).
+      Pry.
 
       Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
       Cheatsheet: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-Cheatsheet
@@ -30,7 +29,6 @@ module PryTheme
       pry-theme install autumn     # installs a theme from Pry Theme Collection
       pry-theme uninstall monokai  # uninstalls a theme
       pry-theme convert -m 16 -t 3 # converts a single color to a term color
-      pry-theme edit solarized     # open "solarized" theme in the Pry Theme editor
     BANNER
 
     def def_list(cmd)
@@ -162,28 +160,9 @@ module PryTheme
       end
     end
 
-    def def_edit(cmd)
-      cmd.command :edit do |opt|
-        opt.description 'Edits a theme'
-
-        opt.run do |opts, args|
-          if args.first
-            theme = PryTheme::ThemeList.themes.find { |t| t.name == args.first }
-            if theme
-              PryTheme::Editor::App.edit(theme)
-            else
-              output.puts %|"#{ args.first }" theme is not found|
-            end
-          else
-            PryTheme::Editor::App.edit(ThemeList.current_theme)
-          end
-        end
-      end
-    end
-
     def subcommands(cmd)
-      [:def_list, :def_colors, :def_create, :def_try, :def_uninstall,
-       :def_install, :def_current, :def_convert, :def_edit
+      [:def_list, :def_colors, :def_create, :def_try,
+       :def_uninstall, :def_install, :def_current, :def_convert,
       ].each { |m| __send__(m, cmd) }
 
       cmd.add_callback(:empty) do

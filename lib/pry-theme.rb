@@ -12,21 +12,6 @@ require 'pry-theme/theme'
 require 'pry-theme/color'
 require 'pry-theme/commands'
 
-begin
-  require 'sinatra/base'
-  require 'random-word'
-
-  require 'pry-theme/editor/main'
-  require 'pry-theme/editor/random_nameable'
-  require 'pry-theme/editor/stylesheet'
-  require 'pry-theme/editor/css_parser'
-  require 'pry-theme/editor/no_rgb'
-  require 'pry-theme/editor/code_plate'
-rescue LoadError
-  # A "soft" dependency on Sinatra. The editor will be available once you have
-  # Sinatra installed (type `gem install sinatra` in your terminal).
-end
-
 module PryTheme
 
   # The VERSION file must be in the root directory of the library.
