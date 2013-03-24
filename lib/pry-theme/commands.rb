@@ -173,6 +173,10 @@ module PryTheme
     def process
     end
 
+    def complete(so_far)
+      PryTheme::ThemeList.themes.map(&:name)
+    end
+
     private
 
     def show_table(up)
