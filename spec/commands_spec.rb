@@ -192,10 +192,4 @@ describe PryTheme::Command::PryTheme do
       end
     end
   end
-
-  describe "'edit' subcommand" do
-    it "outputs the error message if cannot find given theme" do
-      pry_eval('pry-theme edit qwqw').should =~ /"qwqw" theme is not found/
-    end
-  end
 end
