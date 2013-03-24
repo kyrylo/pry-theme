@@ -14,21 +14,24 @@ module PryTheme
       Usage: pry-theme [OPTIONS] [--help]
 
       The command comes from `pry-theme` plugin. It enbales color theme support for your
-      Pry.
+      Pry. Set up your favorite theme in `~/.pryrc` config file. For example, if you
+      enjoy Zenburn theme, add the following line: `Pry.config.theme = 'zenburn'`.
 
-      Wiki: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-CLI
-      Cheatsheet: https://github.com/kyrylo/pry-theme/wiki/Pry-Theme-Cheatsheet
+      You can create your own themes with help of `edit` subcommand. More information
+      can be found in the appropriate arcticle: http://is.gd/YPuTjM
+      Tokens cheatsheet might come in handy, too: http://is.gd/D7GoVe
 
-      pry-theme try pry-modern-256 # changes theme on the fly
+      pry-theme try pry-modern-256 # changes theme (lasts for current session only)
       pry-theme current            # shows currently active theme name
       pry-theme current --colors   # tests colors from the current theme
-      pry-theme list               # shows all installed themes
+      pry-theme list               # shows all installed themes as colorful snippets
       pry-theme list --remote      # shows all themes from Pry Theme Collection
-      pry-theme colors             # shows a list of all colors
-      pry-theme colors --model 8   # shows a list of colors according to 8 color model
+      pry-theme colors             # shows the list of all color names
+      pry-theme colors --model 8   # shows the list of colors according to 8 color model
       pry-theme install autumn     # installs a theme from Pry Theme Collection
       pry-theme uninstall monokai  # uninstalls a theme
       pry-theme convert -m 16 -t 3 # converts a single color to a term color
+      pry-theme edit zenburn       # opens Zenburn theme in `Pry.editor`
     BANNER
 
     def def_list(cmd)
@@ -56,11 +59,6 @@ module PryTheme
             display_colors(PryTheme.tput_colors)
           end
         end
-      end
-    end
-
-     def def_create(cmd)
-      cmd.command :create do
       end
     end
 
@@ -161,7 +159,7 @@ module PryTheme
     end
 
     def subcommands(cmd)
-      [:def_list, :def_colors, :def_create, :def_try,
+      [:def_list, :def_colors, :def_try,
        :def_uninstall, :def_install, :def_current, :def_convert,
       ].each { |m| __send__(m, cmd) }
 
