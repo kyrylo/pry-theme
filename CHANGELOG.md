@@ -1,6 +1,42 @@
 Pry Theme changelog
 ===================
 
+### v0.2.0 (March 25, 2013)
+
+* **HOT**: Added Windows support
+* **NOT SO HOT**: The plugin was rewritten from scratch
+* The plugin works everywhere where you can launch Pry
+* Improved `vim-detailed` theme
+* Added support for 16 colour themes
+* Introduced the new theme syntax
+* Lots of rewordings, improvements of help messages
+* Added fallback mode. It is useful when you are running Pry on poor terminals
+  and trying to use a 256 colour theme. It is quite numpty, though.
+* Converted switches to subcommands
+* **NOT BAD**: Added a bunch of new themes
+
+    * pry-monochrome
+    * pry-modern-256 (old `pry-modern`)
+    * pry-classic-256 (old `pry-classic`; default theme on 256 colour capable
+      terminals)
+
+    Including Windows friendly themes:
+
+    * pry-classic-16 (default theme on Windows)
+    * pry-classic-8
+    * pry-zealand-16 (greenish)
+    * pry-zealand-8
+    * pry-love-16 (redish)
+    * pry-love-8
+    * pry-sibera-16 (bluish)
+    * pry-sibera-8
+    * pry-tepid-16 (yellowish)
+    * pry-tepid-8
+    * pry-modern-16
+    * pry-modern-8
+
+And do not forget to check out [the new CLI][cli]!
+
 ### v0.1.3 (September 21, 2012)
 
 * Improved integration with [pry-rescue][prescue] plugin.
