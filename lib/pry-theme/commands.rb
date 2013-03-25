@@ -213,30 +213,8 @@ module PryTheme
     end
 
     def show_local_list
-      out = ''
-      cur_theme = ThemeList.current_theme
-      cur_theme.disable
-
-      ThemeList.each { |theme|
-        out += Pry::Helpers::Text.bold("#{theme.name} / #{theme.color_model}\n")
-        out += theme.description
-        out += "\n--\n"
-
-        theme.activate
-        out += colorize_code(unindent(<<-'CODE'
-          1: class Theme
-          2:   def method
-          3:     @ivar, @@cvar, lvar = 10_000, 400.00, "string"
-          4:   end
-          5: end
-        CODE
-        ))
-        theme.disable
-        out += "\n"
-      }
-      stagger_output out.chomp
-    ensure
-      cur_theme.activate
+      previews = ThemeList.themes.map { |theme| Preview.new(theme).short }
+      stagger_output previews.join("\n")
     end
 
     def show_remote_list
