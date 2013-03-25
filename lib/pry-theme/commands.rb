@@ -235,7 +235,7 @@ module PryTheme
     def install_theme(args)
       args.each { |theme|
         output.puts %|Installing "#{ theme }" from Pry Theme Collection...|
-        body = json_body(PTC + "%s/%s.prytheme" % [theme, theme])
+        body = json_body(PTC + "%s/%s#{ PT_EXT }" % [theme, theme])
 
         if body['message']
           output.puts %|Cannot find theme "#{ theme }"...|
