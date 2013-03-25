@@ -14,6 +14,8 @@ Pry Theme changelog
   and trying to use a 256 colour theme. It is quite numpty, though.
 * Converted switches to subcommands
 * Added basic tab completion for installed themes
+* Added support for italic font. Doesn not work eveywhere. For example, I use
+  urxvt and it does support italic fonts.
 * **NOT BAD**: Added a bunch of new themes
 
     * pry-monochrome
@@ -35,6 +37,7 @@ Pry Theme changelog
     * pry-tepid-8
     * pry-modern-16
     * pry-modern-8
+* And probably something else. I could forget something!
 
 And do not forget to check out [the new CLI][cli]!
 
