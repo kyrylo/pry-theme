@@ -124,7 +124,7 @@ module PryTheme
 
     def def_current(cmd)
       cmd.command :current do |opt|
-        opt.description 'Shows information about currently active theme'
+        opt.description 'Show information about currently active theme'
 
         opt.on :c, :colors, 'Display a painted code snippet'
 
@@ -141,7 +141,7 @@ module PryTheme
 
     def def_edit(cmd)
       cmd.command :edit do |opt|
-        opt.description 'Edits a theme definition'
+        opt.description 'Edit a theme definition'
 
         opt.run do |opts, args|
           BasicEditor.edit(args.first || ThemeList.current_theme.name)
