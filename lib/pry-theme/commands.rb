@@ -88,8 +88,19 @@ module PryTheme
         opt.run do |opts, args|
           if color_model_option_only?(opts)
             output.puts 'Provide a color value to be converted'
-          else
+          elsif color_model_option_and_other_one?(opts)
             convert_color(opts, args)
+          else
+            output.puts 'You must provide the `-m` and one of the rest switches.'
+            examples = [
+              'pry-theme convert --model 8 --term 2',
+              'pry-theme convert --model 8 --rgb 103,104,0',
+              'pry-theme convert --model 16 --hex #EEAA00',
+              'pry-theme convert --model 16 --term 0',
+              'pry-theme convert --model 256 --term 255',
+              'pry-theme convert --model 256 --hex #EEAA00',
+            ]
+            output.puts "Example: #{ examples[rand(examples.size)] }"
           end
         end
       end
@@ -259,6 +270,10 @@ module PryTheme
 
     def color_model_option_only?(opts)
       opts[:m] && !(opts[:h] || opts[:r] || opts[:t])
+    end
+
+    def color_model_option_and_other_one?(opts)
+      opts[:m] && (opts[:h] || opts[:r] || opts[:t])
     end
 
     def installed?(theme)
