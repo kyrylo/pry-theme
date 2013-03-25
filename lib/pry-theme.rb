@@ -11,6 +11,7 @@ require 'pry-theme/definition'
 require 'pry-theme/theme'
 require 'pry-theme/preview'
 require 'pry-theme/color'
+require 'pry-theme/color_table'
 require 'pry-theme/basic_editor'
 require 'pry-theme/commands'
 

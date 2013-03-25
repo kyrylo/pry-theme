@@ -168,28 +168,11 @@ module PryTheme
 
     private
 
-    def show_table(up)
-      colors = []
-      0.upto(up-1) { |i|
-        color = PryTheme.const_get(:"Color#{ up }").new(
-          :from => :term, :foreground => i)
-        colors << build_color_string(color, i)
-      }
-      table = Pry::Helpers.tablify_or_one_line("Color model #{ up }", colors)
-      stagger_output table
-    end
-
-    def build_color_string(color, fg = nil)
-      "\e[7;%sm%s\e[0m:\e[%sm%s\e[0m" %
-        [color.to_ansi, fg || color.foreground,
-         color.to_ansi, color.foreground(true)]
-    end
-
     def display_colors(color_model)
       case color_model
-      when 256 then show_table(256)
-      when 16  then show_table(16)
-      when 8   then show_table(8)
+      when 256 then (stagger_output ColorTable.t256)
+      when 16  then (stagger_output ColorTable.t16)
+      when 8   then (stagger_output ColorTable.t8)
       end
     end
 
