@@ -158,8 +158,18 @@ module PryTheme
       end
     end
 
+    def def_edit(cmd)
+      cmd.command :edit do |opt|
+        opt.description 'Edits a theme definition'
+
+        opt.run do |opts, args|
+          BasicEditor.edit(args.first || ThemeList.current_theme.name)
+        end
+      end
+    end
+
     def subcommands(cmd)
-      [:def_list, :def_colors, :def_try,
+      [:def_list, :def_colors, :def_try, :def_edit,
        :def_uninstall, :def_install, :def_current, :def_convert,
       ].each { |m| __send__(m, cmd) }
 
