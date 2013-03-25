@@ -160,6 +160,8 @@ module PryTheme
     end
 
     def process
+      # "There's no emptiness in the life of a warrior. Everything is filled to
+      # the brim. Everything is filled to the brim, and everything is equal."
     end
 
     def complete(so_far)
