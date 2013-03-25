@@ -8,8 +8,8 @@
 Description
 -----------
 
-Pry Theme is a plugin for [Pry][pry], which helps you to customize your Pry
-colors via `prytheme` files.
+Pry Theme is a plugin for [Pry][pry], which helps you to customise your Pry
+colors via `prytheme.rb` files.
 
 ![Railscasts](./screenshots/railscasts.png)
 ![Solarized](./screenshots/solarized.png)
@@ -29,14 +29,14 @@ Synopsis
 
 ### Theme files
 
-Theme file is a valid YAML file, which has `.prytheme` extension (for example,
-`beautiful.prytheme`). In order to set up the desired theme, add the following
-line into your `.pryrc`:
+Theme file is nothing but a Ruby file, which has `.prytheme.rb` extension (for
+example, `beautiful.prytheme.rb`). In order to set up the desired theme, add the
+following line to your `.pryrc`:
 
     Pry.config.theme = "theme-name"
 
-The default theme is `pry-classic` (basically, you won't notice it, because
-it copies the default outlook of Pry, just as you didn't install anything).
+The default theme is `pry-classic` (basically, you shouldn't notice it, because
+it resembles the default outlook of Pry, as though you didn't install anything).
 Let's change it to something more neoteric:
 
     Pry.config.theme = "pry-modern"
@@ -49,60 +49,33 @@ Pry Theme has a command-line interface available via Pry. Just launch Pry and
 start working with it. For example, you can _temporary_ change themes on the
 fly (only for the current session):
 
-    [1] pry(main)> pry-theme pry-classic
+    [1] pry(main)> pry-theme try pry-classic
 
-This will switch your current theme to `pry-classic`.
+This subcommand would switch your current theme to `pry-classic` theme.
 
 You can find [more information about CLI in Pry Theme Wiki][cli].
 
-### Creating themes
+### Managing themes
 
 Creating new themes isn't hard. [Check out Pry Theme Wiki article on that][new_theme].
 
-### Adding new themes
-
-Theme files must have `.prytheme` extension. Check out [Pry Theme Collection][ptc],
+Theme files must have `.prytheme.rb` extension. Check out [Pry Theme Collection][ptc]
 if you want to find some themes other than default ones.
 
-* On GNU/Linux and Mac OS
-
-    Put your theme file in `$HOME/.pry/themes` directory.
+If you already have your theme stored somewhere on disk, just put it in the
+`$HOME/.pry/themes` directory.
 
 If you don't want to bother with routine operations, you can install a theme
-from the Collection with help of `pry-theme -i <name>` command. For example, you
-can install tomorrow-night theme: `pry-theme -i tomorrow-night`.
+from the Collection with help of `pry-theme install <name>` subcommand. For
+example, you can want to install xoria256 theme. Just execute
+`pry-theme install xoria256` and you're done.
 
 Oh, and don't forget to adjust your `.pryrc`!
 
 Limitations
 -----------
 
-Basically, it will run on any terminal that is capable of displaying 256 colors,
-but with a couple of admonishments. They are listed below.
-
-### OS support
-
-* GNU/Linux;
-* Mac OS.
-
-I hope it runs on Windows too, but I couldn't find any sane terminal, that
-would support 256 colors. Sorry, Windows guys. Please, file an issue, if you
-noticed bugs or something.
-
-### Ruby implementations support
-
-* MRI 1.9.3
-* MRI 1.9.2
-* MRI 1.8.7
-* REE 1.8.7-2012.02
-* JRuby 1.6.7
-* Rubinius 1.2.4
-
-Under the hood
---------------
-
-Basically, Pry Theme is nothing but a CodeRay color scheme with a human-readable
-syntax.
+No limitations. Pry Theme will run everywhere where you can launch Pry.
 
 Credits
 -------
