@@ -129,30 +129,11 @@ module PryTheme
         opt.on :c, :colors, 'Display a painted code snippet'
 
         opt.run do |opts, args|
-          current_theme_name = ThemeList.current_theme.name
 
           if opts.present?(:c)
-            stagger_output(colorize_code(unindent <<-TEST))
-              # "#{ current_theme_name }" theme.
-              class PryTheme::ThisIsAClass
-                def this_is_a_method
-                  THIS_IS_A_CONSTANT  = :this_is_a_symbol
-                  this_is_a_local_var = "\#{this} \#@is a string.\\n"
-                  this_is_a_float     = 10_000.00
-                  this_is_an_integer  = 10_000
-
-                  # TRUE and FALSE are predefined constants.
-                  $this_is_a_global_variable = TRUE or FALSE
-
-                  @this_is_an_instance_variable = `echo '\#@hi \#{system} call\\n'`
-                  @@this_is_a_class_variable    = @@@\\\\$ # An error.
-
-                  /[0-9]{1,3}this \#{is} a regexp\\w+/xi
-                end
-              end
-            TEST
+            stagger_output Preview.new(ThemeList.current_theme).long
           elsif args.empty?
-            output.puts current_theme_name
+            output.puts ThemeList.current_theme.name
           end
         end
       end
