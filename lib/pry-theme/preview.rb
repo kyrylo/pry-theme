@@ -1,5 +1,6 @@
 module PryTheme
   class Preview
+
     def initialize(theme)
       @theme = theme
     end
@@ -23,6 +24,15 @@ module PryTheme
 
     def header
       Pry::Helpers::Text.bold("#{ @theme.name } / #{ @theme.color_model }")
+    end
+
+    def banner(msg)
+      safe_width = 80
+      delimiter = ('-' * safe_width)
+      [delimiter,
+       Pry::Helpers::Text.bold(msg.center(safe_width)),
+       delimiter
+      ].join("\n") + "\n"
     end
 
     private

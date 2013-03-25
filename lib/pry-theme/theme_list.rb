@@ -41,5 +41,12 @@ module PryTheme
       end
     end
 
+    def reload_theme(name, file)
+      @themes.delete_if { |theme| theme.name == name }
+      load file
+      activate_theme(name)
+      true
+    end
+
   end
 end

@@ -6,7 +6,7 @@ module PryTheme
     class << self
       def edit(theme_name)
         editor = new(theme_name)
-        editor.start
+        editor.start_editing
       end
     end
 
@@ -25,23 +25,33 @@ module PryTheme
       @current_file = File.open(theme_path, 'w')
     end
 
-    def start
+    def start_editing
       if @new_theme
         @output.puts 'Created a new theme.'
         @current_file.puts template
       end
       @output.puts "Opened in #{ @editor }: #{ themify(@filename) }"
 
+      reload_theme!
+      output_dashy_header("Current \"#@filename\"")
+
       Pry::Editor.invoke_editor(@current_file.path, 1)
+
+      reload_theme!
+      output_dashy_header("Edited \"#@filename\"")
     ensure
       @current_file.close
     end
 
     private
 
-    def reload_theme
-      ThemeList.themes.delete_if { |theme| theme.name == @filename }
-      load @current_file
+    def reload_theme!
+      ThemeList.reload_theme(@filename, @current_file)
+    end
+
+    def output_dashy_header(msg)
+      preview = Preview.new(ThemeList.themes.find { |t| t.name == @filename })
+      Pry::Pager.page(preview.banner(msg) + preview.long)
     end
 
     def themify(filename)
