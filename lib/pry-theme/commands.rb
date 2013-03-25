@@ -250,7 +250,7 @@ module PryTheme
         color = PryTheme.color_const(color_model).new(
           :from => :rgb, :foreground => opts[:r])
       end
-      output.puts build_color_string(color)
+      output.puts ColorTable.build_color_string(color)
     rescue NameError
       output.puts %|Unknown color model "#{ opts[:m] }". Try 8, 16 or 256|
     end
