@@ -122,6 +122,14 @@ describe PryTheme::Command::PryTheme do
       end
     end
 
+    it "warns when no switches given" do
+      pry_eval('pry-theme convert').should =~ /You must provide the `-m`/
+    end
+
+    it "warns on incorrect usage" do
+      pry_eval('pry-theme convert dqwdwq').should =~ /You must provide the `-m`/
+    end
+
     describe "conversion from term" do
       if PryTheme.tput_colors == 256
         it "with implicit model" do

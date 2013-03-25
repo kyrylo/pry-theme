@@ -88,7 +88,7 @@ module PryTheme
         opt.run do |opts, args|
           if color_model_option_only?(opts)
             output.puts 'Provide a color value to be converted'
-          elsif color_model_option_and_other_one?(opts)
+          elsif color_model_option_and_other_one?(opts) || without_color_model?(opts)
             convert_color(opts, args)
           else
             output.puts 'You must provide the `-m` and one of the rest switches.'
@@ -274,6 +274,10 @@ module PryTheme
 
     def color_model_option_and_other_one?(opts)
       opts[:m] && (opts[:h] || opts[:r] || opts[:t])
+    end
+
+    def without_color_model?(opts)
+      !opts[:m] && (opts[:h] || opts[:r] || opts[:t])
     end
 
     def installed?(theme)
