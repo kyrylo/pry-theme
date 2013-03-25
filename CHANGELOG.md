@@ -13,6 +13,7 @@ Pry Theme changelog
 * Added fallback mode. It is useful when you are running Pry on poor terminals
   and trying to use a 256 colour theme. It is quite numpty, though.
 * Converted switches to subcommands
+* Added basic tab completion for installed themes
 * **NOT BAD**: Added a bunch of new themes
 
     * pry-monochrome
