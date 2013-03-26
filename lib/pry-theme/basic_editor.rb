@@ -29,6 +29,7 @@ module PryTheme
       if @new_theme
         @output.puts 'Created a new theme.'
         @current_file.puts template
+        @current_file.close
       end
       @output.puts "Opened in #{ @editor }: #{ themify(@filename) }"
 
@@ -39,8 +40,6 @@ module PryTheme
 
       reload_theme!
       output_dashy_header("Edited \"#@filename\"")
-    ensure
-      @current_file.close
     end
 
     private
