@@ -1,7 +1,7 @@
 Pry Theme changelog
 ===================
 
-### v0.2.0 (March 25, 2013)
+### v0.2.0 (March 26, 2013)
 
 * **HOT**: Added Windows support
 * **NOT SO HOT**: The plugin was rewritten from scratch
@@ -14,7 +14,7 @@ Pry Theme changelog
   and trying to use a 256 colour theme. It is quite numpty, though.
 * Converted switches to subcommands
 * Added basic tab completion for installed themes
-* Added support for italic font. Doesn not work eveywhere. For example, I use
+* Added support for italic font. Does not work eveywhere. For example, I use
   urxvt and it does support italic fonts.
 * **NOT BAD**: Added a bunch of new themes
 
