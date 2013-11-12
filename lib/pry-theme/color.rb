@@ -338,7 +338,7 @@ module PryTheme
 
     def to_ansi
       fg, bg = !!foreground, !!background
-      create_ansi_sequence(fg, bg)
+      escape(create_ansi_sequence(fg, bg))
     end
 
     private
@@ -346,6 +346,10 @@ module PryTheme
     def set_layers
       foreground
       background
+    end
+
+    def escape(ansi)
+      Array(ansi).map { |c| "\e[#{ c }m"}.join('')
     end
 
     def create_ansi_sequence(fg, bg, default_seq)
