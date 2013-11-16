@@ -7,17 +7,17 @@ describe PryTheme::Color16 do
     it "can be set" do
       color = Color16.new(:foreground => 'bright_red')
       color.foreground(true).should == 'bright_red'
-      color.to_ansi.should == '31;1'
+      color.to_ansi.should == "\e[31;1m"
 
       color = Color16.new(:foreground => 'red')
       color.foreground(true).should == 'red'
-      color.to_ansi.should == '31'
+      color.to_ansi.should == "\e[31m"
     end
 
     it "defaults to no colour at all" do
       color = Color16.new
       color.foreground(true).should == false
-      color.to_ansi.should == '39;49'
+      color.to_ansi.should == "\e[39;49m"
     end
 
     it "raises error on invalid value" do
@@ -31,7 +31,7 @@ describe PryTheme::Color16 do
     it "can be set" do
       color = Color16.new(:background => 'blue')
       color.background(true).should == 'blue'
-      color.to_ansi.should == '44'
+      color.to_ansi.should == "\e[44m"
     end
 
     it "raises error on invalid value" do
@@ -48,7 +48,7 @@ describe PryTheme::Color16 do
         :background => 'bright_white')
       color.foreground(true).should == 'bright_yellow'
       color.background(true).should == 'bright_white'
-      color.to_ansi.should == '33;1;47'
+      color.to_ansi.should == "\e[33;1;47m"
     end
   end
 

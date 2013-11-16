@@ -128,7 +128,7 @@ describe PryTheme::Theme do
 
         it "defaults to proper colours" do
           theme = PryTheme.create(:color_model => 8){ define_theme{} }
-          theme.definition.integer.to_ansi.should == '39;49'
+          theme.definition.integer.to_ansi.should == "\e[39;49m"
         end
       end
 
@@ -156,7 +156,7 @@ describe PryTheme::Theme do
 
         it "defaults to proper colours" do
           theme = PryTheme.create(:color_model => 16){ define_theme{} }
-          theme.definition.integer.to_ansi.should == '39;49'
+          theme.definition.integer.to_ansi.should == "\e[39;49m"
         end
       end
 
@@ -184,7 +184,7 @@ describe PryTheme::Theme do
 
         it "defaults to proper colours" do
           theme = PryTheme.create(:color_model => 256){ define_theme{} }
-          theme.definition.integer.to_ansi.should == '0'
+          theme.definition.integer.to_ansi.should == "\e[0m"
         end
 
         describe "effects" do
@@ -297,10 +297,10 @@ describe PryTheme::Theme do
           string{ self_ 'green'; delimiter 'black' } } }
       theme.definition.regexp.self_.foreground(true).should == 'blue'
       theme.definition.string.self_.foreground(true).should == 'green'
-      theme.definition.regexp.modifier.to_ansi.should == '39;49'
+      theme.definition.regexp.modifier.to_ansi.should == "\e[39;49m"
       theme.definition.string.delimiter.foreground(true).should == 'black'
-      theme.definition.regexp.delimiter.to_ansi.should == '39;49'
-      theme.definition.shell.delimiter.to_ansi.should == '39;49'
+      theme.definition.regexp.delimiter.to_ansi.should == "\e[39;49m"
+      theme.definition.shell.delimiter.to_ansi.should == "\e[39;49m"
     end
   end
 
@@ -433,41 +433,41 @@ describe PryTheme::Theme do
   describe "#to_coderay" do
     before do
       @coderay_hash = {
-        :class => '48;5;118',
-        :class_variable => '0',
-        :comment => '0',
-        :constant => '0',
-        :error => '0',
-        :float => '0',
-        :global_variable => '38;5;81;4',
-        :integer => '38;5;64;48;5;208',
-        :inline_delimiter => '0',
-        :instance_variable => '0',
-        :keyword => '0',
-        :method => '0',
-        :predefined_constant => '0',
-        :symbol => '0',
+        :class => "\e[48;5;118m",
+        :class_variable => "\e[0m",
+        :comment => "\e[0m",
+        :constant => "\e[0m",
+        :error => "\e[0m",
+        :float => "\e[0m",
+        :global_variable => "\e[38;5;81;4m",
+        :integer => "\e[38;5;64;48;5;208m",
+        :inline_delimiter => "\e[0m",
+        :instance_variable => "\e[0m",
+        :keyword => "\e[0m",
+        :method => "\e[0m",
+        :predefined_constant => "\e[0m",
+        :symbol => "\e[0m",
         :regexp => {
-          :self => '0',
-          :char => '0',
-          :content => '0',
-          :delimiter => '0',
-          :modifier => '38;5;148',
-          :escape => '0',
+          :self => "\e[0m",
+          :char => "\e[0m",
+          :content => "\e[0m",
+          :delimiter => "\e[0m",
+          :modifier => "\e[38;5;148m",
+          :escape => "\e[0m",
         },
         :shell => {
-          :self => '0',
-          :char => '0',
-          :content => '0',
-          :delimiter => '0',
-          :escape => '0',
+          :self => "\e[0m",
+          :char => "\e[0m",
+          :content => "\e[0m",
+          :delimiter => "\e[0m",
+          :escape => "\e[0m",
         },
         :string => {
-          :self => '38;5;186',
-          :char => '0',
-          :content => '0',
-          :delimiter => '0',
-          :escape => '0',
+          :self => "\e[38;5;186m",
+          :char => "\e[0m",
+          :content => "\e[0m",
+          :delimiter => "\e[0m",
+          :escape => "\e[0m",
         }
       }
     end

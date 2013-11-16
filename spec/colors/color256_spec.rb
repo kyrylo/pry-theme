@@ -7,13 +7,13 @@ describe PryTheme::Color256 do
     it "can be set" do
       color = Color256.new(:foreground => 'bright_violet')
       color.foreground(true).should == 'bright_violet'
-      color.to_ansi.should == '38;5;128'
+      color.to_ansi.should == "\e[38;5;128m"
     end
 
     it "defaults to no colour at all" do
       color = Color256.new
       color.foreground(true).should == false
-      color.to_ansi.should == '0'
+      color.to_ansi.should == "\e[0m"
     end
 
     it "raises error on invalid value" do
@@ -28,7 +28,7 @@ describe PryTheme::Color256 do
         color.bold?.should == false
         color.underline?.should == false
         color.italic?.should == false
-        color.to_ansi.should == '38;5;128'
+        color.to_ansi.should == "\e[38;5;128m"
       end
 
       it "uses bold" do
@@ -36,7 +36,7 @@ describe PryTheme::Color256 do
         color.bold?.should == true
         color.underline?.should == false
         color.italic?.should == false
-        color.to_ansi.should == '38;5;178;1'
+        color.to_ansi.should == "\e[38;5;178;1m"
       end
 
       it "uses underline" do
@@ -44,7 +44,7 @@ describe PryTheme::Color256 do
         color.bold?.should == false
         color.underline?.should == true
         color.italic?.should == false
-        color.to_ansi.should == '38;5;62;4'
+        color.to_ansi.should == "\e[38;5;62;4m"
       end
 
       it "uses italic" do
@@ -52,7 +52,7 @@ describe PryTheme::Color256 do
         color.bold?.should == false
         color.underline?.should == false
         color.italic?.should == true
-        color.to_ansi.should == '38;5;161;3'
+        color.to_ansi.should == "\e[38;5;161;3m"
       end
 
       it "combines everything" do
@@ -64,7 +64,7 @@ describe PryTheme::Color256 do
         color.bold?.should == true
         color.underline?.should == true
         color.italic?.should == true
-        color.to_ansi.should == '38;5;160;1;3;4'
+        color.to_ansi.should == "\e[38;5;160;1;3;4m"
       end
 
       describe "with defaults" do
@@ -73,7 +73,7 @@ describe PryTheme::Color256 do
           color.bold?.should == false
           color.underline?.should == false
           color.italic?.should == false
-          color.to_ansi.should == '0'
+          color.to_ansi.should == "\e[0m"
         end
 
         it "can be used without foreground" do
@@ -81,7 +81,7 @@ describe PryTheme::Color256 do
           color.bold?.should == true
           color.underline?.should == false
           color.italic?.should == false
-          color.to_ansi.should == '48;5;235;1'
+          color.to_ansi.should == "\e[48;5;235;1m"
         end
 
         it "can be used with the default colour" do
@@ -89,7 +89,7 @@ describe PryTheme::Color256 do
           color.bold?.should == true
           color.underline?.should == true
           color.italic?.should == true
-          color.to_ansi.should == '1;3;4'
+          color.to_ansi.should == "\e[1;3;4m"
         end
       end
     end
@@ -99,13 +99,13 @@ describe PryTheme::Color256 do
     it "can be set" do
       color = Color256.new(:background => 'bright_violet')
       color.background(true).should == 'bright_violet'
-      color.to_ansi.should == '48;5;128'
+      color.to_ansi.should == "\e[48;5;128m"
     end
 
     it "defaults to no colour at all" do
       color = Color256.new
       color.background(true).should == false
-      color.to_ansi.should == '0'
+      color.to_ansi.should == "\e[0m"
     end
 
     it "raises error on invalid value" do
@@ -122,7 +122,7 @@ describe PryTheme::Color256 do
         :foreground => 'pale_brown')
       color.foreground(true).should == 'pale_brown'
       color.background(true).should == 'red_violet01'
-      color.to_ansi.should == '38;5;137;48;5;126'
+      color.to_ansi.should == "\e[38;5;137;48;5;126m"
     end
 
     it "can be set with effects" do
@@ -132,7 +132,7 @@ describe PryTheme::Color256 do
           :italic    => true,
           :bold      => true,
           :underline => true)
-      color.to_ansi.should == '38;5;137;1;3;4;48;5;126'
+      color.to_ansi.should == "\e[38;5;137;1;3;4;48;5;126m"
     end
   end
 

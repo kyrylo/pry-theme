@@ -7,13 +7,13 @@ describe PryTheme::Color8 do
     it "can be set" do
       color = Color8.new(:foreground => 'red')
       color.foreground(true).should == 'red'
-      color.to_ansi.should == '31'
+      color.to_ansi.should == "\e[31m"
     end
 
     it "defaults to no colour at all" do
       color = Color8.new
       color.foreground(true).should == false
-      color.to_ansi.should == '39;49'
+      color.to_ansi.should == "\e[39;49m"
     end
 
     it "raises error on invalid value" do
@@ -27,13 +27,13 @@ describe PryTheme::Color8 do
     it "can be set" do
       color = Color8.new(:background => 'blue')
       color.background(true).should == 'blue'
-      color.to_ansi.should == '44'
+      color.to_ansi.should == "\e[44m"
     end
 
     it "defaults to no colour at all" do
       color = Color8.new
       color.background(true).should == false
-      color.to_ansi.should == '39;49'
+      color.to_ansi.should == "\e[39;49m"
     end
 
     it "raises error on invalid value" do
@@ -48,7 +48,7 @@ describe PryTheme::Color8 do
       color = Color8.new(:foreground => 'green', :background => 'red')
       color.foreground(true).should == 'green'
       color.background(true).should == 'red'
-      color.to_ansi.should == '32;41'
+      color.to_ansi.should == "\e[32;41m"
     end
   end
 
