@@ -1,9 +1,13 @@
 Pry Theme changelog
 ===================
 
+### v1.0.1 (November 18, 2013)
+
+* Fixed `pry-theme convert` and `pry-theme colors`
+
 ### v1.0.0 (November 13, 2013)
 
-* **IMPORTANT**: This version is incompatible with CodeRay 1.0.9 and lower.
+* **IMPORTANT**: This version is incompatible with CodeRay 1.0.9 and lower
 * Fixed CodeRay 1.1.0 support
 
 ### v0.2.0 (March 26, 2013)
