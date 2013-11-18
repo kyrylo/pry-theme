@@ -15,8 +15,8 @@ module PryTheme
       end
 
       def build_color_string(color, fg = nil)
-        "\e[7;%sm%s\e[0m:\e[%sm%s\e[0m" %
-          [color.to_ansi, fg || color.foreground,
+        "%s%s\e[0m:%s%s\e[0m" %
+          [color.to_ansi(true), fg || color.foreground,
            color.to_ansi, color.foreground(true)]
       end
     end

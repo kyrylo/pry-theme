@@ -320,4 +320,18 @@ describe PryTheme::Color256 do
     end
   end
 
+  describe "#to_ansi" do
+    before do
+      @color = Color256.new(:from => :term, :background => 84)
+    end
+
+    it "converts a colour to an ANSI sequence" do
+      @color.to_ansi.should == "\e[48;5;84m"
+    end
+
+    it "given `true` converts a colour to an inverted ANSI sequence" do
+      @color.to_ansi(true).should == "\e[7;48;5;84m"
+    end
+  end
+
 end

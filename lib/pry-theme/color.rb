@@ -336,9 +336,9 @@ module PryTheme
       readable ? @readable_bg : layer_color(colors(:background)[@readable_bg])
     end
 
-    def to_ansi
-      fg, bg = !!foreground, !!background
-      escape(create_ansi_sequence(fg, bg))
+    def to_ansi(inversion = false)
+      ansi = create_ansi_sequence(foreground, background)
+      escape(inversion ? ['7;', ansi].join('') : ansi)
     end
 
     private
