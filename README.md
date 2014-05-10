@@ -35,8 +35,15 @@ following line to your `.pryrc`:
 
     Pry.config.theme = "theme-name"
 
-The default theme is `pry-classic` (basically, you shouldn't notice it, because
-it resembles the default outlook of Pry, as though you didn't install anything).
+The default theme is the one from the `pry-classic` family. It is dependent on
+your terminal capabilities. For example, if you're using Windows, your default
+theme will be `pry-classic-16`, since the Windows terminal can't support more
+than 16 colours. If you're using xterm or urxvt, then your default theme will be
+`pry-classic-256` (basically, you shouldn't notice it, because it resembles the
+default outlook of Pry, as though Pry Theme isn't present). This outlines the
+rule: the more colours your terminal supports, the more vivid version of
+`pry-classic` is used.
+
 Let's change it to something more neoteric:
 
     Pry.config.theme = "pry-modern"
