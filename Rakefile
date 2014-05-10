@@ -8,8 +8,8 @@ def test_files
 end
 
 desc "Run tests"
-task :test do
+task :spec do
   exec "bacon -Ispec #{ quiet } #{ test_files }"
 end
 
-task :default => :test
+task :default => :spec
