@@ -56,9 +56,9 @@ Pry Theme has a command-line interface available via Pry. Just launch Pry and
 start working with it. For example, you can _temporary_ change themes on the
 fly (only for the current session):
 
-    [1] pry(main)> pry-theme try pry-classic
+    [1] pry(main)> pry-theme try pry-classic-8
 
-This subcommand would switch your current theme to `pry-classic` theme.
+This subcommand would switch your current theme to `pry-classic-8` theme.
 
 You can find [more information about CLI in Pry Theme Wiki][cli].
 
