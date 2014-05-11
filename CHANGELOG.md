@@ -1,6 +1,12 @@
 Pry Theme changelog
 ===================
 
+### v1.0.3 (May 12, 2014)
+
+* Fixed error when Pry.config.theme is set to a theme that doesn't exist
+  [→](https://github.com/kyrylo/pry-theme/issues/39)
+* Corrected README.md errors and confusing parts
+
 ### v1.0.2 (January 28, 2014)
 
 * Set stricter dependencies (namely, Pry Theme started demanding CodeRay v1.1.0
