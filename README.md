@@ -46,7 +46,7 @@ rule: the more colours your terminal supports, the more vivid version of
 
 Let's change it to something more neoteric:
 
-    Pry.config.theme = "pry-modern"
+    Pry.config.theme = "pry-modern-256"
 
 That's all! Launch your Pry and you will see the changes.
 
@@ -74,7 +74,7 @@ If you already have your theme stored somewhere on disk, just put it in the
 
 If you don't want to bother with routine operations, you can install a theme
 from the Collection with help of `pry-theme install <name>` subcommand. For
-example, you can want to install xoria256 theme. Just execute
+example, you can want to install the xoria256 theme. Just execute
 `pry-theme install xoria256` and you're done.
 
 Oh, and don't forget to adjust your `.pryrc`!
