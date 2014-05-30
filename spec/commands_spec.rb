@@ -82,6 +82,9 @@ describe PryTheme::Command::PryTheme do
   end
 
   describe "'colors' subcommand" do
+    before { Pry.config.color = true }
+    after { Pry.config.color = false }
+
     if ENV['TERM'] =~ /256color/
       it "displays colours accordingly to the terminal color support" do
         table = pry_eval('pry-theme colors')
