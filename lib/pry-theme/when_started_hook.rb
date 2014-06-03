@@ -10,9 +10,15 @@ module PryTheme
         display_warning(_pry_) if Pry.config.theme
         ThemeList.activate_theme_intelligently
       end
+
+      apply_config
     end
 
     private
+
+    def apply_config
+      PryTheme::Config.new(Pry.config.theme_options).apply
+    end
 
     # Copy a default theme to theme directory, but only if it isn't there yet.
     def recreate_user_themes_from_default_ones
