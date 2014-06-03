@@ -1,5 +1,6 @@
 require 'fileutils'
 
+require 'pry-theme/config'
 require 'pry-theme/theme_list'
 require 'pry-theme/when_started_hook'
 require 'pry-theme/hex'
