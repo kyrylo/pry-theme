@@ -1,6 +1,26 @@
 Pry Theme changelog
 ===================
 
+### v1.1.0 (???)
+
+* Added `theme_options` config hash. It is a general config for Pry Theme
+* Added option that enables painting hash keys as symbols.
+  [→](https://github.com/kyrylo/pry-theme/issues/30)
+
+  ```ruby
+  {foo: 1, :bar => 2}
+  #  ^       ^
+  #  |       |
+  # key    symbol
+  ```
+
+  By default `foo` and `bar` have different colours. If you put this inside your
+  `.pryrc`, then the key will have the same colour as the symbol.
+
+  ```ruby
+  Pry.config.theme_options = {:paint_key_as_symbol => true}
+  ```
+
 ### v1.0.3 (May 12, 2014)
 
 * Fixed error when Pry.config.theme is set to a theme that doesn't exist
