@@ -142,7 +142,7 @@ module PryTheme
         opt.run do |opts, args|
 
           if opts.present?(:c)
-            stagger_output Preview.new(ThemeList.current_theme).long
+            _pry_.pager.page Preview.new(ThemeList.current_theme).long
           elsif args.empty?
             output.puts ThemeList.current_theme.name
           end
@@ -166,7 +166,7 @@ module PryTheme
       ].each { |m| __send__(m, cmd) }
 
       cmd.add_callback(:empty) do
-        stagger_output opts.help
+        _pry_.pager.page opts.help
       end
     end
 
@@ -183,15 +183,15 @@ module PryTheme
 
     def display_colors(color_model)
       case color_model
-      when 256 then (stagger_output ColorTable.t256)
-      when 16  then (stagger_output ColorTable.t16)
-      when 8   then (stagger_output ColorTable.t8)
+      when 256 then _pry_.pager.page(ColorTable.t256)
+      when 16  then _pry_.pager.page(ColorTable.t16)
+      when 8   then _pry_.pager.page(ColorTable.t8)
       end
     end
 
     def show_local_list
       previews = ThemeList.themes.map { |theme| Preview.new(theme).short }
-      stagger_output previews.join("\n")
+      _pry_.pager.page(previews.join("\n"))
     end
 
     def show_remote_list
@@ -216,7 +216,7 @@ module PryTheme
 
         out += response.body + "\n\n"
       }
-      stagger_output out.chomp
+      _pry_.pager.page(out.chomp)
     end
 
     def json_body(address)
