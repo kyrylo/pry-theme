@@ -1,7 +1,7 @@
 Pry Theme changelog
 ===================
 
-### v1.1.0 (???)
+### v1.1.0 (June 13, 2014)
 
 * Added `theme_options` config hash. It is a general config for Pry Theme
 * Added option that enables painting hash keys as symbols.
