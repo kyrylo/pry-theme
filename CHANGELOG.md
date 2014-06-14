@@ -4,7 +4,7 @@ Pry Theme changelog
 ### v1.1.1 (June 14, 2014)
 
 * Fixed error message when `theme_options` is not set at
-  allff. [→](https://github.com/kyrylo/pry-theme/issues/40)
+  all. [→](https://github.com/kyrylo/pry-theme/issues/40)
 
 ### v1.1.0 (June 13, 2014)
 
