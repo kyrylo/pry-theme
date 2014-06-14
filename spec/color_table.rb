@@ -30,7 +30,7 @@ describe PryTheme::ColorTable do
       table = PryTheme::ColorTable.t256
       table.should =~ /Color model 256/
       table.should =~ /\e\[7;38;5;147m147\e\[0m:\e\[38;5;147mwisteria02\e\[0m/
-      table.should =~ /\n  \e\[7;38;5;24m24\e\[0m:\e\[38;5;24mcerulean_grey01\e\[0m/
+      table.should =~ /\e\[7;38;5;24m24\e\[0m:\e\[38;5;24mcerulean_grey01\e\[0m/
       table.should =~ /\e\[7;38;5;0m0\e\[0m:\e\[38;5;0mblack\e\[0m/
     end
 

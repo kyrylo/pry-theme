@@ -85,7 +85,11 @@ describe PryTheme::Color256 do
         end
 
         it "can be used with the default colour" do
-          color = Color256.new(:bold => true, :italic => true, :underline => true)
+          color = Color256.new(
+            :bold => true,
+            :italic => true,
+            :underline => true
+          )
           color.bold?.should == true
           color.underline?.should == true
           color.italic?.should == true
@@ -295,7 +299,11 @@ describe PryTheme::Color256 do
       end
 
       it "sets background and foreground properly" do
-        color = Color256.new(:from => :term, :foreground => 4, :background => 84)
+        color = Color256.new(
+          :from => :term,
+          :foreground => 4,
+          :background => 84
+        )
         color.foreground.should == 4
         color.foreground(true).should == 'navy_blue'
         color.background.should == 84

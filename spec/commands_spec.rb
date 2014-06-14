@@ -56,14 +56,15 @@ describe PryTheme::Command::PryTheme do
       pry_eval('pry-theme try sick').should == "Using \"sick\" theme\n"
       PryTheme::ThemeList.current_theme.name.should == 'sick'
 
-      pry_eval('pry-theme try wholesome').should == "Using \"wholesome\" theme\n"
+      pry_eval('pry-theme try wholesome')
+        .should == "Using \"wholesome\" theme\n"
       PryTheme::ThemeList.current_theme.name.should == 'wholesome'
     end
 
     it "displays error message if can't find the given theme" do
       cur = PryTheme::ThemeList.current_theme.name
-      pry_eval('pry-theme try g-system').
-        should == %|Cannot find "g-system" amongst themes in #{PryTheme::USER_THEMES_DIR}\n|
+      pry_eval('pry-theme try g-system')
+        .should =~ /Cannot find "g-system" amongst themes in/
       PryTheme::ThemeList.current_theme.name.should == cur
     end
   end
@@ -193,13 +194,14 @@ describe PryTheme::Command::PryTheme do
       end
     end
 
-    describe "error handling" do
-      it "outputs the error message if colour model was specified without a colour" do
+    describe "displaying of error messages" do
+      it "if colour model was specified without a colour" do
         pry_eval('pry-theme convert -m 8').should =~ /Provide a color value/
       end
 
-      it "outputs the error message if colour model is invalid" do
-        pry_eval('pry-theme convert -m 23 -t 32').should =~ /Unknown color model/
+      it "if colour model is invalid" do
+        pry_eval('pry-theme convert -m 23 -t 32')
+          .should =~ /Unknown color model/
       end
     end
   end

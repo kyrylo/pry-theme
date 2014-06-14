@@ -194,7 +194,7 @@ Style/LineEndConcatenation:
 
 # Offense count: 25
 Style/LineLength:
-  Max: 97
+  Max: 80
 
 # Offense count: 20
 # Configuration parameters: CountComments.

@@ -67,7 +67,7 @@ module PryTheme
         raise TypeError, "can't convert #{ value.class } into PryTheme::HEX"
       end
       if value !~ PryTheme::HEX::PATTERN
-        raise ArgumentError, %|invalid value for PryTheme::HEX#new(): "#{ value }"|
+        fail ArgumentError, %|invalid value for PryTheme::HEX#new(): "#{value}"|
       end
       true
     end
