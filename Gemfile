@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
-  gem 'pry', '0.10.0rc1'
+  gem 'pry', '~> 0.10'
 end
 
 group :development do
