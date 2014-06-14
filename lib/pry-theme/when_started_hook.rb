@@ -19,6 +19,7 @@ module PryTheme
     private
 
     def apply_config
+      Pry.config.theme_options ||= {}
       PryTheme::Config.new(Pry.config.theme_options).apply
     end
 
