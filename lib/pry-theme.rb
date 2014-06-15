@@ -16,6 +16,9 @@ require 'pry-theme/color_table'
 require 'pry-theme/basic_editor'
 require 'pry-theme/commands'
 
+Pry.config.hooks
+  .add_hook(:when_started, :pry_theme, PryTheme::WhenStartedHook.new)
+
 module PryTheme
 
   # The VERSION file must be in the root directory of the library.
@@ -96,6 +99,4 @@ module PryTheme
       const_get(:"Color#{ color }")
     end
   end
-
-  Pry.config.hooks.add_hook(:when_started, :pry_theme, WhenStartedHook.new)
 end
