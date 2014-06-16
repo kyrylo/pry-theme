@@ -1,10 +1,15 @@
 Pry Theme changelog
 ===================
 
+### v1.1.2 (June 16, 2014)
+
+* Fixed broken behaviour when the Pry Rescue plugin isn't installed along with
+  Pry Theme [→](https://github.com/kyrylo/pry-theme/issues/40)
+
 ### v1.1.1 (June 14, 2014)
 
 * Fixed error message when `theme_options` is not set at
-  all. [→](https://github.com/kyrylo/pry-theme/issues/40)
+  all. [→](https://github.com/kyrylo/pry-theme/issues/41)
 
 ### v1.1.0 (June 13, 2014)
 
