@@ -17,6 +17,7 @@ require 'pry-theme/basic_editor'
 require 'pry-theme/commands'
 
 Pry.config.hooks
+Pry.config.hooks
   .add_hook(:when_started, :pry_theme, PryTheme::WhenStartedHook.new)
 
 module PryTheme
