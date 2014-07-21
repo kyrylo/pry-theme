@@ -1,6 +1,12 @@
 Pry Theme changelog
 ===================
 
+### v1.1.3 (July 21, 2014)
+
+* Re-fixed broken behaviour of Pry. It's a temporary hack, to be removed on the
+  new Pry release [→](https://github.com/kyrylo/pry-theme/issues/40)
+  [→](https://github.com/kyrylo/pry-theme/issues/42)
+
 ### v1.1.2 (June 16, 2014)
 
 * Fixed broken behaviour when the Pry Rescue plugin isn't installed along with
