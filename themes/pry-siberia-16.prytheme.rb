@@ -1,5 +1,5 @@
 t = PryTheme.create :name => 'pry-siberia-16', :color_model => 16 do
-  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
+  author :name => 'Kyrylo Silin', :email => 'silin@kyrylo.org'
   description 'This one reminds me of the cold Siberia...'
 
   define_theme do

@@ -308,7 +308,7 @@ describe PryTheme::Theme do
     it "works with all options :-)" do
       lambda {
         PryTheme.create(:name => 'wholesome', :color_model => 8) {
-          author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
+          author :name => 'Kyrylo Silin', :email => 'silin@kyrylo.org'
           description 'a kool theme!'
           define_theme {
             class_ 'magenta'

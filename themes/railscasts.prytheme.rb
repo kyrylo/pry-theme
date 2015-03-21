@@ -1,7 +1,7 @@
 t = PryTheme.create :name => 'railscasts' do
   author :name => 'Ryan Fitzgerald'
   author :name => 'John Mair'
-  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
+  author :name => 'Kyrylo Silin', :email => 'silin@kyrylo.org'
   description 'The famous RailsCasts theme'
 
   define_theme do

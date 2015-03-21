@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.summary      = 'An easy way to customize Pry colors via theme files'
   s.description  = 'The plugin enables color theme support for Pry.'
   s.author       = 'Kyrylo Silin'
-  s.email        = 'kyrylosilin@gmail.com'
+  s.email        = 'silin@kyrylo.org'
   s.homepage     = 'https://github.com/kyrylo/pry-theme'
   s.licenses     = 'zlib'
 

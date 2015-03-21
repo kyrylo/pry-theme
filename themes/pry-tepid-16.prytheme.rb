@@ -1,5 +1,5 @@
 t = PryTheme.create :name => 'pry-tepid-16', :color_model => 16 do
-  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
+  author :name => 'Kyrylo Silin', :email => 'silin@kyrylo.org'
   description 'Warm colors with warm soul'
 
   define_theme do

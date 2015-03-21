@@ -1,5 +1,5 @@
 t = PryTheme.create :name => 'pry-classic-16', :color_model => 16 do
-  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
+  author :name => 'Kyrylo Silin', :email => 'silin@kyrylo.org'
   description 'The default Pry Theme for terminals with average color support'
 
   define_theme do

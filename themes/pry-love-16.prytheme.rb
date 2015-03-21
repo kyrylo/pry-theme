@@ -1,5 +1,5 @@
 t = PryTheme.create :name => 'pry-love-16', :color_model => 16 do
-  author :name => 'Kyrylo Silin', :email => 'kyrylosilin@gmail.com'
+  author :name => 'Kyrylo Silin', :email => 'silin@kyrylo.org'
   description 'Adds the love, expressed in 16 colors'
 
   define_theme do
