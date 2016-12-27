@@ -3,7 +3,7 @@ require 'helper'
 describe PryTheme::TERM do
   TERM = PryTheme::TERM
 
-  it "represents itself as Fixnum" do
+  it "represents itself as Integer" do
     TERM.new(23).to_i.should == 23
   end
 

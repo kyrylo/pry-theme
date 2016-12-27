@@ -394,8 +394,8 @@ module PryTheme
       case (color_id = cast_color(layer))
       when String
         return color_id if colors.has_key?(color_id)
-      when Fixnum
-        color_id = find_from_fixnum(color_id)
+      when Integer
+        color_id = find_from_integer(color_id)
         return color_id if color_id
       when false
         return color_id

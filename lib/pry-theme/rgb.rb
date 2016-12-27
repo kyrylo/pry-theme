@@ -174,7 +174,7 @@ module PryTheme
     # @return [void]
     def validate_array(ary)
       correct_size = ary.size.equal?(3)
-      correct_vals = ary.all?{ |val| val.is_a?(Fixnum) && val.between?(0, 255) }
+      correct_vals = ary.all?{ |val| val.is_a?(Integer) && val.between?(0, 255) }
       return true if correct_size && correct_vals
       raise ArgumentError,
             %|invalid value for PryTheme::RGB#validate_array(): "#{ ary }"|

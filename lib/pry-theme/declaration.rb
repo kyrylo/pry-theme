@@ -98,7 +98,7 @@ module PryTheme
         if decl_has_bg_key?
           @bg = f[:bg]
           @color_decl.shift
-        elsif f.is_a?(String) || f.is_a?(Fixnum)
+        elsif f.is_a?(String) || f.is_a?(Integer)
           @fg = @color_decl.shift
         else
           build_effects
@@ -112,7 +112,7 @@ module PryTheme
 
       def decl_contains_rgb?
         l = @color_decl.last
-        l.size == 3 && l.all? { |decl| decl.is_a?(Fixnum) }
+        l.size == 3 && l.all? { |decl| decl.is_a?(Integer) }
       end
 
     end

@@ -37,9 +37,9 @@ module PryTheme
     #   at all
     # @return [void]
     def validate_attrs(value, color_model)
-      fixnums = value.is_a?(Fixnum) && color_model.is_a?(Fixnum)
+      integers = value.is_a?(Integer) && color_model.is_a?(Integer)
       correct_term =
-        if fixnums
+        if integers
           case color_model
           when 256 then value.between?(0, 255)
           when 16  then value.between?(0, 15)
@@ -50,9 +50,9 @@ module PryTheme
           end
         end
 
-      return true if fixnums && correct_term
+      return true if integers && correct_term
 
-      unless fixnums
+      unless integers
         raise TypeError, "can't convert #{ value.class } into PryTheme::TERM"
       end
 
