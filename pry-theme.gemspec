@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.files        = `git ls-files`.split("\n")
 
-  s.add_dependency 'json', '~> 1.8'
   s.add_dependency 'coderay', '~> 1.1'
 
   s.add_development_dependency 'bundler', '~> 1.0'
