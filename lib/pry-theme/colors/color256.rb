@@ -21,7 +21,7 @@ module PryTheme
       ['48', '5', background]
     end
 
-    def find_from_fixnum(color_id)
+    def find_from_integer(color_id)
       pair = colors.find { |*term| term.first.flatten.include?(color_id) }
       pair.first if pair
     end
