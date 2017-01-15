@@ -1,6 +1,17 @@
 Pry Theme changelog
 ===================
 
+### master
+
+### v1.2.0 (January 16, 2016)
+
+* **IMPORTANT:** dropped support for Ruby <2.0
+  ([#51](https://github.com/kyrylo/pry-theme/pull/51))
+* Started depending on stock JSON library (no more dependency on the `json` gem)
+  ([#49](https://github.com/kyrylo/pry-theme/pull/51))
+* Fixed warnings on Ruby 2.4.0+ with regard to Fixnum
+  ([#50](https://github.com/kyrylo/pry-theme/pull/51))
+
 ### v1.1.3 (July 21, 2014)
 
 * Re-fixed broken behaviour of Pry. It's a temporary hack, to be removed on the
