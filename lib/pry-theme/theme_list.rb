@@ -30,7 +30,7 @@ module PryTheme
     end
 
     def activate_theme_intelligently
-      if Pry::Helpers::BaseHelpers.windows?
+      if Pry::Helpers::Platform.windows?
         activate_theme('pry-classic-16')
       else
         case PryTheme.tput_colors
