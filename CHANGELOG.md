@@ -3,6 +3,11 @@ Pry Theme changelog
 
 ### master
 
+### v1.3.0 (January 26, 2019)
+
+* Fixed the "method BaseHelpers#windows? is deprecated" warning
+  ([#55](https://github.com/kyrylo/pry-theme/pull/55))
+
 ### v1.2.0 (January 16, 2016)
 
 * **IMPORTANT:** dropped support for Ruby <2.0
