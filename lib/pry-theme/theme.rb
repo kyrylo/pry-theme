@@ -37,6 +37,7 @@ module PryTheme
       @authors = [{ :name => @config[:author] }]
       @default_author = true
       @active = false
+      @definition = nil
 
       validate_config
 

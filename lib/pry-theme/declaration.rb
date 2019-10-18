@@ -22,6 +22,8 @@ module PryTheme
         @color_class = PryTheme.const_get(:"Color#{ color_model }")
         @effects     = {}
         @parsed      = false
+        @fg          = nil
+        @bg          = nil
       end
 
       def parse
