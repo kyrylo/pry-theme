@@ -20,7 +20,7 @@ module PryTheme
     end
 
     def activate_theme(name)
-      theme = themes.find { |theme| theme.name == name }
+      theme = themes.find { |t| t.name == name }
 
       if theme
         current_theme.disable if current_theme

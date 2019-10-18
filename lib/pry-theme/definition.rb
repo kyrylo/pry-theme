@@ -53,7 +53,7 @@ module PryTheme
         :keyword, :method, :predefined_constant, :symbol
       ]
 
-      def_dynamic_methods *ATTRS
+      def_dynamic_methods(*ATTRS)
 
       def initialize(color_model, &block)
         @color_model = color_model
@@ -82,7 +82,7 @@ module PryTheme
 
         ATTRS = [:self_, :char, :content, :delimiter, :escape]
 
-        def_dynamic_methods *ATTRS
+        def_dynamic_methods(*ATTRS)
 
         def initialize(color_model, &block)
           @color_model = color_model
@@ -94,7 +94,7 @@ module PryTheme
       class Regexp < Compound
         ATTRS = [:modifier]
 
-        def_dynamic_methods *ATTRS
+        def_dynamic_methods(*ATTRS)
 
         def initialize(color_model, &block)
           @color_model = color_model
