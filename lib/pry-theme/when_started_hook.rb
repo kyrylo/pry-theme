@@ -2,14 +2,14 @@ module PryTheme
   # This is a hook to Pry. It executes upon Pry's launch. The hook is
   # responsible for bootstrapping Pry Theme.
   class WhenStartedHook
-    def call(_, _, _)
+    def call(_context, _options, pry_instance)
       recreate_user_themes_from_default_ones
       load_themes
 
       if File.exist?(theme_file)
         ThemeList.activate_theme(Pry.config.theme)
       else
-        display_warning(_pry_) if Pry.config.theme
+        display_warning(pry_instance) if Pry.config.theme
         ThemeList.activate_theme_intelligently
       end
 
@@ -47,8 +47,8 @@ module PryTheme
       File.join(USER_THEMES_DIR, Pry.config.theme.to_s + PT_EXT)
     end
 
-    def display_warning(pry)
-      pry.output.puts 'Pry Theme Warning: Pry.config.theme is set to ' \
+    def display_warning(pry_instance)
+      pry_instance.output.puts 'Pry Theme Warning: Pry.config.theme is set to ' \
         "\"#{ Pry.config.theme }\". There's no such a theme in your system. " \
         "All installed themes live inside #{ USER_THEMES_DIR }. Falling back " \
         'to the default theme for now.'
