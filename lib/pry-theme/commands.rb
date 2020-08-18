@@ -232,6 +232,10 @@ module PryTheme
       JSON.parse(response.body)
     end
 
+    def windows?
+      (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    end
+
     def install_theme(args)
       args.each { |theme|
         output.puts %|Installing "#{ theme }" from Pry Theme Collection...|
