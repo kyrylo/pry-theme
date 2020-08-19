@@ -227,13 +227,9 @@ module PryTheme
       uri = URI.parse(address)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE if windows?
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE if Pry::Helpers::Platform.windows?
       response = http.request(Net::HTTP::Get.new(uri.request_uri))
       JSON.parse(response.body)
-    end
-
-    def windows?
-      (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
     end
 
     def install_theme(args)
