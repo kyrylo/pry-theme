@@ -3,6 +3,11 @@ Pry Theme changelog
 
 ### master
 
+### v1.3.1 (August 19, 2020)
+
+* Fixed ``NoMethodError: undefined method `windows?``
+  ([#62](https://github.com/kyrylo/pry-theme/pull/62))
+
 ### v1.3.0 (January 26, 2019)
 
 * Fixed the "method BaseHelpers#windows? is deprecated" warning
